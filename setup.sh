@@ -215,10 +215,8 @@ echo -e "[ ${green}INFO${NC} ] Aight good ... installation file is ready"
 sleep 2
 echo -e "[ ${green}INFO${NC} ] Check permission : "
 
-
 echo -e "[ ${green}INFO${NC} ] Accepted: "
-rm setup.sh > /dev/null 2>&1
-sleep 10
+sleep 1
 exit 0
 fi
 sleep 3
