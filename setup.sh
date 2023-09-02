@@ -18,52 +18,41 @@ URL="https://api.telegram.org/bot$KEY/sendMessage"
 OS=$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')
 domain=$(cat /etc/xray/domain)
 CITY=$(curl -s ipinfo.io/city )
-REPO="https://raw.githubusercontent.com/zheevpn/update/main/"
-#########################
-BURIQ () {
-    curl -sS https://raw.githubusercontent.com/zheevpn/izin/main/zye > /root/tmp
-    data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
-    for user in "${data[@]}"
-    do
-    exp=( `grep -E "^### $user" "/root/tmp" | awk '{print $3}'` )
-    d1=(`date -d "$exp" +%s`)
-    d2=(`date -d "$biji" +%s`)
-    exp2=$(( (d1 - d2) / 86400 ))
-    if [[ "$exp2" -le "0" ]]; then
-    echo $user > /etc/.$user.ini
-    else
-    rm -f  /etc/.$user.ini > /dev/null 2>&1
-    fi
-    done
-    rm -f  /root/tmp
-}
-# https://raw.githubusercontent.com/wokszxd/izinvps/main/ip 
-MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS https://raw.githubusercontent.com/zheevpn/izin/main/zye | grep $MYIP | awk '{print $2}')
-echo $Name > /usr/local/etc/.$Name.ini
-CekOne=$(cat /usr/local/etc/.$Name.ini)
+url_izin='https://raw.githubusercontent.com/rizkyckj/izin/master/izin'
 
-Bloman () {
-if [ -f "/etc/.$Name.ini" ]; then
-CekTwo=$(cat /etc/.$Name.ini)
-    if [ "$CekOne" = "$CekTwo" ]; then
-        res="Expired"
+#IP VPS
+ip_vps=$(curl -sS ifconfig.me)
+
+# Mendapatkan isi file izin.txt dari URL
+izin=$(curl -s "$url_izin")
+
+# Memeriksa apakah konten izin.txt berhasil didapatkan
+if [[ -n "$izin" ]]; then
+  while IFS= read -r line; do
+    # Memisahkan nama VPS, IP VPS, dan tanggal kadaluwarsa
+    nama=$(echo "$line" | awk '{print $1}')
+    ipvps=$(echo "$line" | awk '{print $2}')
+    tanggal=$(echo "$line" | awk '{print $3}')
+
+    # Memeriksa apakah IP VPS saat ini cocok dengan IP VPS yang ada di izin.txt
+    if [[ "$ipvps" == "$ip_vps" ]]; then
+      echo "Nama VPS: $nama"
+      echo "IP VPS: $ipvps"
+      echo "Tanggal Kadaluwarsa: $tanggal"
+      break
     fi
+  done <<< "$izin"
+
+  # Memeriksa apakah IP VPS ditemukan dalam izin.txt
+  if [[ "$ipvps" != "$ip_vps" ]]; then
+    echo "IP VPS tidak ditemukan dalam izin.txt"
+    exit 0
+  fi
 else
-res="Permission Accepted..."
+  echo "Konten izin.txt tidak berhasil didapatkan dari URL"
+  exit 0
 fi
-}
 
-PERMISSION () {
-    MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://raw.githubusercontent.com/zheevpn/izin/main/zye | awk '{print $4}' | grep $MYIP)
-    if [ "$MYIP" = "$IZIN" ]; then
-    Bloman
-    else
-    res="Permission Denied!"
-    fi
-    BURIQ
-}
 wget -O /etc/banner ${REPO1}config/banner >/dev/null 2>&1
     chmod +x /etc/banner
 clear
@@ -249,18 +238,16 @@ wget -q https://raw.githubusercontent.com/zheevpn/update/main/tools.sh;chmod +x 
 rm tools.sh
 clear
     echo ""
-    echo -e "$green  ██╗░░██╗███╗░░░███╗██╗░░██╗███████╗$NC"
-    echo -e "$green  ██║░██╔╝████╗░████║██║░██╔╝╚════██║$NC"
-    echo -e "$green  █████═╝░██╔████╔██║█████═╝░░░███╔═╝$NC"
-    echo -e "$green  ██╔═██╗░██║╚██╔╝██║██╔═██╗░██╔══╝░░$NC"
-    echo -e "$green  ██║░╚██╗██║░╚═╝░██║██║░╚██╗███████╗$NC"
-    echo -e "$green  ╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═╝░░╚═╝╚══════╝$NC"
-    echo -e "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-    echo -e "${red}    ♦️${NC} ${green}  CUSTOM DOMAIN VPS     ${NC}"
-    echo -e "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-    echo "[1]. Use Domain From Script / Gunakan Domain Dari Script"
-    echo "[2]. Choose Your Own Domain / Pilih Domain Sendiri"
-    echo -e "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+    echo -e "\\E[40;1;37m░██████╗████████╗░█████╗░██████╗░███████╗░██████╗\E[0m"
+echo -e "\\E[40;1;37m██╔════╝╚══██╔══╝██╔══██╗██╔══██╗██╔════╝██╔════╝\E[0m"
+echo -e "\\E[40;1;37m╚█████╗░░░░██║░░░██║░░██║██████╔╝█████╗░░╚█████╗░\E[0m"
+echo -e "\\E[40;1;37m░╚═══██╗░░░██║░░░██║░░██║██╔══██╗██╔══╝░░░╚═══██╗\E[0m"
+echo -e "\\E[40;1;37m██████╔╝░░░██║░░░╚█████╔╝██║░░██║███████╗██████╔╝\E[0m"
+echo -e "\\E[40;1;37m╚═════╝░░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝╚══════╝╚═════╝░\E[0m"
+echo -e "$BYellow----------------------------------------------------------$NC"
+echo -e "$BGreen 1. Use Domain Random / Gunakan Domain Random $NC"
+echo -e "$BGreen 2. Choose Your Own Domain / Gunakan Domain Sendiri $NC"
+echo -e "$BYellow----------------------------------------------------------$NC"
     read -rp "Silahkan Pilih 1 / 2 Untuk Menginstal : " dom 
 
     if test $dom -eq 1; then
@@ -268,7 +255,7 @@ clear
     # // Setup CF
     echo -e "${green}DOWNLOADING CLOUDFLARE!${NC}"
     sleep 3
-    wget -q https://raw.githubusercontent.com/zheevpn/update/main/cf.sh && chmod +x cf.sh && ./cf.sh
+    wget -q https://raw.githubusercontent.com/rizkyckj/update/main/cf.sh && chmod +x cf.sh && ./cf.sh
     echo -e "${green}Done!${NC}"
     sleep 2
     clear
@@ -288,15 +275,15 @@ echo -e "$green       Install SSH / WS            $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
 clear
-wget https://raw.githubusercontent.com/zheevpn/update/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
+wget https://raw.githubusercontent.com/rizkyckj/update/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 #Instal Xray
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "$green         Install XRAY              $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
 clear
-wget https://raw.githubusercontent.com/zheevpn/update/main/xray/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
-wget https://raw.githubusercontent.com/zheevpn/update/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
+wget https://raw.githubusercontent.com/rizkyckj/update/main/xray/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
+wget https://raw.githubusercontent.com/rizkyckj/update/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
 clear
 
 #Instal slowdns
@@ -305,7 +292,7 @@ echo -e "$green        Install SLDNS              $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
 clear
-wget https://raw.githubusercontent.com/zheevpn/update/main/wireguard/installsl.sh && chmod +x installsl.sh && ./installsl.sh
+wget https://raw.githubusercontent.com/rizkyckj/update/main/wireguard/installsl.sh && chmod +x installsl.sh && ./installsl.sh
 clear
 
 ### Pasang OpenVPN
@@ -314,7 +301,7 @@ echo -e "$green         Install OVPN              $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
 clear
-wget https://raw.githubusercontent.com/zheevpn/update/main/ssh/vpn.sh && chmod +x vpn.sh && ./vpn.sh
+wget https://raw.githubusercontent.com/rizkyckj/update/main/ssh/vpn.sh && chmod +x vpn.sh && ./vpn.sh
 clear
 
 #Install Ohp Service
@@ -323,9 +310,9 @@ echo -e "$green          Install OHP              $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 0.5
 clear
-wget https://raw.githubusercontent.com/zheevpn/update/main/ohp/ohp-dropbear.sh && chmod +x ohp-dropbear.sh && ./ohp-dropbear.sh
-wget https://raw.githubusercontent.com/zheevpn/update/main/ohp/ohp-ssh.sh && chmod +x ohp-ssh.sh && ./ohp-ssh.sh
-wget https://raw.githubusercontent.com/zheevpn/update/main/ohp/ohp.sh && chmod +x ohp.sh && ./ohp.sh
+wget https://raw.githubusercontent.com/rizkyckj/update/main/ohp/ohp-dropbear.sh && chmod +x ohp-dropbear.sh && ./ohp-dropbear.sh
+wget https://raw.githubusercontent.com/rizkyckj/update/main/ohp/ohp-ssh.sh && chmod +x ohp-ssh.sh && ./ohp-ssh.sh
+wget https://raw.githubusercontent.com/rizkyckj/update/main/ohp/ohp.sh && chmod +x ohp.sh && ./ohp.sh
 clear
 
 ### Pasang Limit Xray
@@ -334,7 +321,7 @@ echo -e "$green      Install Limit Xray            $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
 clear
-wget https://raw.githubusercontent.com/zheevpn/update/main/limit/limit.sh && chmod +x limit.sh && ./limit.sh
+wget https://raw.githubusercontent.com/rizkyckj/update/main/limit/limit.sh && chmod +x limit.sh && ./limit.sh
 clear
 
 #pasang swap
@@ -404,30 +391,10 @@ gotop_latest="$(curl -s https://api.github.com/repos/xxxserxxx/gotop/releases | 
     curl -sL "$gotop_link" -o /tmp/gotop.deb
     dpkg -i /tmp/gotop.deb >/dev/null 2>&1
     
-    USRSC=$(curl -sS https://raw.githubusercontent.com/zheevpn/izin/main/zye | grep $MYIP | awk '{print $2}')
-    EXPSC=$(curl -sS https://raw.githubusercontent.com/zheevpn/izin/main/zye | grep $MYIP | awk '{print $3}')
-    TIMEZONE=$(printf '%(%H:%M:%S)T')
-    TEXT="
-<code>────────────────────</code>
-<b>⚠️AUTOSCRIPT PREMIUM⚠️</b>
-<code>────────────────────</code>
-<code>Owner  : </code><code>$USRSC</code>
-<code>Domain : </code><code>$(cat /etc/xray/domain)</code>
-<code>Date   : </code><code>$TIME</code>
-<code>Time   : </code><code>$TIMEZONE</code>
-<code>Isp    : </code><code>$ISP</code>
-<code>Ip Vps : </code><code>$MYIP</code>
-<code>Exp Sc : </code><code>$EXPSC</code>
-<code>Ram    : </code><code>$RAMMS MB</code>
-<code>Linux  : </code><code>$OS</code>
-<code>────────────────────</code>
-<i>Automatic Notification from</i>
-<i>YogzVpn Bot</i> 
-"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ🐳","url":"https://t.me/Zyevpn"},{"text":"ɪɴꜱᴛᴀʟʟ🐬","url":"https://t.me/Zyevpn"}]]}'
-    curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+    
 clear
 echo " "
-echo "=====================-[ SCRIPT ZheeVPN TUNNEL ]-===================="
+echo "=====================-[ SCRIPT RVPN STORES ]-===================="
 echo ""
 echo "------------------------------------------------------------"
 echo ""
@@ -468,7 +435,7 @@ echo ""
 echo ""
 echo "------------------------------------------------------------"
 echo ""
-echo "===============-[ Script Created By ZheeVPN ]-==============="
+echo "===============-[ Script Created By RVPN STORES]-==============="
 echo -e ""
 echo ""
 echo "" | tee -a log-install.txt
