@@ -67,11 +67,11 @@ lastlogin=$(cat /var/log/xray/access.log | grep -w "$akun" | tail -n 500 | cut -
 printf "  %-13s %-7s %-8s %2s\n"   "${akun}" "$lastlogin"  " ${gb}/${lim}"   "$jum2";
 fi 
 rm -rf /tmp/ipvmess.txt
-done
+donep
 rm -rf /tmp/other.txt
 echo ""
 echo -e "\033[1;91m└──────────────────────────────────────────┘\033[0m"
 echo -e "\033[1;93m┌──────────────────────────────────────────┐\033[0m"
-echo -e "        Autoscript Mod by YogzSTORE        "
+echo -e "        Autoscript Mod by RVPN STORES       "
 echo -e "\033[1;93m└──────────────────────────────────────────┘\033[0m"
 echo ""

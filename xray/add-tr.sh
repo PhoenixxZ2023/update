@@ -36,16 +36,10 @@ export KEY=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 2)
 export TIME="10"
 export URL="https://api.telegram.org/bot$KEY/sendMessage"
 clear
-#IZIN SCRIPT
-MYIP=$(curl -sS ipv4.icanhazip.com)
+checking_sc
 echo -e "\e[32mloading...\e[0m"
 clear
-# Valid Script
-ipsaya=$(wget -qO- ipinfo.io/ip)
-data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
-date_list=$(date +"%Y-%m-%d" -d "$data_server")
-clear
-source /var/lib/ipvps.conf
+source /var/lib/SIJA/ipvps.conf
 if [[ "$IP" = "" ]]; then
 domain=$(cat /etc/xray/domain)
 else
