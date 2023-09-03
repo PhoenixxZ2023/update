@@ -386,7 +386,7 @@ echo -e " ${BICyan}[${BIWhite}03${BICyan}]${y} •${NC} ${BIWhite}VLESS MENU    
 echo -e " ${BICyan}[${BIWhite}04${BICyan}]${y} •${NC} ${BIWhite}TROJAN MENU        $NC  ${BICyan}[${BIWhite}15${BICyan}]${RED} • ${NC}${BIWhite}BOT BACKUP  $NC"
 echo -e " ${BICyan}[${BIWhite}05${BICyan}]${y} •${NC} ${BIWhite}S-SOCK MENU        $NC  ${BICyan}[${BIWhite}16${BICyan}]${RED} • ${NC}${BIWhite}SPEEDTEST $NC"
 echo -e " ${BICyan}[${BIWhite}06${BICyan}]${y} •${NC} ${BIWhite}TENDANG            $NC  ${BICyan}[${BIWhite}17${BICyan}]${RED} • ${NC}${BIWhite}CEK BANDWIDTH USE $NC"
-echo -e " ${BICyan}[${BIWhite}07${BICyan}]${y} •${NC} ${BIWhite}AUTO REBOOT        $NC  ${BICyan}[${BIWhite}18${BICyan}]${RED} • ${NC}${BIWhite}SCRIPT INFO $NC"
+echo -e " ${BICyan}[${BIWhite}07${BICyan}]${y} •${NC} ${BIWhite}AUTO REBOOT        $NC  ${BICyan}[${BIWhite}18${BICyan}]${RED} • ${NC}${BIWhite}TRIAL $NC"
 echo -e " ${BICyan}[${BIWhite}08${BICyan}]${y} •${NC} ${BIWhite}REBOOT             $NC  ${BICyan}[${BIWhite}19${BICyan}]${RED} • ${NC}${BIWhite}NS DOMAIN  $NC"
 echo -e " ${BICyan}[${BIWhite}09${BICyan}]${y} •${NC} ${BIWhite}RESTART SERVICE    $NC  ${BICyan}[${BIWhite}20${BICyan}]${RED} • ${NC}${BIWhite}SCRIPT INFO   $NC"
 echo -e " ${BICyan}[${BIWhite}10${BICyan}]${y} •${NC} ${BIWhite}GEN-SSL CERTV      $NC  ${BICyan}[${BIWhite}21${BICyan}]${RED} • ${NC}${BIWhite}SETTING  $NC"
