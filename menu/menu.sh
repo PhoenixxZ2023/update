@@ -1,5 +1,51 @@
 #!/bin/bash
-# =========================================
+echo "Checking VPS"
+#link izin ip vps
+url_izin='https://raw.githubusercontent.com/rizkyckj/izin/master/izin'
+
+#IP VPS
+ip_vps=$(curl -sS ifconfig.me)
+
+# Mendapatkan isi file izin.txt dari URL
+izin=$(curl -s "$url_izin")
+
+# Memeriksa apakah konten izin.txt berhasil didapatkan
+if [[ -n "$izin" ]]; then
+  while IFS= read -r line; do
+    # Memisahkan nama VPS, IP VPS, dan tanggal kadaluwarsa
+    nama=$(echo "$line" | awk '{print $1}')
+    ipvps=$(echo "$line" | awk '{print $2}')
+    tanggal=$(echo "$line" | awk '{print $3}')
+
+    # Memeriksa apakah IP VPS saat ini cocok dengan IP VPS yang ada di izin.txt
+    if [[ "$ipvps" == "$ip_vps" ]]; then
+      echo "Nama VPS: $nama"
+      echo "IP VPS: $ipvps"
+      echo "Tanggal Kadaluwarsa: $tanggal"
+      break
+    fi
+  done <<< "$izin"
+
+  # Memeriksa apakah IP VPS ditemukan dalam izin.txt
+  if [[ "$ipvps" != "$ip_vps" ]]; then
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e "\033[42m          404 NOT FOUND AUTOSCRIPT          \033[0m"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e ""
+    echo -e "            ${RED}PERMISSION DENIED !${NC}"
+    echo -e "   \033[0;33mYour VPS${NC} $ip_vps \033[0;33mHas been Banned${NC}"
+    echo -e "     \033[0;33mBuy access permissions for scripts${NC}"
+    echo -e "             \033[0;33mContact Admin :${NC}"
+    echo -e "      \033[0;36mTelegram${NC} t.me/RVPNSTORES"
+    echo -e "      ${GREEN}WhatsApp${NC} wa.me/6281935718766"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    exit 0
+  fi
+else
+  echo "Konten izin.txt tidak berhasil didapatkan dari URL"
+  exit 0
+fi
+
 vlx=$(grep -c -E "^#& " "/etc/xray/config.json")
 let vla=$vlx/2
 vmc=$(grep -c -E "^### " "/etc/xray/config.json")
@@ -10,138 +56,164 @@ trx=$(grep -c -E "^#! " "/etc/xray/config.json")
 let tra=$trx/2
 ssx=$(grep -c -E "^## " "/etc/xray/config.json")
 let ssa=$ssx/2
-COLOR1='\033[0;35m'
-COLOR2='\033[0;39m'
-clear
-# // Exporting Language to UTF-8
-export LC_ALL='en_US.UTF-8'
-export LANG='en_US.UTF-8'
-export LANGUAGE='en_US.UTF-8'
-export LC_CTYPE='en_US.utf8'
-
-# // Export Color & Information
-export RED='\033[0;31m'
-export GREEN='\033[0;32m'
-export YELLOW='\033[0;33m'
-export BLUE='\033[0;34m'
-export PURPLE='\033[0;35m'
-export CYAN='\033[0;36m'
-export LIGHT='\033[0;37m'
-export NC='\033[0m'
-
-# // Export Banner Status Information
-export EROR="[${RED} EROR ${NC}]"
-export INFO="[${YELLOW} INFO ${NC}]"
-export OKEY="[${GREEN} OKEY ${NC}]"
-export PENDING="[${YELLOW} PENDING ${NC}]"
-export SEND="[${YELLOW} SEND ${NC}]"
-export RECEIVE="[${YELLOW} RECEIVE ${NC}]"
-
-# // Export Align
-export BOLD="\e[1m"
-export WARNING="${RED}\e[5m"
-export UNDERLINE="\e[4m"
-
-# // Exporting URL Host
-export Server_URL="autosc.me/aio"
-export Server_Port="443"
-export Server_IP="underfined"
-export Script_Mode="Stable"
-export Auther="XdrgVPN"
-
-# // Root Checking
-if [ "${EUID}" -ne 0 ]; then
-                echo -e "${EROR} Please Run This Script As Root User !"
-                exit 1
-fi
-tomem="$(free | awk '{print $2}' | head -2 | tail -n 1 )"
-usmem="$(free | awk '{print $3}' | head -2 | tail -n 1 )"
-cpu1="$(mpstat | awk '{print $4}' | head -4 |tail -n 1)"
-cpu2="$(mpstat | awk '{print $6}' | head -4 |tail -n 1)"
-
-persenmemori="$(echo "scale=2; $usmem*100/$tomem" | bc)"
-#persencpu=
-persencpu="$(echo "scale=2; $cpu1+$cpu2" | bc)"
-# // Exporting IP Address
-export MYIP=$( curl -s https://ipinfo.io/ip/ )
-Name=$(curl -sS https://raw.githubusercontent.com/andristji/Xray-SSH/main/permission/ip | grep $MYIP | awk '{print $2}')
-Exp=$(curl -sS https://raw.githubusercontent.com/andristji/Xray-SSH/main/permission/ip | grep $MYIP | awk '{print $3}')
-
-# // nginx
-nginx=$( systemctl status nginx | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
-if [[ $nginx == "running" ]]; then
-    status_nginx="${GREEN}ON${NC}"
-else
-    status_nginx="${RED}OFF${NC}"
-fi
-
-# // SSH Websocket Proxy
-xray=$(/etc/init.d/ssh status | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
-if [[ $xray == "running" ]]; then
-    status_xray="${GREEN}ON${NC}"
-else
-    status_xray="${RED}OFF${NC}"
-fi
-ttoday="$(vnstat | grep today | awk '{print $8" "substr ($9, 1, 3)}' | head -1)"
-tmon="$(vnstat -m | grep `date +%G-%m` | awk '{print $8" "substr ($9, 1 ,3)}' | head -1)"
 
 clear
-echo -e "$COLOR1┌────────────────────────────────────────────────────────────┐${NC}"
-echo -e "                     << INFORMASI VPS >>                    \E[0m"
-echo -e "$COLOR1└────────────────────────────────────────────────────────────┘${NC}"
+# Color Validation
+WH='\033[1;37m'                   
+DF='\e[39m'
+Bold='\e[1m'
+Blink='\e[5m'
+yell='\e[33m'
+red='\e[31m'
+green='\e[32m'
+blue='\e[34m'
+PURPLE='\e[35m'
+cyan='\e[36m'
+Lred='\e[91m'
+Lgreen='\e[92m'
+Lyellow='\e[93m'
+BGreen='\e[1;32m'
+BYellow='\e[1;33m'
+BBlue='\e[1;34m'
+BPurple='\e[1;35m'
+BCyan='\e[1;36m'
+NC='\e[0m'
+GREEN='\033[0;32m'
+ORANGE='\033[0;33m'
+LIGHT='\033[0;37m'
+y='\033[0;34m'
+IPurple='\033[0;95m'
+On_IPurple='\033[0;105m'
+BIPurple='\033[1;95m' 
+RVPN='\\E[40;1;37m' 
+# // Clear
 
-echo -e "• Current Time        = $( date -d "0 days" +"%d-%m-%Y | %X" )"
-echo -e "• Current Domain      = $( cat /etc/xray/domain )"
-echo -e "• Server IP           = $MYIP"
-echo -e "• ISP                 = $(cat /root/.isp)${NC}"
-echo -e "• Server Resource     = RAM = $persenmemori% | CPU = $persencpu%"
-echo -e "• Clients Name        = $Name"
-echo -e "• Expired Script VPS  = $Exp"
-echo -e "• Status Hari ini     = jangan lupa bahagia"
+clear
+cek=$(service ssh status | grep active | cut -d ' ' -f5)
+if [ "$cek" = "active" ]; then
+stat=-f5
+else
+stat=-f7
+fi
+ssh=$(service ssh status | grep active | cut -d ' ' $stat)
+if [ "$ssh" = "active" ]; then
+ressh="${BBlue}ON${NC}"
+else
+ressh="${red}OFF${NC}"
+fi
+ngx=$(service nginx status | grep active | cut -d ' ' $stat)
+if [ "$ngx" = "active" ]; then
+resngx="${BBlue}ON${NC}"
+else
+resngx="${red}OFF${NC}"
+fi
+dbr=$(service dropbear status | grep active | cut -d ' ' $stat)
+if [ "$dbr" = "active" ]; then
+resdbr="${BBlue}ON${NC}"
+else
+resdbr="${red}OFF${NC}"
+fi
+v2r=$(service xray status | grep active | cut -d ' ' $stat)
+if [ "$v2r" = "active" ]; then
+resv2r="${BBlue}ON${NC}"
+else
+resv2r="${red}OFF${NC}"
+fi
+# STATUS SERVICE UDP CUSTOM
+if [[ $udpc == "running" ]]; then
+   udp2="${GB}[ ON ]${NC}${NC}"
+else
+   udp2="${RB}[ OFF ]${NC}"
+fi
+# VPS Information
+#Domain
+domain=$(cat /etc/xray/domain)
+#Status certificate
+modifyTime=$(stat $HOME/.acme.sh/${domain}_ecc/${domain}.key | sed -n '7,6p' | awk '{print $2" "$3" "$4" "$5}')
+modifyTime1=$(date +%s -d "${modifyTime}")
+currentTime=$(date +%s)
+stampDiff=$(expr ${currentTime} - ${modifyTime1})
+days=$(expr ${stampDiff} / 86400)
+remainingDays=$(expr 90 - ${days})
+tlsStatus=${remainingDays}
+if [[ ${remainingDays} -le 0 ]]; then
+	tlsStatus="expired"
+fi
+# OS Uptime
+uptime="$(uptime -p | cut -d " " -f 2-10)"
+# Download
+#Download/Upload today
+dtoday="$(vnstat -i eth0 | grep "today" | awk '{print $2" "substr ($3, 1, 1)}')"
+utoday="$(vnstat -i eth0 | grep "today" | awk '{print $5" "substr ($6, 1, 1)}')"
+ttoday="$(vnstat -i eth0 | grep "today" | awk '{print $8" "substr ($9, 1, 1)}')"
+#Download/Upload yesterday
+dyest="$(vnstat -i eth0 | grep "yesterday" | awk '{print $2" "substr ($3, 1, 1)}')"
+uyest="$(vnstat -i eth0 | grep "yesterday" | awk '{print $5" "substr ($6, 1, 1)}')"
+tyest="$(vnstat -i eth0 | grep "yesterday" | awk '{print $8" "substr ($9, 1, 1)}')"
+#Download/Upload current month
+dmon="$(vnstat -i eth0 -m | grep "`date +"%b '%y"`" | awk '{print $3" "substr ($4, 1, 1)}')"
+umon="$(vnstat -i eth0 -m | grep "`date +"%b '%y"`" | awk '{print $6" "substr ($7, 1, 1)}')"
+tmon="$(vnstat -i eth0 -m | grep "`date +"%b '%y"`" | awk '{print $9" "substr ($10, 1, 1)}')"
+# user
+Exp2=$"Lifetime"
+Name=$"rvpnstores"
+# Getting CPU Information
+cpu_usage1="$(ps aux | awk 'BEGIN {sum=0} {sum+=$3}; END {print sum}')"
+cpu_usage="$((${cpu_usage1/\.*} / ${corediilik:-1}))"
+cpu_usage+=" %"
+#ISP=$(curl -s ipinfo.io/org?token=ce3da57536810d | cut -d " " -f 2-10 )
+#CITY=$(curl -s ipinfo.io/city?token=ce3da57536810d )
+#WKT=$(curl -s ipinfo.io/timezone?token=ce3da57536810d )
+DAY=$(date +%A)
+DATE=$(date +%m/%d/%Y)
+DATE2=$(date -R | cut -d " " -f -5)
+IPVPS=$(curl -s ifconfig.me )
+LOC=$(curl -s ifconfig.co/country )
+cname=$( awk -F: '/model name/ {name=$2} END {print name}' /proc/cpuinfo )
+cores=$( awk -F: '/model name/ {core++} END {print core}' /proc/cpuinfo )
+freq=$( awk -F: ' /cpu MHz/ {freq=$2} END {print freq}' /proc/cpuinfo )
+tram=$( free -m | awk 'NR==2 {print $2}' )
+uram=$( free -m | awk 'NR==2 {print $3}' )
+fram=$( free -m | awk 'NR==2 {print $4}' )
+clear 
+echo -e "┌────────────────────────────────────────────────┐\033[0m${NC}"
+echo -e "${COLOR1}|\\E[40;1;37m      SCRIPT MULTIPORT BY RVPN STORES       \E[0m"
+echo -e "${COLOR1}│────────────────────────────────────────────────┘\033[0m${NC}"
+echo -e "${COLOR1}│${NC} ☞ 𝙾𝚂                  = "`hostnamectl | grep "Operating System" | cut -d ' ' -f5-`
+echo -e "${COLOR1}│${NC} ☞ 𝚃𝙸𝙼𝙴                = $( date -d "0 days" +"%d-%m-%Y | %X" )"
+echo -e "${COLOR1}│${NC} ☞ 𝙳𝙾𝙼𝙰𝙸𝙽              = $( cat /etc/xray/domain )"
+echo -e "${COLOR1}│${NC} ☞ 𝙸𝙿 𝚅𝙿𝚂              = $ip_vps"
+echo -e "${COLOR1}│${NC} ☞ 𝙸𝚂𝙿 𝚂𝙴𝚁𝚅𝙴𝚁          = $(wget -qO- ipinfo.io/org )" 
+echo -e "${COLOR1}│${NC} ☞ 𝚁𝙰𝙼                 = $uram MB / $tram MB"
+echo -e "${COLOR1}│${NC} ☞ 𝙾𝚁𝙳𝙴𝚁 𝙱𝚈            = $nama $tanggal"
+echo -e "${COLOR1}└─────────────────────────────────────────────────\033[0m${NC}"
+echo -e "${COLOR1}SSH ${NC}: $ressh"" ${COLOR1} NGINX ${NC}: $resngx"" ${COLOR1}  XRAY ${NC}: $resv2r"" ${COLOR1} TROJAN ${NC}: $resv2r"
+echo -e "${COLOR1}    STUNNEL ${NC}: $ressh" "${COLOR1} DROPBEAR ${NC}: $resdbr" "${COLOR1} UDP-CUSTOM ${NC}: $resv2r"    
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"   
+echo -e "  ${WH}[${COLOR1}01${WH}]${NC} ${y}• ${WH}SSHWS   ${WH}[${COLOR1}${ssh1}${WH}]    ${WH}[${COLOR1}07${WH}]${NC} ${Lred}• ${WH}SYSTEM  ${WH}[${COLOR1}ᴍᴇɴᴜ${WH}]  $COLOR1 $NC"
+echo -e "  ${WH}[${COLOR1}02${WH}]${NC} ${y}• ${WH}VMESS   ${WH}[${COLOR1}${vmc}${WH}]    ${WH}[${COLOR1}08${WH}]${NC} ${Lred}• ${WH}UPDATE  ${WH}[${COLOR1}ᴍᴇɴᴜ${WH}]  $COLOR1 $NC"  
+echo -e "  ${WH}[${COLOR1}03${WH}]${NC} ${y}• ${WH}VLESS   ${WH}[${COLOR1}${vlx}${WH}]    ${WH}[${COLOR1}09${WH}]${NC} ${Lred}• ${WH}SLOWDNS $COLOR1 $NC"  
+echo -e "  ${WH}[${COLOR1}04${WH}]${NC} ${y}• ${WH}TROJAN  ${WH}[${COLOR1}${trx}${WH}]    ${WH}[${COLOR1}10${WH}]${NC} ${Lred}• ${WH}RUNNING       $COLOR1 $NC"  
+echo -e "  ${WH}[${COLOR1}05${WH}]${NC} ${y}• ${WH}SSWS    ${WH}[${COLOR1}$ssx${WH}]    ${WH}[${COLOR1}11${WH}]${NC} ${Lred}• ${WH}BOT NOTIF${WH}[${COLOR1}ᴍᴇɴᴜ${WH}]  $COLOR1 $NC"
+echo -e "  ${WH}[${COLOR1}06${WH}]${NC} ${y}• ${WH}BACKUP  ${WH}[${COLOR1}ᴍᴇɴᴜ${WH}] ${WH}[${COLOR1}12${WH}]${NC} ${Lred}• ${WH}INFO    ${WH}[${COLOR1}ᴍᴇɴᴜ${WH}]  $COLOR1 $NC"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e ""
-echo -e "$COLOR1┌────────────────────────────────────────────────────────────┐${NC}"
-echo -e " ${COLOR2}[ SSH WebSocket${NC}: ${GREEN}ON ${NC}]  [ NGINX${NC}: ${status_nginx} ] ${COLOR2}[ Today  : $ttoday ]"
-echo -e " [ XRAY${NC}         : ${status_xray} ]                ${COLOR2}[ Monthly: $tmon ]"
-echo -e "$COLOR1┌────────────────────────────────────────────────────────────┐${NC}"
-echo -e "$COLOR1│  \033[0m ${BOLD}${YELLOW}SSH     VMESS       VLESS      TROJAN       SHADOWSOCKS$NC  $COLOR1│"
-echo -e "$COLOR1│  \033[0m ${Blue} $ssh1        $vma           $vla          $tra               $ssa   $NC    $COLOR1│"
-echo -e "$COLOR1└────────────────────────────────────────────────────────────┘${NC}"
-echo -e "      $COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "      $COLOR1│${NC}                 •  Andyyuda  •                  $COLOR1│$NC"
-echo -e "      $COLOR1└─────────────────────────────────────────────────┘${NC}" 
-echo -e ""
-echo -e " ${CYAN}[01]${NC} • [SSH MENU${NC}]${CYAN}[08]${NC} • [INSTALL ADS-BLOCK${NC}]${CYAN}[15]${NC} • [RUNNING${NC}]"
-echo -e " ${CYAN}[02]${NC} • [VMESS${NC}]   ${CYAN}[09]${NC} • [ADS-BLOCK MENU${NC}]   ${CYAN}[16]${NC} • [SPEEDTEST${NC}]"
-echo -e " ${CYAN}[03]${NC} • [VLESS${NC}]   ${CYAN}[10]${NC} • [CEK-TRAFIK${NC}]       ${CYAN}[17]${NC} • [INFO${NC}]"
-echo -e " ${CYAN}[04]${NC} • [TROJAN${NC}]  ${CYAN}[11]${NC} • [CEK BANDWIDTH${NC}]    ${CYAN}[18]${NC} • [CLEARLOG${NC}]"
-echo -e " ${CYAN}[05]${NC} • [SSWS ${NC}]   ${CYAN}[12]${NC} • [UPDATE-SCRIPT${NC}]    ${CYAN}[19]${NC} • [REBOOT${NC}]"
-echo -e " ${CYAN}[06]${NC} • [ADD-HOST${NC}]${CYAN}[13]${NC} • [RESTART SERVICE${NC}]     "
-echo -e " ${CYAN}[07]${NC} • [GEN-CERT${NC}]${CYAN}[14]${NC} • [AUTO-POINTING${NC}] "
-echo -e "$COLOR1└────────────────────────────────────────────────────────────┘${NC}"
-echo -e " [X]${NC} • [PRESS X TO EXIT]"
-echo -e ""
-echo -ne " Select menu : "; read opt
+read -p " Select From Options [1-12 or x ] :  "  opt
+echo -e   ""
 case $opt in
-1) clear ; menu-ssh ;;
-2) clear ; menuv ;;
-3) clear ; menul ;;
-4) clear ; menut ;;
-5) clear ; menus ;;
-6) clear ; add-host ;;
-7) clear ; genssl ;;
-8) clear ; rm -rf /usr/local/sbin/helium && wget -q -O /usr/local/sbin/helium https://raw.githubusercontent.com/abidarwish/helium/main/helium.sh && chmod +x /usr/local/sbin/helium && helium ;;
-9) clear ; helium ;;
-10) clear ; cek-trafik ;;
-11) clear ; cek-bandwidth ;;
-12) clear ; updatsc ;;
-13) clear ; restartsc ;;
-14) clear ; domaingratis ;;
-15) clear ; running ;;
-16) clear ; cek-speed ;;
-17) clear ; cat /root/log-install.txt ;;
-18) clear ; clearlog ;;
-19) clear ; reboot ;;
+01 | 1) clear ; menu-ssh ;;
+02 | 2) clear ; menu-vmess ;;
+03 | 3) clear ; menu-vless ;;
+04 | 4) clear ; menu-trojan ;;
+05 | 5) clear ; shadowsocks ;;
+06 | 6) clear ; menu-bckp ;;
+07 | 7) clear ; menu-set ;;
+08 | 8) clear ; up ;;
+09 | 9) clear ; sd ;;
+10 | 10) clear ; running ;;
+11 | 11) clear ; bot ;;
+12 | 12) clear ; about ;;
 0) clear ; menu ;;
-x) exit ;;
-*) clear ; menu ;;
+00) exit ;;
+*) echo -e "" ; echo "Lu salah tekan bro" ; sleep 1 ; menu ;;
 esac
