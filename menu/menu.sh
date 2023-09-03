@@ -193,8 +193,8 @@ echo -e "$COLOR1┌────────────────────�
 echo -e "  ${WH}[${COLOR1}01${WH}]${NC} ${y}• ${WH}SSHWS   ${WH}[${COLOR1}${ssh1}${WH}]    ${WH}[${COLOR1}07${WH}]${NC} ${Lred}• ${WH}SYSTEM  ${WH}[${COLOR1}ᴍᴇɴᴜ${WH}]  $COLOR1 $NC"
 echo -e "  ${WH}[${COLOR1}02${WH}]${NC} ${y}• ${WH}VMESS   ${WH}[${COLOR1}${vmc}${WH}]    ${WH}[${COLOR1}08${WH}]${NC} ${Lred}• ${WH}UPDATE  ${WH}[${COLOR1}ᴍᴇɴᴜ${WH}]  $COLOR1 $NC"  
 echo -e "  ${WH}[${COLOR1}03${WH}]${NC} ${y}• ${WH}VLESS   ${WH}[${COLOR1}${vlx}${WH}]    ${WH}[${COLOR1}09${WH}]${NC} ${Lred}• ${WH}SLOWDNS $COLOR1 $NC"  
-echo -e "  ${WH}[${COLOR1}04${WH}]${NC} ${y}• ${WH}TROJAN  ${WH}[${COLOR1}${trx}${WH}]    ${WH}[${COLOR1}10${WH}]${NC} ${Lred}• ${WH}RUNNING       $COLOR1 $NC"  
-echo -e "  ${WH}[${COLOR1}05${WH}]${NC} ${y}• ${WH}SSWS    ${WH}[${COLOR1}$ssx${WH}]    ${WH}[${COLOR1}11${WH}]${NC} ${Lred}• ${WH}BOT NOTIF${WH}[${COLOR1}ᴍᴇɴᴜ${WH}]  $COLOR1 $NC"
+echo -e "  ${WH}[${COLOR1}04${WH}]${NC} ${y}• ${WH}TROJAN  ${WH}[${COLOR1}${trx}${WH}]    ${WH}[${COLOR1}10${WH}]${NC} ${Lred}• ${WH}BOT NOTIF       $COLOR1 $NC"  
+echo -e "  ${WH}[${COLOR1}05${WH}]${NC} ${y}• ${WH}SSWS    ${WH}[${COLOR1}$ssx${WH}]    ${WH}[${COLOR1}11${WH}]${NC} ${Lred}• ${WH}RUNNING ${WH}[${COLOR1}ᴍᴇɴᴜ${WH}]  $COLOR1 $NC"
 echo -e "  ${WH}[${COLOR1}06${WH}]${NC} ${y}• ${WH}BACKUP  ${WH}[${COLOR1}ᴍᴇɴᴜ${WH}] ${WH}[${COLOR1}12${WH}]${NC} ${Lred}• ${WH}INFO    ${WH}[${COLOR1}ᴍᴇɴᴜ${WH}]  $COLOR1 $NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e ""
@@ -210,8 +210,8 @@ case $opt in
 07 | 7) clear ; menu-set ;;
 08 | 8) clear ; up ;;
 09 | 9) clear ; sd ;;
-10 | 10) clear ; running ;;
-11 | 11) clear ; bot ;;
+10 | 10) clear ; bot ;;
+11 | 11) clear ; running ;;
 12 | 12) clear ; about ;;
 0) clear ; menu ;;
 00) exit ;;
