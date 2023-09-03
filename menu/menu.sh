@@ -358,6 +358,7 @@ echo -e "${BICyan}━━━━━━━━━━━━━━━━━━━━�
 echo -e "\E[39;1;92m                   ⇱ SERVER INFORMATION ⇲                      \E[0m"
 echo -e "${BICyan}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"                                                                         
 echo -e "${BICyan} ⇲  ${BICyan}DOMAIN          :  ${BIYellow}$(cat /etc/xray/domain)${NC}" 
+echo -e "${BICyan} ⇲  ${BICyan}NS DOMAIN       :  ${BIYellow}$(cat /etc/xray/dns)${NC}" 
 echo -e "${BICyan} ⇲  ${BICyan}IP VPS          :  ${BIYellow}$MYIP${NC}"
 echo -e "${BICyan} ⇲  ${BICyan}ISP             :  ${BIYellow}$ISP${NC}"  
 echo -e "${BICyan} ⇲  ${BICyan}CITY            :  ${BIYellow}$CITY${NC}"                                 
