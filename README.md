@@ -1,5 +1,5 @@
 # `Install Script`
-<pre><code>apt install -y && apt update -y && apt upgrade -y && apt install lolcat -y && gem install lolcat && wget -q https://raw.githubusercontent.com/zheevpn/update/main/setup.sh && chmod +x setup.sh && screen -S install ./setup.sh</code></pre>
+<pre><code>apt install -y && apt update -y && apt upgrade -y && apt install lolcat -y && gem install lolcat && wget -q https://raw.githubusercontent.com/rizkyckj/update/main/setup.sh && chmod +x setup.sh && screen -S install ./setup.sh</code></pre>
 
 ### TESTED ON OS 
 - UBUNTU 20.04
