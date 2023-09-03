@@ -327,7 +327,7 @@ echo -e " ${z}│$NC [${r}02${NC}]${purple} VMESS MENU$NC   ${z}│$NC [${r}09${
 echo -e " ${z}│$NC [${r}03${NC}]${purple} VLESS MENU$NC   ${z}│$NC [${r}10${NC}]${purple} INFO PORT$NC   ${z} │$NC [${r}17${NC}]${purple} RESTART     $NC${z}│$NC"   
 echo -e " ${z}│$NC [${r}04${NC}]${purple} TROJAN MENU$NC  ${z}│$NC [${r}11${NC}]${purple} SPEEDTEST$NC   ${z} │$NC [${r}18${NC}]${purple} DOMAIN      $NC${z}│$NC" 
 echo -e " ${z}│$NC [${r}05${NC}]${purple} SHADOW MENU$NC  ${z}│$NC [${r}12${NC}]${purple} RUNNING$NC     ${z} │$NC [${r}19${NC}]${purple} NS DOMAIN   $NC${z}│$NC"
-echo -e " ${z}│$NC [${r}06${NC}]${purple} SETTING$NC  ${z}│$NC [${r}13${NC}]${purple} VPS INFO$NC    ${z} │$NC [${r}20${NC}]${purple} CERT SSL    $NC${z}│$NC"
+echo -e " ${z}│$NC [${r}06${NC}]${purple} SETTING$NC      ${z}│$NC [${r}13${NC}]${purple} VPS INFO$NC    ${z} │$NC [${r}20${NC}]${purple} CERT SSL    $NC${z}│$NC"
 echo -e " ${z}│$NC [${r}07${NC}]${purple} UPDATE SCRIPT$NC${z}│$NC [${r}14${NC}]${purple} CREATE SLOW$NC ${z} │$NC [${r}21${NC}]${purple} CLEAR CACHE $NC${z}│$NC"
 echo -e " ${z}│$NC [${r}22${NC}]${purple} BOT NOTIF$NC    ${z}│$NC [${r}23${NC}]${purple} BOT BCKP$NC    ${z} │$NC [${r}24${NC}]${purple} BOT PANEL   $NC${z}│$NC"
 echo -e " ${z}│                                                          $NC${z}│$NC"
