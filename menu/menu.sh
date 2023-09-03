@@ -381,15 +381,15 @@ echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━�
 echo -e ""
 echo -e " ${BICyan}[${BIWhite}01${BICyan}]${y} •${NC} ${BIWhite}SSH MENU           $NC  ${BICyan}[${BIWhite}12${BICyan}]${RED} • ${NC}${BIWhite}RUNNING $NC"
 echo -e " ${BICyan}[${BIWhite}02${BICyan}]${y} •${NC} ${BIWhite}VMESS MENU         $NC  ${BICyan}[${BIWhite}13${BICyan}]${RED} • ${NC}${BIWhite}VPS INFO $NC"
-echo -e " ${BICyan}[${BIWhite}03${BICyan}]${y} •${NC} ${BIWhite}VLESS MENU         $NC  ${BICyan}[${BIWhite}14${BICyan}]${RED} • ${NC}${BIWhite}CEK TRAFFIC $NC"
-echo -e " ${BICyan}[${BIWhite}04${BICyan}]${y} •${NC} ${BIWhite}TROJAN MENU        $NC  ${BICyan}[${BIWhite}15${BICyan}]${RED} • ${NC}${BIWhite}CREATE SLOW  $NC"
-echo -e " ${BICyan}[${BIWhite}05${BICyan}]${y} •${NC} ${BIWhite}S-SOCK MENU        $NC  ${BICyan}[${BIWhite}16${BICyan}]${RED} • ${NC}${BIWhite}BOT BACKUP $NC"
-echo -e " ${BICyan}[${BIWhite}06${BICyan}]${y} •${NC} ${BIWhite}AUTO REBOOT        $NC  ${BICyan}[${BIWhite}17${BICyan}]${RED} • ${NC}${BIWhite}REBOOT $NC"
-echo -e " ${BICyan}[${BIWhite}07${BICyan}]${y} •${NC} ${BIWhite}UPDATE SCRIPT      $NC  ${BICyan}[${BIWhite}18${BICyan}]${RED} • ${NC}${BIWhite}RESTART $NC"
-echo -e " ${BICyan}[${BIWhite}08${BICyan}]${y} •${NC} ${BIWhite}DELL ALL EXP       $NC  ${BICyan}[${BIWhite}19${BICyan}]${RED} • ${NC}${BIWhite}DOMAIN $NC"
-echo -e " ${BICyan}[${BIWhite}09${BICyan}]${y} • ${NC}${BIWhite}AUTOREBOOT         $NC  ${BICyan}[${BIWhite}20${BICyan}]${RED} • ${NC}${BIWhite}NS DOMAIN $NC"
-echo -e " ${BICyan}[${BIWhite}10${BICyan}]${y} •${NC} ${BIWhite}INFO PORT          $NC  ${BICyan}[${BIWhite}21${BICyan}]${RED} • ${NC}${BIWhite}CERT SSL  $NC"
-echo -e " ${BICyan}[${BIWhite}11${BICyan}]${y} •${NC} ${BIWhite}SPEEDTEST          $NC  ${BICyan}[${BIWhite}22${BICyan}]${RED} • ${NC}${BIWhite}BOT NOTIF $NC"  
+echo -e " ${BICyan}[${BIWhite}03${BICyan}]${y} •${NC} ${BIWhite}VLESS MENU         $NC  ${BICyan}[${BIWhite}14${BICyan}]${RED} • ${NC}${BIWhite}CREATE SLOW$NC"
+echo -e " ${BICyan}[${BIWhite}04${BICyan}]${y} •${NC} ${BIWhite}TROJAN MENU        $NC  ${BICyan}[${BIWhite}15${BICyan}]${RED} • ${NC}${BIWhite}BOT BACKUP  $NC"
+echo -e " ${BICyan}[${BIWhite}05${BICyan}]${y} •${NC} ${BIWhite}S-SOCK MENU        $NC  ${BICyan}[${BIWhite}16${BICyan}]${RED} • ${NC}${BIWhite}REBOOT $NC"
+echo -e " ${BICyan}[${BIWhite}06${BICyan}]${y} •${NC} ${BIWhite}AUTO REBOOT        $NC  ${BICyan}[${BIWhite}17${BICyan}]${RED} • ${NC}${BIWhite}RESTART $NC"
+echo -e " ${BICyan}[${BIWhite}07${BICyan}]${y} •${NC} ${BIWhite}UPDATE SCRIPT      $NC  ${BICyan}[${BIWhite}18${BICyan}]${RED} • ${NC}${BIWhite}DOMAIN $NC"
+echo -e " ${BICyan}[${BIWhite}08${BICyan}]${y} •${NC} ${BIWhite}DELL ALL EXP       $NC  ${BICyan}[${BIWhite}19${BICyan}]${RED} • ${NC}${BIWhite}NS DOMAIN  $NC"
+echo -e " ${BICyan}[${BIWhite}09${BICyan}]${y} • ${NC}${BIWhite}AUTOREBOOT         $NC  ${BICyan}[${BIWhite}20${BICyan}]${RED} • ${NC}${BIWhite}CERT SSL   $NC"
+echo -e " ${BICyan}[${BIWhite}10${BICyan}]${y} •${NC} ${BIWhite}INFO PORT          $NC  ${BICyan}[${BIWhite}21${BICyan}]${RED} • ${NC}${BIWhite}CLEAR CACHE  $NC"
+echo -e " ${BICyan}[${BIWhite}11${BICyan}]${y} •${NC} ${BIWhite}SPEEDTEST          $NC  ${BICyan}[${BIWhite}22${BICyan}]${RED} • ${NC}${BIWhite}BOT NOTIFk $NC"  
 echo -e " ${RED}"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo " "
@@ -409,8 +409,8 @@ case $opt in
 11) clear ; speedtest ;;
 12) clear ; running ;;
 13) clear ; gotop ;;
-14) clear ; sd ;;
-15) clear ; mbot ;;
+14) clear ; mbot ;;
+15) clear ; sd ;;
 16) clear ; reboot ;;
 17) clear ; restart ;;
 18) clear ; add-host ;;
@@ -418,7 +418,6 @@ case $opt in
 20) clear ; fixcert ;;
 21) clear ; clearcache ;;
 22) clear ; bot ;;
-23) clear ; mbot ;;
 0) clear ; menu ;;
 00) exit ;;
 *) echo -e "" ; echo "Lu salah tekan bro" ; sleep 1 ; menu ;;
