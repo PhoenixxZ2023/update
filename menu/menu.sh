@@ -198,7 +198,7 @@ case $opt in
 12) clear ; running ;;
 13) clear ; gotop ;;
 14) clear ; sd ;;
-15) clear ; menu-bckp ;;
+15) clear ; mbot ;;
 16) clear ; reboot ;;
 17) clear ; restart ;;
 18) clear ; add-host ;;
@@ -207,8 +207,6 @@ case $opt in
 21) clear ; clearcache ;;
 22) clear ; bot ;;
 23) clear ; mbot ;;
-24) clear ; add-bot-panel ;;
-25) clear ; nano /etc/issue.net ;;
 0) clear ; menu ;;
 00) exit ;;
 *) echo -e "" ; echo "Lu salah tekan bro" ; sleep 1 ; menu ;;
