@@ -31,6 +31,10 @@ LIGHT='\033[0;37m'
 grenbo="\e[92;1m"
 red() { echo -e "\\033[32;1m${*}\\033[0m"; }
 # Getting
+export CHATID=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 3)
+export KEY=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 2)
+export TIME="10"
+export URL="https://api.telegram.org/bot$KEY/sendMessage"
 clear
 checking_sc
 echo -e "\e[32mloading...\e[0m"
@@ -72,13 +76,6 @@ uuid=$(cat /proc/sys/kernel/random/uuid)
 read -p "Limit (IP) : " iplimit
 read -p "Quota (GB) : " Quota
 read -p "Exp (Hari) : " masaaktif
-#limitip
-if [[ $iplimit -gt 0 ]]; then
-echo -e "$iplimit" > /etc/funny/limit/vmess/ip/$user
-else
-echo > /dev/null
-fi
-clear
 tgl=$(date -d "$masaaktif days" +"%d")
 bln=$(date -d "$masaaktif days" +"%b")
 thn=$(date -d "$masaaktif days" +"%Y")
@@ -228,6 +225,13 @@ if [ ! -e /etc/vmess ]; then
   mkdir -p /etc/vmess
 fi
 
+if [[ $iplimit -gt 0 ]]; then
+mkdir -p /etc/wokszxd/limit/vmess/ip
+echo -e "$iplimit" > /etc/wokszxd/limit/vmess/ip/$user
+else
+echo > /dev/null
+fi
+
 if [ -z ${Quota} ]; then
   Quota="0"
 fi
@@ -242,33 +246,74 @@ DATADB=$(cat /etc/vmess/.vmess.db | grep "^#vm#" | grep -w "${user}" | awk '{pri
 if [[ "${DATADB}" != '' ]]; then
   sed -i "/\b${user}\b/d" /etc/vmess/.vmess.db
 fi
-echo "#vm# ${user} ${exp} ${uuid} ${Quota}" >>/etc/vmess/.vmess.db
+echo "#vm# ${user} ${exp} ${uuid} ${Quota} ${iplimit}" >>/etc/vmess/.vmess.db
+clear
+CHATID=$CHATID
+KEY=$KEY
+TIME=$TIME
+URL=$URL
+TEXT="
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>     Xray/Vmess Account</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>Remarks   : ${user}
+Domain    : ${domain}
+Limit Quota: ${Quota} GB
+Port TLS  : 400-900
+Port NTLS : 80, 8080, 8081-9999
+id        : ${uuid}
+alterId   : 0
+Security  : auto
+network   : ws or grpc
+Path      : /Multi-Path
+Dynamic   : https://bugmu.com/path
+Name      : vmess-grpc</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code> VMESS WS TLS</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>${vmesslink1}</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>VMESS WS NO TLS</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>${vmesslink2}</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code> VMESS GRPC</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>${vmesslink3}</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>Format OpenClash :</code> <code>https://${domain}:81/vmess-$user.txt</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>Expired Until  :</code> <code>$expe</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+"
+
+curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear
 clear
-echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" | tee -a /etc/log-create-user.log
-echo -e "\\E[40;1;37m Xray/Vmess Account        \E[0m" | tee -a /etc/log-create-user.log
-echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Remarks        : ${user}" | tee -a /etc/log-create-user.log
-echo -e "Domain         : ${domain}" | tee -a /etc/log-create-user.log
-echo -e "Port TLS       : 443" | tee -a /etc/log-create-user.log
-echo -e "Port none TLS  : 80" | tee -a /etc/log-create-user.log
-echo -e "id             : ${uuid}" | tee -a /etc/log-create-user.log
-echo -e "alterId        : 0" | tee -a /etc/log-create-user.log
-echo -e "Security       : auto" | tee -a /etc/log-create-user.log
-echo -e "Network        : ws" | tee -a /etc/log-create-user.log
-echo -e "Path           : /vmess" | tee -a /etc/log-create-user.log
-echo -e "ServiceName    : vmess-grpc" | tee -a /etc/log-create-user.log
-echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Link TLS       : ${vmesslink1}" | tee -a /etc/log-create-user.log
-echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Link none TLS  : ${vmesslink2}" | tee -a /etc/log-create-user.log
-echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Link GRPC      : ${vmesslink3}" | tee -a /etc/log-create-user.log
-echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Format OpenClash : https://${domain}:81/vmess-$user.txt" | tee -a /etc/log-create-user.log
-echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" | tee -a /etc/log-create-user.log
+echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" 
+echo -e "\\E[40;1;37m Xray/Vmess Account        \E[0m" 
+echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" 
+echo -e "Remarks        : ${user}" 
+echo -e "Domain         : ${domain}" 
+echo -e "User Quota     : ${Quota} GB"
+echo -e "User Ip        : ${iplimit} IP"
+echo -e "Port TLS       : 443" 
+echo -e "Port none TLS  : 80" 
+echo -e "id             : ${uuid}" 
+echo -e "alterId        : 0" 
+echo -e "Security       : auto" 
+echo -e "Network        : ws" 
+echo -e "Path           : /vmess" 
+echo -e "ServiceName    : vmess-grpc" 
+echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" 
+echo -e "Link TLS       : ${vmesslink1}" 
+echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" 
+echo -e "Link none TLS  : ${vmesslink2}" 
+echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" 
+echo -e "Link GRPC      : ${vmesslink3}" 
+echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" 
+echo -e "Format OpenClash : https://${domain}:81/vmess-$user.txt" 
+echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" 
 echo -e "Expired Until  : $expe"
-echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" | tee -a /etc/log-create-user.log
+echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" 
 echo ""
-read -n 1 -s -r -p "Press any key to back on menu"
-menu
