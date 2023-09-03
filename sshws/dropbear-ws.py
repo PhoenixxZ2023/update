@@ -12,7 +12,8 @@ PASS = ''
 BUFLEN = 4096 * 4
 TIMEOUT = 60
 DEFAULT_HOST = '127.0.0.1:109'
-RESPONSE = 'HTTP/1.1 101 <font color="yellow"><b><i>ZheeVPN Tunnel</font></b></i>\r\nContent-Length: 104857600000\r\n\r\n'
+RESPONSE = 'HTTP/1.1 101 Switching Protocol\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: foo\r\n\r\n'
+
 class Server(threading.Thread):
     def __init__(self, host, port):
         threading.Thread.__init__(self)
@@ -262,3 +263,4 @@ def main(host=LISTENING_ADDR, port=LISTENING_PORT):
 #######    parse_args(sys.argv[1:])
 if __name__ == '__main__':
     main()
+	    
