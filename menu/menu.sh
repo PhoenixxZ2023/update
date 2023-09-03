@@ -374,7 +374,6 @@ echo -e "${BIWhite}     ──────────────────�
 echo -e " ${z}╭════════════════════════════════════════════════════════════╮${NC}"
 echo -e " ${z}│ ${NC}${z} SSH$NC : $resssh" "        ${z} NGINX$NC : $resngx" "        ${z} XRAY$NC : $resv2r      $NC${z}$NC" 
 echo -e " ${z}│ ${NC}${z} STUNNEL $NC : $ressshws" "    ${z} DROPBEAR$NC : $resdbr" "     ${z} HAPROXY$NC : $resst   $NC${z}$NC"
-$NC" 
 echo -e " ${z}╰════════════════════════════════════════════════════════════╯${NC}"
 echo -e "${BICyan}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e "\E[39;1;92m                     ⇱ MENU SERVICE ⇲                         \E[0m"
