@@ -212,39 +212,39 @@ stat=-f7
 fi
 ssh=$(service ssh status | grep active | cut -d ' ' $stat)
 if [[ "$ssh" == "active" ]]; then 
-resssh="${green}ON✓${NC}"
+resssh="${green}ONLINE${NC}"
 else
-status_ssh="${red}OFF${NC} "
+status_ssh="${red}OFFLINE${NC} "
 fi
 sshstunel=$(service stunnel4 status | grep active | cut -d ' ' $stat)
 if [ "$sshstunel" = "active" ]; then
-resst="${green}ON✓${NC}"
+resst="${green}ONLINE${NC}"
 else
-resst="${red}OFF${NC}"
+resst="${red}OFFLINE${NC}"
 fi
 sshws=$(service ws-stunnel status | grep active | cut -d ' ' $stat)
 if [ "$sshws" = "active" ]; then
-ressshws="${green}ON✓${NC}"
+ressshws="${green}ONLINE${NC}"
 else
-ressshws="${red}OFF${NC}"
+ressshws="${red}OFFLINE${NC}"
 fi
 ngx=$(service nginx status | grep active | cut -d ' ' $stat)
 if [ "$ngx" = "active" ]; then
-resngx="${green}ON✓${NC}"
+resngx="${green}ONLINE${NC}"
 else
-resngx="${red}OFF${NC}"
+resngx="${red}OFFLINE${NC}"
 fi
 dbr=$(service dropbear status | grep active | cut -d ' ' $stat)
 if [ "$dbr" = "active" ]; then
-resdbr="${green}ON✓${NC}"
+resdbr="${green}ONLINE${NC}"
 else
-resdbr="${red}OFF${NC}"
+resdbr="${red}OFFLINE${NC}"
 fi
 v2r=$(service xray status | grep active | cut -d ' ' $stat)
 if [ "$v2r" = "active" ]; then
-resv2r="${green}ON✓${NC}"
+resv2r="${green}ONLINE${NC}"
 else
-resv2r="${red}OFF${NC}"
+resv2r="${red}OFFLINE${NC}"
 fi
 function addhost(){
 clear
