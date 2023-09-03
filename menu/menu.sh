@@ -387,7 +387,7 @@ echo -e " ${BICyan}[${BIWhite}05${BICyan}]${y} •${NC} ${BIWhite}S-SOCK MENU   
 echo -e " ${BICyan}[${BIWhite}06${BICyan}]${y} •${NC} ${BIWhite}TRIAL MENU        $NC  ${BICyan}[${BIWhite}17${BICyan}]${RED} • ${NC}${BIWhite}RESTART $NC"
 echo -e " ${BICyan}[${BIWhite}07${BICyan}]${y} •${NC} ${BIWhite}UPDATE SCRIPT     $NC  ${BICyan}[${BIWhite}18${BICyan}]${RED} • ${NC}${BIWhite}DOMAIN $NC"
 echo -e " ${BICyan}[${BIWhite}08${BICyan}]${y} •${NC} ${BIWhite}DELL ALL EXP      $NC  ${BICyan}[${BIWhite}19${BICyan}]${RED} • ${NC}${BIWhite}NS DOMAIN  $NC"
-echo -e " ${BICyan}[${BIWhite}09${BICyan}]${y} •${NC}${BIWhite}AUTO REBOOT       $NC  ${BICyan}[${BIWhite}20${BICyan}]${RED} • ${NC}${BIWhite}CERT SSL   $NC"
+echo -e " ${BICyan}[${BIWhite}09${BICyan}]${y} •${NC} ${BIWhite}AUTO REBOOT       $NC  ${BICyan}[${BIWhite}20${BICyan}]${RED} • ${NC}${BIWhite}CERT SSL   $NC"
 echo -e " ${BICyan}[${BIWhite}10${BICyan}]${y} •${NC} ${BIWhite}INFO PORT         $NC  ${BICyan}[${BIWhite}21${BICyan}]${RED} • ${NC}${BIWhite}CLEAR CACHE  $NC"
 echo -e " ${BICyan}[${BIWhite}11${BICyan}]${y} •${NC} ${BIWhite}SPEEDTEST         $NC  ${BICyan}[${BIWhite}22${BICyan}]${RED} • ${NC}${BIWhite}BOT NOTIF $NC"  
 echo -e " ${RED}"
