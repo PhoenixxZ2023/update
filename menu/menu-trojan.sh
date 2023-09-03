@@ -1,5 +1,5 @@
 #!/bin/bash
-MYIP=$(wget -qO- ipv4.icanhazip.com);
+MYIP=$(wget -qO- ipv4.icanhaz ip.com);
 echo "Checking VPS"
 #link izin ip vps
 url_izin='https://raw.githubusercontent.com/rizkyckj/izin/master/izin'
@@ -72,5 +72,5 @@ case $opt in
 7) clear ; show-trojan ;;
 0) clear ; menu ;;
 x) exit ;;
-*) echo "Lu salah tekan asu" ; sleep 2 ; menu ;;
-esac'
+*) echo "Anda Salah Tekan" ; sleep 1 ; m-trojan ;;
+esac
