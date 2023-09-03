@@ -197,7 +197,7 @@ KIRI="\033[1;32m>\033[1;33m>\033[1;31m>\033[1;31m$NC"
 
 #################
 r="\033[1;31m"  #REDTERANG
-a=" ${CYAN}ACCOUNT PREMIUM" 
+a=" ${BIWhite}ACCOUNT PREMIUM" 
 ################
 
 # // Clear
@@ -368,11 +368,11 @@ echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━�
 echo -e "\E[39;1;92m                    ⇱ STATUS SERVICE ⇲                        \E[0m"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e "       ───────────────────────────────────────────────${NC}" | lolcat 
-echo -e "           ${CYAN}SSH/OPENVPN${NC}    $y=$NC $ssh1${NC}" "$a"
-echo -e "           ${CYAN}VMESS/WS/GRPC${NC}  $y=$NC $vma$NC" "$a"
-echo -e "           ${CYAN}VLESS/WS/GRPC${NC}  $y=$NC $vla$NC" "$a"
-echo -e "           ${CYAN}TROJAN/WS/GRPC${NC} $y=$NC $tra${NC}" "$a"
-echo -e "           ${CYAN}SHADOW/WS/GRPC${NC} $y=$NC $ssa${NC} $a"
+echo -e "           ${BIWhite}SSH/OPENVPN${NC}    $BIWhite=$NC $ssh1${NC}" "$a"
+echo -e "           ${BIWhite}VMESS/WS/GRPC${NC}  $BIWhite=$NC $vma$NC" "$a"
+echo -e "           ${BIWhite}VLESS/WS/GRPC${NC}  $BIWhite=$NC $vla$NC" "$a"
+echo -e "           ${BIWhite}TROJAN/WS/GRPC${NC} $BIWhite=$NC $tra${NC}" "$a"
+echo -e "           ${BIWhite}SHADOW/WS/GRPC${NC} $BIWhite$NC $ssa${NC} $a"
 echo -e "       ───────────────────────────────────────────────${NC}" | lolcat 
 echo -e "${COLOR1}SSH ${NC}: $ressh"" ${COLOR1} NGINX ${NC}: $resngx"" ${COLOR1}  XRAY ${NC}: $resv2r"" ${COLOR1} TROJAN ${NC}: $resv2r"
 echo -e "${COLOR1}    STUNNEL ${NC}: $ressh" "${COLOR1} DROPBEAR ${NC}: $resdbr" "${COLOR1} UDP-CUSTOM ${NC}: $resv2r"    
