@@ -1,20 +1,49 @@
 #!/bin/bash 
 # COLOR VALIDATION
 clear
-L1="\e[0m\e[1;77m"
-y='\033[1;33m' #yellow
-BGX="\033[42m"
-CYAN="\033[96m"
-z="\033[96m"
-RED='\e[91m'
-NC='\033[0m'
-gray="\e[1;30m"
-blue="\033[0;34m"
-green='\033[0;32m'
-grenbo="\e[92;1m"
-purple="\033[1;95m"
-YELL='\033[0;33m'
-y='\033[0;34m'
+ BIRed='\033[1;91m'        # Red 
+ BIGreen='\033[1;92m'      # Green 
+ BIYellow='\033[1;93m'     # Yellow 
+ BIBlue='\033[1;94m'       # Blue 
+ BIPurple='\033[1;95m'     # Purple 
+ BICyan='\033[1;96m'       # Cyan 
+ BIWhite='\033[1;97m'      # White 
+ UWhite='\033[4;37m'       # White 
+ On_IPurple='\033[0;105m'  # 
+ On_IRed='\033[0;101m' 
+ IBlack='\033[0;90m'       # Black 
+ IRed='\033[0;91m'         # Red 
+ IGreen='\033[0;92m'       # Green 
+ IYellow='\033[0;93m'      # Yellow 
+ IBlue='\033[0;94m'        # Blue 
+ IPurple='\033[0;95m'      # Purple 
+ ICyan='\033[0;96m'        # Cyan 
+ IWhite='\033[0;97m'       # White 
+ NC='\e[0m' 
+  
+ # // Export Color & Information 
+ export RED='\033[0;31m' 
+ export GREEN='\033[0;32m' 
+ export YELLOW='\033[0;33m' 
+ export BLUE='\033[0;34m' 
+ export PURPLE='\033[0;35m' 
+ export CYAN='\033[0;36m' 
+ export LIGHT='\033[0;37m' 
+ export NC='\033[0m' 
+  
+ # // Export Banner Status Information 
+ export EROR="[${RED} EROR ${NC}]" 
+ export INFO="[${YELLOW} INFO ${NC}]" 
+ export OKEY="[${GREEN} OKEY ${NC}]" 
+ export PENDING="[${YELLOW} PENDING ${NC}]" 
+ export SEND="[${YELLOW} SEND ${NC}]" 
+ export RECEIVE="[${YELLOW} RECEIVE ${NC}]" 
+  
+ # // Export Align 
+ export BOLD="\e[1m" 
+ export WARNING="${RED}\e[5m" 
+ export UNDERLINE="\e[4m" 
+ 
  # ========================================= 
  vlx=$(grep -c -E "^#vl# " "/etc/xray/config.json") 
  let vla=$vlx/2 
@@ -87,27 +116,6 @@ else
 Exp=$(curl -sS https://raw.githubusercontent.com/zheevpn/izin/main/zye | grep $MYIP | awk '{print $3}')
 fi
 
-BIBlack='\033[1;90m'      # Black
-BIRed='\033[1;91m'        # Red
-BIGreen='\033[1;92m'      # Green
-BIYellow='\033[1;93m'     # Yellow
-BIRU='\033[1;94m'       # Blue
-BAYS='\033[1;95m'     # Purple
-AYG='\033[1;96m'       # Cyan
-PUTIH='\033[1;97m'      # White
-UWhite='\033[4;37m'       # White
-On_IPurple='\033[0;105m'  #
-On_IRed='\033[0;101m'
-IBlack='\033[0;90m'       # Black
-IRed='\033[0;91m'         # Red
-IGreen='\033[0;92m'       # Green
-IYellow='\033[0;93m'      # Yellow
-IBlue='\033[0;94m'        # Blue
-NILA='\033[0;95m'      # Purple
-ZIL='\033[0;96m'        # Cyan
-IWhite='\033[0;97m'       # White
-NC='\e[0m'
-y='\033[0;34m'
 MYIP=$(wget -qO- ipinfo.io/ip)
 domain=$(cat /etc/xray/domain)
 uptime="$(uptime -p | cut -d " " -f 2-10)"
@@ -140,15 +148,6 @@ clear
 export LANG='en_US.UTF-8'
 export LANGUAGE='en_US.UTF-8'
 
-# // Export Color & Information
-export RED='\033[0;31m'
-export GREEN='\033[0;32m'
-export YELLOW='\033[0;33m'
-export BLUE='\033[0;34m'
-export PURPLE='\033[0;35m'
-export CYAN='\033[0;36m'
-export LIGHT='\033[0;37m'
-export NC='\033[0m'
 
 ###########- END COLOR CODE -##########
 tram=$( free -h | awk 'NR==2 {print $2}' )
