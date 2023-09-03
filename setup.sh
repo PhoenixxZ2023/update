@@ -18,41 +18,52 @@ URL="https://api.telegram.org/bot$KEY/sendMessage"
 OS=$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')
 domain=$(cat /etc/xray/domain)
 CITY=$(curl -s ipinfo.io/city )
-url_izin='https://raw.githubusercontent.com/rizkyckj/izin/master/izin'
-
-#IP VPS
-ip_vps=$(curl -sS ifconfig.me)
-
-# Mendapatkan isi file izin.txt dari URL
-izin=$(curl -s "$url_izin")
-
-# Memeriksa apakah konten izin.txt berhasil didapatkan
-if [[ -n "$izin" ]]; then
-  while IFS= read -r line; do
-    # Memisahkan nama VPS, IP VPS, dan tanggal kadaluwarsa
-    nama=$(echo "$line" | awk '{print $1}')
-    ipvps=$(echo "$line" | awk '{print $2}')
-    tanggal=$(echo "$line" | awk '{print $3}')
-
-    # Memeriksa apakah IP VPS saat ini cocok dengan IP VPS yang ada di izin.txt
-    if [[ "$ipvps" == "$ip_vps" ]]; then
-      echo "Nama VPS: $nama"
-      echo "IP VPS: $ipvps"
-      echo "Tanggal Kadaluwarsa: $tanggal"
-      break
+REPO="https://raw.githubusercontent.com/zheevpn/update/main/"
+#########################
+BURIQ () {
+    curl -sS https://raw.githubusercontent.com/ip/izin/main/ip > /root/tmp
+    data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
+    for user in "${data[@]}"
+    do
+    exp=( `grep -E "^### $user" "/root/tmp" | awk '{print $3}'` )
+    d1=(`date -d "$exp" +%s`)
+    d2=(`date -d "$biji" +%s`)
+    exp2=$(( (d1 - d2) / 86400 ))
+    if [[ "$exp2" -le "0" ]]; then
+    echo $user > /etc/.$user.ini
+    else
+    rm -f  /etc/.$user.ini > /dev/null 2>&1
     fi
-  done <<< "$izin"
+    done
+    rm -f  /root/tmp
+}
+# https://raw.githubusercontent.com/wokszxd/izinvps/main/ip 
+MYIP=$(curl -sS ipv4.icanhazip.com)
+Name=$(curl -sS https://raw.githubusercontent.com/rizkyckj/ip/main/ip | grep $MYIP | awk '{print $2}')
+echo $Name > /usr/local/etc/.$Name.ini
+CekOne=$(cat /usr/local/etc/.$Name.ini)
 
-  # Memeriksa apakah IP VPS ditemukan dalam izin.txt
-  if [[ "$ipvps" != "$ip_vps" ]]; then
-    echo "IP VPS tidak ditemukan dalam izin.txt"
-    exit 0
-  fi
+Bloman () {
+if [ -f "/etc/.$Name.ini" ]; then
+CekTwo=$(cat /etc/.$Name.ini)
+    if [ "$CekOne" = "$CekTwo" ]; then
+        res="Expired"
+    fi
 else
-  echo "Konten izin.txt tidak berhasil didapatkan dari URL"
-  exit 0
+res="Permission Accepted..."
 fi
+}
 
+PERMISSION () {
+    MYIP=$(curl -sS ipv4.icanhazip.com)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/rizkyckj/ip/main/ip | awk '{print $4}' | grep $MYIP)
+    if [ "$MYIP" = "$IZIN" ]; then
+    Bloman
+    else
+    res="Permission Denied!"
+    fi
+    BURIQ
+}
 wget -O /etc/banner ${REPO1}config/banner >/dev/null 2>&1
     chmod +x /etc/banner
 clear
@@ -213,10 +224,18 @@ apt install git curl -y >/dev/null 2>&1
 apt install python -y >/dev/null 2>&1
 echo -e "[ ${green}INFO${NC} ] Aight good ... installation file is ready"
 sleep 2
-echo -e "[ ${green}INFO${NC} ] Check permission : "
+echo -ne "[ ${green}INFO${NC} ] Check permission : "
 
-echo -e "[ ${green}INFO${NC} ] Accepted: "
-sleep 1
+PERMISSION
+if [ -f /home/needupdate ]; then
+red "Your script need to update first !"
+exit 0
+elif [ "$res" = "Permission Accepted..." ]; then
+green "Permission Accepted!"
+else
+red "Permission Denied!"
+rm setup.sh > /dev/null 2>&1
+sleep 10
 exit 0
 fi
 sleep 3
@@ -226,20 +245,22 @@ echo "IP=" >> /var/lib/SIJA/ipvps.conf
 
 #add domen
 echo ""
-wget -q https://raw.githubusercontent.com/zheevpn/update/main/tools.sh;chmod +x tools.sh;./tools.sh
+wget -q https://raw.githubusercontent.com/rizkyckj/update/main/tools.sh;chmod +x tools.sh;./tools.sh
 rm tools.sh
 clear
     echo ""
-    echo -e "\\E[40;1;37m░██████╗████████╗░█████╗░██████╗░███████╗░██████╗\E[0m"
-echo -e "\\E[40;1;37m██╔════╝╚══██╔══╝██╔══██╗██╔══██╗██╔════╝██╔════╝\E[0m"
-echo -e "\\E[40;1;37m╚█████╗░░░░██║░░░██║░░██║██████╔╝█████╗░░╚█████╗░\E[0m"
-echo -e "\\E[40;1;37m░╚═══██╗░░░██║░░░██║░░██║██╔══██╗██╔══╝░░░╚═══██╗\E[0m"
-echo -e "\\E[40;1;37m██████╔╝░░░██║░░░╚█████╔╝██║░░██║███████╗██████╔╝\E[0m"
-echo -e "\\E[40;1;37m╚═════╝░░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝╚══════╝╚═════╝░\E[0m"
-echo -e "$BYellow----------------------------------------------------------$NC"
-echo -e "$BGreen 1. Use Domain Random / Gunakan Domain Random $NC"
-echo -e "$BGreen 2. Choose Your Own Domain / Gunakan Domain Sendiri $NC"
-echo -e "$BYellow----------------------------------------------------------$NC"
+    echo -e "$green  ██╗░░██╗███╗░░░███╗██╗░░██╗███████╗$NC"
+    echo -e "$green  ██║░██╔╝████╗░████║██║░██╔╝╚════██║$NC"
+    echo -e "$green  █████═╝░██╔████╔██║█████═╝░░░███╔═╝$NC"
+    echo -e "$green  ██╔═██╗░██║╚██╔╝██║██╔═██╗░██╔══╝░░$NC"
+    echo -e "$green  ██║░╚██╗██║░╚═╝░██║██║░╚██╗███████╗$NC"
+    echo -e "$green  ╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═╝░░╚═╝╚══════╝$NC"
+    echo -e "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+    echo -e "${red}    ♦️${NC} ${green}  CUSTOM DOMAIN VPS     ${NC}"
+    echo -e "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+    echo "[1]. Use Domain From Script / Gunakan Domain Dari Script"
+    echo "[2]. Choose Your Own Domain / Pilih Domain Sendiri"
+    echo -e "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
     read -rp "Silahkan Pilih 1 / 2 Untuk Menginstal : " dom 
 
     if test $dom -eq 1; then
@@ -383,7 +404,27 @@ gotop_latest="$(curl -s https://api.github.com/repos/xxxserxxx/gotop/releases | 
     curl -sL "$gotop_link" -o /tmp/gotop.deb
     dpkg -i /tmp/gotop.deb >/dev/null 2>&1
     
-    
+    USRSC=$(curl -sS https://raw.githubusercontent.com/rizkyckj/ip/main/ip | grep $MYIP | awk '{print $2}')
+    EXPSC=$(curl -sS https://raw.githubusercontent.com/rizkyckj/ip/main/ip | grep $MYIP | awk '{print $3}')
+    TIMEZONE=$(printf '%(%H:%M:%S)T')
+    TEXT="
+<code>────────────────────</code>
+<b>⚠️AUTOSCRIPT PREMIUM⚠️</b>
+<code>────────────────────</code>
+<code>Owner  : </code><code>$USRSC</code>
+<code>Domain : </code><code>$(cat /etc/xray/domain)</code>
+<code>Date   : </code><code>$TIME</code>
+<code>Time   : </code><code>$TIMEZONE</code>
+<code>Isp    : </code><code>$ISP</code>
+<code>Ip Vps : </code><code>$MYIP</code>
+<code>Exp Sc : </code><code>$EXPSC</code>
+<code>Ram    : </code><code>$RAMMS MB</code>
+<code>Linux  : </code><code>$OS</code>
+<code>────────────────────</code>
+<i>Automatic Notification from</i>
+<i>YogzVpn Bot</i> 
+"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ🐳","url":"https://t.me/Zyevpn"},{"text":"ɪɴꜱᴛᴀʟʟ🐬","url":"https://t.me/Zyevpn"}]]}'
+    curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear
 echo " "
 echo "=====================-[ SCRIPT RVPN STORES ]-===================="
@@ -427,7 +468,7 @@ echo ""
 echo ""
 echo "------------------------------------------------------------"
 echo ""
-echo "===============-[ Script Created By RVPN STORES]-==============="
+echo "===============-[ Script Created RVPN STORES]-==============="
 echo -e ""
 echo ""
 echo "" | tee -a log-install.txt
