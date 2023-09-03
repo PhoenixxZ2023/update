@@ -247,35 +247,37 @@ chmod +x del-tr
 echo -e " [INFO] Update Sucsesfully"
 cd
 
-echo -e "\\E[40;1;37m░██████╗████████╗░█████╗░██████╗░███████╗░██████╗\E[0m"
-echo -e "\\E[40;1;37m██╔════╝╚══██╔══╝██╔══██╗██╔══██╗██╔════╝██╔════╝\E[0m"
-echo -e "\\E[40;1;37m╚█████╗░░░░██║░░░██║░░██║██████╔╝█████╗░░╚█████╗░\E[0m"
-echo -e "\\E[40;1;37m░╚═══██╗░░░██║░░░██║░░██║██╔══██╗██╔══╝░░░╚═══██╗\E[0m"
-echo -e "\\E[40;1;37m██████╔╝░░░██║░░░╚█████╔╝██║░░██║███████╗██████╔╝\E[0m"
-echo -e "\\E[40;1;37m╚═════╝░░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝╚══════╝╚═════╝░\E[0m"
+clear
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1 ${NC} ${COLBG1}            ${WH}• UPDATE SCRIPT VPS •              ${NC} $COLOR1 $NC"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1 ${NC}  $COLOR1[INFO]${NC} Check for Script updates [done]"
+echo -e "$COLOR1 ${NC}  $COLOR1[INFO]${NC} Downloading Update File  [done]"
+echo -e "
+   $COLOR1[INFO] ${NC}Changelogs on v1.1.0 :
+     ➢ Fixed backup menu
+     ➢ Enhancement login page
+     ➢ Fixed minor bugs
+   $COLOR1[INFO] ${NC}Changelogs on v1.0.9 :
+     ➢ There some mistakes on previous update
+     so i undid the changes, wait for the next update!
+     ➢ We will do the best on v1.1, soon!
+   $COLOR1[INFO] ${NC}Changelogs on v1.0.8 :
+     ➢ Temp fixing autobackup
+   $COLOR1[INFO] ${NC}Changelogs on v1.0.7 :
+     ➢ Improved output text when creating ssh
+   $COLOR1[INFO] ${NC}Changelogs on v1.0.6 :
+     ➢ Fixed speedtest error
+     ➢ Fixed other minor bugs
+     ➢ Removed bandwidth usage on menu
+   $COLOR1[INFO] ${NC}Changelogs on v1.0.5 :
+     ➢ Fixed minor bugs
+     ➢ Added HideSSH plugins
+     ➢ Changed the autoreboot time for every 24hours
+     from 00.00 to 05.00 WIB"
 echo ""
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-
-echo -e "  ${BG} >>> INFORMASI UPDATE SCRIPT <<< ${NC}"
-
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-
-echo -e "      •> PEMBARUAN SCRIPT <•" | lolcat
-
-echo -e "      •> PENAMBAHAN FILE  <•" | lolcat
-
-echo -e "      •> FIX BUG AND ERROR <•" | lolcat
-
-echo -e "    •> FIX EROR SSH AND XRAY <•" | lolcat
-
-echo -e "   •> ADD USER LOCK AND UNLOCK <•" | lolcat
-
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-
-echo -e "  ${BG} >>> Thanks To RVPN STORES<<< ${NC}" 
-
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e "$COLOR1 ${NC}  $COLOR1[INFO]${NC} Successfully Up To Date!"
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
-
 menu
