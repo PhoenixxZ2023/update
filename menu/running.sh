@@ -31,11 +31,11 @@ echo ""
 rm -f /usr/bin/user
 # USERNAME
 rm -f /usr/bin/user
-username=$(curl https://raw.githubusercontent.com/zheevpn/izin/main/zye | grep $MYIP | awk '{print $2}')
+username=$(curl https://raw.githubusercontent.com/rizkyckj/ip/main/ip | grep $MYIP | awk '{print $2}')
 echo "$username" >/usr/bin/user
 # validity
 rm -f /usr/bin/e
-valid=$(curl https://raw.githubusercontent.com/zheevpn/izin/main/zye | grep $MYIP | awk '{print $3}')
+valid=$(curl https://raw.githubusercontent.com/rizkyckj/ip/main/ip | grep $MYIP | awk '{print $3}')
 echo "$valid" >/usr/bin/e
 # DETAIL ORDER
 username=$(cat /usr/bin/user)
@@ -59,7 +59,7 @@ mai="datediff "$Exp" "$DATE""
 Info="(${green}Active${NC})"
 Error="(${RED}ExpiRED${NC})"
 today=`date -d "0 days" +"%Y-%m-%d"`
-Exp1=$(curl https://raw.githubusercontent.com/zheevpn/izin/main/zye | grep $MYIP | awk '{print $3}')
+Exp1=$(curl https://raw.githubusercontent.com/rizkyckj/ip/main/ip | grep $MYIP | awk '{print $3}')
 if [[ $today < $Exp1 ]]; then
 sts="${Info}"
 else
@@ -271,7 +271,7 @@ echo -e " ${c}│$NC$NC\033[41m             CONTACT SUPPORT / CS           $NC${
 echo -e " ${c}╰════════════════════════════════════════════╯$NC"
 echo -e " ${c}╭════════════════════════════════════════════╮$NC"
 echo -e " ${c}│$NC$y WHATSAPP$NC   $blue= ${NC} 62**********${NC}  "
-echo -e " ${c}│$NC$y TELEGRAM$NC   $blue= ${NC} t.me/zheeVPN${NC}  "
+echo -e " ${c}│$NC$y TELEGRAM$NC   $blue= ${NC} @RVPNSTORES ${NC}  "
 echo -e " ${c}╰════════════════════════════════════════════╯$NC"
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
