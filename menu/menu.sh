@@ -140,9 +140,6 @@ sleep 0.5
 echo ""
 read -n 1 -s -r -p "Penyet sak karepmu cuk"
 menu
-}
-wget -q -O /root/status "https://raw.githubusercontent.com/Agunxzzz/XrayCol/main/statushariini"
-LocalVersion=$(cat /root/versi)
 IPVPS=$(curl -s ipinfo.io/ip )
 ISPVPS=$( curl -s ipinfo.io/org )
 ttoday="$(vnstat | grep today | awk '{print $8" "substr ($9, 1, 3)}' | head -1)"
@@ -167,17 +164,17 @@ echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━�
 echo -e "\E[39;1;92m                     ⇱ MENU SERVICE ⇲                         \E[0m"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e ""
-echo -e " ${BICyan}[${BIWhite}01${BICyan}]${RED} •${NC} ${CYAN}SSH MENU      $NC  ${BICyan}[${BIWhite}12${BICyan}]${RED} • ${NC}${CYAN}RUNNING $NC"
-echo -e " ${BICyan}[${BIWhite}02${BICyan}]${RED} •${NC} ${CYAN}VMESS MENU    $NC  ${BICyan}[${BIWhite}13${BICyan}]${RED} • ${NC}${CYAN}VPS INFO $NC"
-echo -e " ${BICyan}[${BIWhite}03${BICyan}]${RED} •${NC} ${CYAN}VLESS MENU    $NC  ${BICyan}[${BIWhite}14${BICyan}]${RED} • ${NC}${CYAN}CEK TRAFFIC $NC"
-echo -e " ${BICyan}[${BIWhite}04${BICyan}]${RED} •${NC} ${CYAN}TROJAN MENU   $NC  ${BICyan}[${BIWhite}15${BICyan}]${RED} • ${NC}${CYAN}CREATE SLOW  $NC"
-echo -e " ${BICyan}[${BIWhite}05${BICyan}]${RED} •${NC} ${CYAN}S-SOCK MENU   $NC  ${BICyan}[${BIWhite}16${BICyan}]${RED} • ${NC}${CYAN}BOT BACKUP $NC"
-echo -e " ${BICyan}[${BIWhite}06${BICyan}]${RED} •${NC} ${CYAN}AUTO REBOOT   $NC  ${BICyan}[${BIWhite}17${BICyan}]${RED} • ${NC}${CYAN}REBOOT $NC"
-echo -e " ${BICyan}[${BIWhite}07${BICyan}]${RED} •${NC} ${CYAN}UPDATE SCRIPT $NC  ${BICyan}[${BIWhite}18${BICyan}]${RED} • ${NC}${CYAN}RESTART $NC"
-echo -e " ${BICyan}[${BIWhite}08${BICyan}]${RED} •${NC} ${CYAN}DELL ALL EXP  $NC  ${BICyan}[${BIWhite}19${BICyan}]${RED} • ${NC}${CYAN}DOMAIN $NC"
-echo -e " ${BICyan}[${BIWhite}09${BICyan}]${RED} • ${NC}${CYAN}AUTOREBOOT    $NC  ${BICyan}[${BIWhite}20${BICyan}]${RED} • ${NC}${CYAN}NS DOMAIN $NC"
-echo -e " ${BICyan}[${BIWhite}10${BICyan}]${RED} •${NC} ${CYAN}INFO PORT     $NC  ${BICyan}[${BIWhite}21${BICyan}]${RED} • ${NC}${CYAN}CERT SSL  $NC"
-echo -e " ${BICyan}[${BIWhite}11${BICyan}]${RED} •${NC} ${CYAN}SPEEDTEST     $NC  ${BICyan}[${BIWhite}22${BICyan}]${RED} • ${NC}${CYAN}BOT NOTIF $NC"  
+echo -e " ${BICyan}[${BIWhite}01${BICyan}]${RED} •${NC} ${CYAN}SSH MENU         $NC  ${BICyan}[${BIWhite}12${BICyan}]${RED} • ${NC}${CYAN}RUNNING $NC"
+echo -e " ${BICyan}[${BIWhite}02${BICyan}]${RED} •${NC} ${CYAN}VMESS MENU       $NC  ${BICyan}[${BIWhite}13${BICyan}]${RED} • ${NC}${CYAN}VPS INFO $NC"
+echo -e " ${BICyan}[${BIWhite}03${BICyan}]${RED} •${NC} ${CYAN}VLESS MENU       $NC  ${BICyan}[${BIWhite}14${BICyan}]${RED} • ${NC}${CYAN}CEK TRAFFIC $NC"
+echo -e " ${BICyan}[${BIWhite}04${BICyan}]${RED} •${NC} ${CYAN}TROJAN MENU      $NC  ${BICyan}[${BIWhite}15${BICyan}]${RED} • ${NC}${CYAN}CREATE SLOW  $NC"
+echo -e " ${BICyan}[${BIWhite}05${BICyan}]${RED} •${NC} ${CYAN}S-SOCK MENU      $NC  ${BICyan}[${BIWhite}16${BICyan}]${RED} • ${NC}${CYAN}BOT BACKUP $NC"
+echo -e " ${BICyan}[${BIWhite}06${BICyan}]${RED} •${NC} ${CYAN}AUTO REBOOT      $NC  ${BICyan}[${BIWhite}17${BICyan}]${RED} • ${NC}${CYAN}REBOOT $NC"
+echo -e " ${BICyan}[${BIWhite}07${BICyan}]${RED} •${NC} ${CYAN}UPDATE SCRIPT    $NC  ${BICyan}[${BIWhite}18${BICyan}]${RED} • ${NC}${CYAN}RESTART $NC"
+echo -e " ${BICyan}[${BIWhite}08${BICyan}]${RED} •${NC} ${CYAN}DELL ALL EXP     $NC  ${BICyan}[${BIWhite}19${BICyan}]${RED} • ${NC}${CYAN}DOMAIN $NC"
+echo -e " ${BICyan}[${BIWhite}09${BICyan}]${RED} • ${NC}${CYAN}AUTOREBOOT       $NC  ${BICyan}[${BIWhite}20${BICyan}]${RED} • ${NC}${CYAN}NS DOMAIN $NC"
+echo -e " ${BICyan}[${BIWhite}10${BICyan}]${RED} •${NC} ${CYAN}INFO PORT        $NC  ${BICyan}[${BIWhite}21${BICyan}]${RED} • ${NC}${CYAN}CERT SSL  $NC"
+echo -e " ${BICyan}[${BIWhite}11${BICyan}]${RED} •${NC} ${CYAN}SPEEDTEST        $NC  ${BICyan}[${BIWhite}22${BICyan}]${RED} • ${NC}${CYAN}BOT NOTIF $NC"  
 echo -e " ${RED}"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo " "
