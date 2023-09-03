@@ -6,7 +6,7 @@ y='\033[1;33m' #yellow
 BGX="\033[42m"
 CYAN="\033[96m"
 z="\033[96m"
-RED='\033[0;31m'
+RED='\e[91m'
 NC='\033[0m'
 gray="\e[1;30m"
 blue="\033[0;34m"
@@ -14,6 +14,7 @@ green='\033[0;32m'
 grenbo="\e[92;1m"
 purple="\033[1;95m"
 YELL='\033[0;33m'
+y='\033[0;34m'
  # ========================================= 
  vlx=$(grep -c -E "^#vl# " "/etc/xray/config.json") 
  let vla=$vlx/2 
@@ -106,6 +107,7 @@ NILA='\033[0;95m'      # Purple
 ZIL='\033[0;96m'        # Cyan
 IWhite='\033[0;97m'       # White
 NC='\e[0m'
+y='\033[0;34m'
 MYIP=$(wget -qO- ipinfo.io/ip)
 domain=$(cat /etc/xray/domain)
 uptime="$(uptime -p | cut -d " " -f 2-10)"
@@ -374,17 +376,17 @@ echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━�
 echo -e "\E[39;1;92m                     ⇱ MENU SERVICE ⇲                         \E[0m"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e ""
-echo -e " ${BICyan}[${BIWhite}01${BICyan}]${RED} •${NC} ${CYAN}SSH MENU         $NC  ${BICyan}[${BIWhite}12${BICyan}]${RED} • ${NC}${CYAN}RUNNING $NC"
-echo -e " ${BICyan}[${BIWhite}02${BICyan}]${RED} •${NC} ${CYAN}VMESS MENU       $NC  ${BICyan}[${BIWhite}13${BICyan}]${RED} • ${NC}${CYAN}VPS INFO $NC"
-echo -e " ${BICyan}[${BIWhite}03${BICyan}]${RED} •${NC} ${CYAN}VLESS MENU       $NC  ${BICyan}[${BIWhite}14${BICyan}]${RED} • ${NC}${CYAN}CEK TRAFFIC $NC"
-echo -e " ${BICyan}[${BIWhite}04${BICyan}]${RED} •${NC} ${CYAN}TROJAN MENU      $NC  ${BICyan}[${BIWhite}15${BICyan}]${RED} • ${NC}${CYAN}CREATE SLOW  $NC"
-echo -e " ${BICyan}[${BIWhite}05${BICyan}]${RED} •${NC} ${CYAN}S-SOCK MENU      $NC  ${BICyan}[${BIWhite}16${BICyan}]${RED} • ${NC}${CYAN}BOT BACKUP $NC"
-echo -e " ${BICyan}[${BIWhite}06${BICyan}]${RED} •${NC} ${CYAN}AUTO REBOOT      $NC  ${BICyan}[${BIWhite}17${BICyan}]${RED} • ${NC}${CYAN}REBOOT $NC"
-echo -e " ${BICyan}[${BIWhite}07${BICyan}]${RED} •${NC} ${CYAN}UPDATE SCRIPT    $NC  ${BICyan}[${BIWhite}18${BICyan}]${RED} • ${NC}${CYAN}RESTART $NC"
-echo -e " ${BICyan}[${BIWhite}08${BICyan}]${RED} •${NC} ${CYAN}DELL ALL EXP     $NC  ${BICyan}[${BIWhite}19${BICyan}]${RED} • ${NC}${CYAN}DOMAIN $NC"
-echo -e " ${BICyan}[${BIWhite}09${BICyan}]${RED} • ${NC}${CYAN}AUTOREBOOT       $NC  ${BICyan}[${BIWhite}20${BICyan}]${RED} • ${NC}${CYAN}NS DOMAIN $NC"
-echo -e " ${BICyan}[${BIWhite}10${BICyan}]${RED} •${NC} ${CYAN}INFO PORT        $NC  ${BICyan}[${BIWhite}21${BICyan}]${RED} • ${NC}${CYAN}CERT SSL  $NC"
-echo -e " ${BICyan}[${BIWhite}11${BICyan}]${RED} •${NC} ${CYAN}SPEEDTEST        $NC  ${BICyan}[${BIWhite}22${BICyan}]${RED} • ${NC}${CYAN}BOT NOTIF $NC"  
+echo -e " ${BICyan}[${BIWhite}01${BICyan}]${y} •${NC} ${CYAN}SSH MENU           $NC  ${BICyan}[${BIWhite}12${BICyan}]${RED} • ${NC}${CYAN}RUNNING $NC"
+echo -e " ${BICyan}[${BIWhite}02${BICyan}]${y} •${NC} ${CYAN}VMESS MENU         $NC  ${BICyan}[${BIWhite}13${BICyan}]${RED} • ${NC}${CYAN}VPS INFO $NC"
+echo -e " ${BICyan}[${BIWhite}03${BICyan}]${y} •${NC} ${CYAN}VLESS MENU         $NC  ${BICyan}[${BIWhite}14${BICyan}]${RED} • ${NC}${CYAN}CEK TRAFFIC $NC"
+echo -e " ${BICyan}[${BIWhite}04${BICyan}]${y} •${NC} ${CYAN}TROJAN MENU        $NC  ${BICyan}[${BIWhite}15${BICyan}]${RED} • ${NC}${CYAN}CREATE SLOW  $NC"
+echo -e " ${BICyan}[${BIWhite}05${BICyan}]${y} •${NC} ${CYAN}S-SOCK MENU        $NC  ${BICyan}[${BIWhite}16${BICyan}]${RED} • ${NC}${CYAN}BOT BACKUP $NC"
+echo -e " ${BICyan}[${BIWhite}06${BICyan}]${y} •${NC} ${CYAN}AUTO REBOOT        $NC  ${BICyan}[${BIWhite}17${BICyan}]${RED} • ${NC}${CYAN}REBOOT $NC"
+echo -e " ${BICyan}[${BIWhite}07${BICyan}]${y} •${NC} ${CYAN}UPDATE SCRIPT      $NC  ${BICyan}[${BIWhite}18${BICyan}]${RED} • ${NC}${CYAN}RESTART $NC"
+echo -e " ${BICyan}[${BIWhite}08${BICyan}]${y} •${NC} ${CYAN}DELL ALL EXP       $NC  ${BICyan}[${BIWhite}19${BICyan}]${RED} • ${NC}${CYAN}DOMAIN $NC"
+echo -e " ${BICyan}[${BIWhite}09${BICyan}]${y} • ${NC}${CYAN}AUTOREBOOT         $NC  ${BICyan}[${BIWhite}20${BICyan}]${RED} • ${NC}${CYAN}NS DOMAIN $NC"
+echo -e " ${BICyan}[${BIWhite}10${BICyan}]${y} •${NC} ${CYAN}INFO PORT          $NC  ${BICyan}[${BIWhite}21${BICyan}]${RED} • ${NC}${CYAN}CERT SSL  $NC"
+echo -e " ${BICyan}[${BIWhite}11${BICyan}]${y} •${NC} ${CYAN}SPEEDTEST          $NC  ${BICyan}[${BIWhite}22${BICyan}]${RED} • ${NC}${CYAN}BOT NOTIF $NC"  
 echo -e " ${RED}"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo " "
