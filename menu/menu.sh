@@ -409,8 +409,8 @@ case $opt in
 11) clear ; speedtest ;;
 12) clear ; running ;;
 13) clear ; gotop ;;
-14) clear ; mbot ;;
-15) clear ; sd ;;
+14) clear ; sd ;;
+15) clear ; mbot ;;
 16) clear ; reboot ;;
 17) clear ; restart ;;
 18) clear ; add-host ;;
