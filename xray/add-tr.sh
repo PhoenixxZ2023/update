@@ -31,8 +31,8 @@ LIGHT='\033[0;37m'
 grenbo="\e[92;1m"
 red() { echo -e "\\033[32;1m${*}\\033[0m"; }
 # Getting
-export CHATID=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 3)
-export KEY=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 2)
+CHATID=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 3)
+KEY=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 2)
 export TIME="10"
 export URL="https://api.telegram.org/bot$KEY/sendMessage"
 clear
@@ -72,13 +72,6 @@ uuid=$(cat /proc/sys/kernel/random/uuid)
 read -p "Limit (IP) : " iplimit
 read -p "Quota (GB) : " Quota
 read -p "Exp (Hari) : " masaaktif
-#limitip
-if [[ $iplimit -gt 0 ]]; then
-echo -e "$iplimit" > /etc/funny/limit/trojan/ip/$user
-else
-echo > /dev/null
-fi
-clear
 tgl=$(date -d "$masaaktif days" +"%d")
 bln=$(date -d "$masaaktif days" +"%b")
 thn=$(date -d "$masaaktif days" +"%Y")
@@ -93,10 +86,14 @@ sed -i '/#trojanws$/a\#tr# '"$user $exp"'\
 sed -i '/#trojangrpc$/a\#tr# '"$user $exp"'\
 },{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
 
-cat >/var/www/html/trojan-$user.txt <<-END
+# Link Trojan Akun
+systemctl restart xray
+trojanlink1="trojan://${uuid}@${domain}:443?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}"
+trojanlink="trojan://${uuid}@bug.com:443?path=%2Ftrojan-ws&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
 
+cat >/var/www/html/trojan-$user.txt <<-END
 ◇━━━━━━━━━━━━━━━━━◇
-  A S U W  P R O J E C T 
+  G E O  P R O J E C T 
 ◇━━━━━━━━━━━━━━━━━◇
 
 # Format Trojan GO/WS
@@ -129,22 +126,60 @@ cat >/var/www/html/trojan-$user.txt <<-END
   grpc-opts:
     grpc-service-name: trojan-grpc
 
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
-<code>Link Akun Trojan </code>
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
-<code>Link WS          : </code>
-<code>${trojanlink}</code>
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
-<code>Link GRPC        : </code>
-<code>${trojanlink1}</code>
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
+◇━━━━━━━━━━━━━━━━━◇
+Link Akun Trojan 
+◇━━━━━━━━━━━━━━━━━◇
+Link WS          : trojanlink="trojan://${uuid}@${domain}:443?path=%2Ftrojan-ws&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
+◇━━━━━━━━━━━━━━━━━◇
+Link GRPC        : trojanlink1="trojan://${uuid}@${domain}:443?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=${domain}#${user}"
+◇━━━━━━━━━━━━━━━━━◇
 
 END
 trojanlink="trojan://${uuid}@${domain}:443?path=%2Ftrojan-ws&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
 trojanlink1="trojan://${uuid}@${domain}:443?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=${domain}#${user}"
-
+TEXT="
+<code>──────────────────────────</code>
+<code>    SUCCES CREATE TROJAN</code>
+<code>──────────────────────────</code>
+<code>Remarks      : ${user}</code>
+<code>Domain       : ${domain}</code>
+<code>Location     : $CITY</code>
+<code>User Quota   : ${Quota} GB</code>
+<code>Port DNS     : 443,53</code>
+<code>Port WS(TLS) : 443</code>
+<code>Port GRPC    : 443</code>
+<code>User ID      : ${uuid}</code>
+<code>AlterId      : 0</code>
+<code>Security     : auto</code>
+<code>Network      : WS(TLS) or gRPC</code>
+<code>ServiceName  : trojan-grpc</code>
+<code>──────────────────────────</code>
+<code>Link TLS     :</code> 
+<code>${trojanlink}</code>
+<code>───────────────────────────</code>
+<code>Link NTLS    :</code> 
+<code>${trojanlink1}</code>
+<code>───────────────────────────</code>
+<code>Format OpenClash :</code> 
+https://${domain}:81/trojan-$user.txt
+<code>──────────────────────────</code>
+<code>Aktif Selama   : $masaaktif Hari</code>
+<code>Dibuat Pada    : $tnggl</code>
+<code>Berakhir Pada  : $expe</code>
+<code>───────────────────────────</code>
+"
+systemctl reload xray
+systemctl reload nginx
+service cron restart
 if [ ! -e /etc/trojan ]; then
   mkdir -p /etc/trojan
+fi
+
+if [[ $iplimit -gt 0 ]]; then
+mkdir -p /etc/wokszxd/limit/trojan/ip
+echo -e "$iplimit" > /etc/wokszxd/limit/trojan/ip/$user
+else
+echo > /dev/null
 fi
 
 if [ -z ${Quota} ]; then
@@ -161,51 +196,16 @@ DATADB=$(cat /etc/trojan/.trojan.db | grep "^#tr#" | grep -w "${user}" | awk '{p
 if [[ "${DATADB}" != '' ]]; then
   sed -i "/\b${user}\b/d" /etc/trojan/.trojan.db
 fi
-echo "#tr# ${user} ${exp} ${uuid} ${Quota}" >>/etc/trojan/.trojan.db
-clear
-CHATID=$CHATID
-KEY=$KEY
-TIME=$TIME
-URL=$URL
-TEXT="
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
-<code>XRAY/TROJAN Account</code>
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
-<code>Remarks   : ${user}
-Domain    : ${domain}
-Quota     : ${Quota} GB
-Port TLS  : 400-900
-Port NTLS : 80, 8080, 8081-9999
-id        : ${uuid}
-alterId   : 0
-Security  : auto
-network   : ws or grpc
-Path      : /Multi-Path
-Dynamic   : https://bugmu.com/path
-Name      : vmess-grpc</code>
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
-<code> TROJAN WS</code>
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
-<code>${trojanlink}</code>
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
-<code> TROJAN gRPC</code>
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
-<code>${trojanlink1}</code>
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
-Format OpenClash : https://${domain}:81/vmess-$user.txt
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
-<code>Expired Until  : $expe</code>
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
-"
-
+echo "#tr# ${user} ${exp} ${uuid} ${Quota} ${iplimit}" >>/etc/trojan/.trojan.db
 curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear
-clear
 echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m"
-echo -e "   Xray/TROJAN Account           \E[0m"
+echo -e "   TROJAN Account"
 echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m"
 echo -e "Remarks         : ${user}"
 echo -e "Domain          : ${domain}"
+echo -e "User Quota      : ${Quota} GB"
+echo -e "User Ip         : ${iplimit} IP"
 echo -e "Port TLS        : 443"
 echo -e "Port NTLS       : 80"
 echo -e "Id              : ${uuid}"
@@ -224,5 +224,3 @@ echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m"
 echo -e "Expired Until   : $expe"
 echo -e "\e[033m◇━━━━━━━━━━━━━━━━━◇\033[0m"
 echo ""
-read -n 1 -s -r -p "Press any key to back on menu"
-menu
