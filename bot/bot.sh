@@ -4,17 +4,15 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 echo "Checking VPS"
 
 clear 
-echo -e "\033[1;93m┌─────────────────────────────┐\033[0m"
-echo -e "        BOT NOTIF           "
-echo -e "\033[1;93m└─────────────────────────────┘\033[0m"
-echo -e "" 
-echo -e "${ORANGE}[1].${NC}\033[0;36m Add Bot Notifikasi "
-echo -e "${ORANGE}[2].${NC}\033[0;36m Delete Bot Notifikasi"
+echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
+echo -e "       ${BIWhite}${UWhite}BOT NOTIF ${NC}"
 echo -e ""
-echo -e "\033[1;93m└─────────────────────────────┘\033[0m"
-echo -e "${ORANGE}  Press x or [ Ctrl+C ] • To-Exit${NC}"
-echo -e ""
-read -p " Select menu : " opt
+echo -e "     ${BICyan}[${BIWhite}01${BICyan}] Add Bot Notifikasi      "
+echo -e "     ${BICyan}[${BIWhite}02${BICyan}] Delete Bot Notifikasi   "
+echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
+echo -e "     ${BIYellow}Press x or [ Ctrl+C ] • To-${BIWhite}Exit${NC}"
+echo ""
+read -p " Select menu :  "  opt
 echo -e ""
 case $opt in
 1) clear ; add-bot-notif ;;
