@@ -63,5 +63,5 @@ case $opt in
 2) clear ; del-bot-notif ; exit ;;
 0) clear ; menu ; exit ;;
 x) exit ;;
-*) echo "Anda salah tekan " ; sleep 1 ; m-sshovpn ;;
+*) echo "Anda salah tekan " ; sleep 1 ; menu ;;
 esac
