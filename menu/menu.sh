@@ -380,17 +380,17 @@ echo -e "${BICyan}━━━━━━━━━━━━━━━━━━━━�
 echo -e "${BIWhite}                       ⇱ MENU SERVICE ⇲                         \E[0m"
 echo -e "${BICyan}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e ""
-echo -e " ${BICyan}[${BIWhite}01${BICyan}]${y} •${NC} ${BIWhite}SSHWS  [$ssh1]     $NC  ${BICyan}[${BIWhite}12${BICyan}]${RED} • ${NC}${BIWhite}RUNNING $NC"
-echo -e " ${BICyan}[${BIWhite}02${BICyan}]${y} •${NC} ${BIWhite}VMESS  [$vma]      $NC  ${BICyan}[${BIWhite}13${BICyan}]${RED} • ${NC}${BIWhite}VPS INFO $NC"
-echo -e " ${BICyan}[${BIWhite}03${BICyan}]${y} •${NC} ${BIWhite}VLESS  [$vla]      $NC  ${BICyan}[${BIWhite}14${BICyan}]${RED} • ${NC}${BIWhite}CREATE SLOW$NC"
-echo -e " ${BICyan}[${BIWhite}04${BICyan}]${y} •${NC} ${BIWhite}TROJAN [$tra]      $NC  ${BICyan}[${BIWhite}15${BICyan}]${RED} • ${NC}${BIWhite}BOT BACKUP  $NC"
-echo -e " ${BICyan}[${BIWhite}05${BICyan}]${y} •${NC} ${BIWhite}S-SOCK [$ssa]      $NC  ${BICyan}[${BIWhite}16${BICyan}]${RED} • ${NC}${BIWhite}REBOOT $NC"
-echo -e " ${BICyan}[${BIWhite}06${BICyan}]${y} •${NC} ${BIWhite}TRIAL MENU         $NC  ${BICyan}[${BIWhite}17${BICyan}]${RED} • ${NC}${BIWhite}RESTART $NC"
-echo -e " ${BICyan}[${BIWhite}07${BICyan}]${y} •${NC} ${BIWhite}UPDATE ALL         $NC  ${BICyan}[${BIWhite}18${BICyan}]${RED} • ${NC}${BIWhite}DOMAIN $NC"
-echo -e " ${BICyan}[${BIWhite}08${BICyan}]${y} •${NC} ${BIWhite}DELETE ALL         $NC  ${BICyan}[${BIWhite}19${BICyan}]${RED} • ${NC}${BIWhite}NS DOMAIN  $NC"
-echo -e " ${BICyan}[${BIWhite}09${BICyan}]${y} •${NC} ${BIWhite}AUTO REBOOT        $NC  ${BICyan}[${BIWhite}20${BICyan}]${RED} • ${NC}${BIWhite}CERT SSL   $NC"
-echo -e " ${BICyan}[${BIWhite}10${BICyan}]${y} •${NC} ${BIWhite}INFO PORT          $NC  ${BICyan}[${BIWhite}21${BICyan}]${RED} • ${NC}${BIWhite}CLEAR CACHE  $NC"
-echo -e " ${BICyan}[${BIWhite}11${BICyan}]${y} •${NC} ${BIWhite}SPEEDTEST          $NC  ${BICyan}[${BIWhite}22${BICyan}]${RED} • ${NC}${BIWhite}BOT NOTIF $NC"  
+echo -e " ${BICyan}[${BIWhite}01${BICyan}]${y} •${NC} ${BIWhite}SSHWS MENU         $NC  ${BICyan}[${BIWhite}12${BICyan}]${RED} • ${NC}${BIWhite}RUNNING $NC"
+echo -e " ${BICyan}[${BIWhite}02${BICyan}]${y} •${NC} ${BIWhite}VMESS MENU         $NC  ${BICyan}[${BIWhite}13${BICyan}]${RED} • ${NC}${BIWhite}VPS INFO $NC"
+echo -e " ${BICyan}[${BIWhite}03${BICyan}]${y} •${NC} ${BIWhite}VLESS MENU         $NC  ${BICyan}[${BIWhite}14${BICyan}]${RED} • ${NC}${BIWhite}CREATE SLOW$NC"
+echo -e " ${BICyan}[${BIWhite}04${BICyan}]${y} •${NC} ${BIWhite}SS-RR MENU         $NC  ${BICyan}[${BIWhite}15${BICyan}]${RED} • ${NC}${BIWhite}BOT BACKUP  $NC"
+echo -e " ${BICyan}[${BIWhite}05${BICyan}]${y} •${NC} ${BIWhite}SSOCK MENU         $NC  ${BICyan}[${BIWhite}16${BICyan}]${RED} • ${NC}${BIWhite}REBOOT $NC"
+echo -e " ${BICyan}[${BIWhite}06${BICyan}]${y} •${NC} ${BIWhite}TENDANG            $NC  ${BICyan}[${BIWhite}17${BICyan}]${RED} • ${NC}${BIWhite}RESTART $NC"
+echo -e " ${BICyan}[${BIWhite}07${BICyan}]${y} •${NC} ${BIWhite}AUTO REBOOT        $NC  ${BICyan}[${BIWhite}18${BICyan}]${RED} • ${NC}${BIWhite}DOMAIN $NC"
+echo -e " ${BICyan}[${BIWhite}08${BICyan}]${y} •${NC} ${BIWhite}SETTING            $NC  ${BICyan}[${BIWhite}19${BICyan}]${RED} • ${NC}${BIWhite}NS DOMAIN  $NC"
+echo -e " ${BICyan}[${BIWhite}09${BICyan}]${y} •${NC} ${BIWhite}UPDATE             $NC  ${BICyan}[${BIWhite}20${BICyan}]${RED} • ${NC}${BIWhite}CERT SSL   $NC"
+echo -e " ${BICyan}[${BIWhite}10${BICyan}]${y} •${NC} ${BIWhite}ABOUT              $NC  ${BICyan}[${BIWhite}21${BICyan}]${RED} • ${NC}${BIWhite}CLEAR CACHE  $NC"
+echo -e " ${BICyan}[${BIWhite}11${BICyan}]${y} •${NC} ${BIWhite}MONITOR            $NC  ${BICyan}[${BIWhite}22${BICyan}]${RED} • ${NC}${BIWhite}BOT NOTIF $NC"  
 echo -e " ${RED}"
 echo -e "${BICyan}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo " "
@@ -402,10 +402,10 @@ case $opt in
 03 | 3) clear ; menu-vless ;;
 04 | 4) clear ; menu-trojan ;;
 05 | 5) clear ; shadowsocks ;;
-06 | 6) clear ; menu-trial ;;
-07 | 7) clear ; up ;;
-08 | 8) clear ; delete ;;
-09 | 9) clear ; auto-reboot ;;
+06 | 6) clear ; delete ;;
+07 | 7) clear ; auto-reboot ;;
+08 | 8) clear ; menu-set ;;
+09 | 9) clear ; up ;;
 10) clear ; about ;;
 11) clear ; speedtest ;;
 12) clear ; running ;;
