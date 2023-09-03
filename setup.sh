@@ -330,11 +330,16 @@ clear
 
 ### Pasang Limit Xray
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "$green      Install Limit Xray            $NC"
+echo -e "$green      Install Limit XRAY            $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-sleep 2
+sleep 1.5
+wget https://raw.githubusercontent.com/kytrx/scupdate/main/limit/limit.sh && chmod +x limit.sh && ./limit.sh
 clear
-wget https://raw.githubusercontent.com/rizkyckj/update/main/limit/limit.sh && chmod +x limit.sh && ./limit.sh
+echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "$green        INSTALL BADVPN              $NC"
+echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+sleep 1.5
+wget https://github.com/kytrx/scupdate/main/badvpn/mmx.sh && chmod +x mmx.sh && ./mmx.sh
 clear
 
 #pasang swap
@@ -408,25 +413,8 @@ gotop_latest="$(curl -s https://api.github.com/repos/xxxserxxx/gotop/releases | 
     EXPSC=$(curl -sS https://raw.githubusercontent.com/rizkyckj/ip/main/ip | grep $MYIP | awk '{print $3}')
     TIMEZONE=$(printf '%(%H:%M:%S)T')
     TEXT="
-<code>────────────────────</code>
-<b>⚠️AUTOSCRIPT PREMIUM⚠️</b>
-<code>────────────────────</code>
-<code>Owner  : </code><code>$USRSC</code>
-<code>Domain : </code><code>$(cat /etc/xray/domain)</code>
-<code>Date   : </code><code>$TIME</code>
-<code>Time   : </code><code>$TIMEZONE</code>
-<code>Isp    : </code><code>$ISP</code>
-<code>Ip Vps : </code><code>$MYIP</code>
-<code>Exp Sc : </code><code>$EXPSC</code>
-<code>Ram    : </code><code>$RAMMS MB</code>
-<code>Linux  : </code><code>$OS</code>
-<code>────────────────────</code>
-<i>Automatic Notification from</i>
-<i>YogzVpn Bot</i> 
-"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ🐳","url":"https://t.me/Zyevpn"},{"text":"ɪɴꜱᴛᴀʟʟ🐬","url":"https://t.me/Zyevpn"}]]}'
-    curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
-clear
-echo " "
+
+clear 
 echo "=====================-[ SCRIPT RVPN STORES ]-===================="
 echo ""
 echo "------------------------------------------------------------"
