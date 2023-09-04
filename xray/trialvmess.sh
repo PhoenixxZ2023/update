@@ -24,6 +24,10 @@ export URL="https://api.telegram.org/bot$KEY/sendMessage"
 ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10 )
 CITY=$(curl -s ipinfo.io/city )
 clear
+echo -e "\033[1;93m◇━━━━━━━━━━━━━━━━━◇\033[0m"
+echo -e " Set Expired In Minutes           "
+echo -e "\033[1;93m◇━━━━━━━━━━━━━━━━━◇\033[0m"
+read -p " Menit : " pup
 domain=$(cat /etc/xray/domain)
 masaaktif=1
 Quota=5
