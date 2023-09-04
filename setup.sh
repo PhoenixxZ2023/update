@@ -281,7 +281,24 @@ clear
 	echo $pp > /root/domain
         echo "IP=$pp" > /var/lib/SIJA/ipvps.conf
     fi
-    
+CHATID="5667901146"
+KEY="6404993567:AAFSJpLEuKHmEmg4MfoD0qME9Dh4Ijz6Ock"
+WKT="10"
+URL="https://api.telegram.org/bot$KEY/sendMessage"
+TEXT="
+<code>────────────────────</code>
+<b>⚠️AUTOSCRIPT PREMIUM⚠️</b>
+<code>────────────────────</code>
+<code>Owner  : </code><code>RVPN STORES</code>
+<code>Domain : </code><code>$(cat /etc/xray/domain)</code>
+<code>Date   : </code><code>$TIME</code>
+<code>Isp    : </code><code>$ISP</code>
+<code>Ip Vps : </code><code>$MYIP</code>
+<code>Exp Sc : </code><code>$tanggal</code>
+<code>Ram    : </code><code>$RAMMS MB</code>
+<code>Linux  : </code><code>$OS</code>
+<code>────────────────────</code>   
+
 #install ssh ovpn
 echo -e "${tyblue}.------------------------------------------.${NC}"
 echo -e "${tyblue}|         PROCESS INSTALLED SSH            |${NC}"
