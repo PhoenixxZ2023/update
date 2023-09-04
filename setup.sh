@@ -283,16 +283,16 @@ clear
     fi
     
 #install ssh ovpn
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "$green       Install SSH / WS            $NC"
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "${tyblue}.------------------------------------------.${NC}"
+echo -e "${tyblue}|         PROCESS INSTALLED SSH            |${NC}"
+echo -e "${tyblue}'------------------------------------------'${NC}"
 sleep 2
 clear
 wget https://raw.githubusercontent.com/rizkyckj/update/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 #Instal Xray
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "$green         Install XRAY              $NC"
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "${tyblue}.------------------------------------------.${NC}"
+echo -e "${tyblue}|          PROCESS INSTALLED XRAY          |${NC}"
+echo -e "${tyblue}'------------------------------------------'${NC}"
 sleep 2
 clear
 wget https://raw.githubusercontent.com/rizkyckj/update/main/xray/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
@@ -300,27 +300,27 @@ wget https://raw.githubusercontent.com/rizkyckj/update/main/sshws/insshws.sh && 
 clear
 
 #Instal slowdns
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "$green        Install SLDNS              $NC"
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "${tyblue}.------------------------------------------.${NC}"
+echo -e "${tyblue}|          PROCESS INSTALLED SLOWDNS       |${NC}"
+echo -e "${tyblue}'------------------------------------------'${NC}"
 sleep 2
 clear
 wget https://raw.githubusercontent.com/rizkyckj/update/main/wireguard/installsl.sh && chmod +x installsl.sh && ./installsl.sh
 clear
 
 ### Pasang OpenVPN
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "$green         Install OVPN              $NC"
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-sleep 2
+echo -e "${tyblue}.------------------------------------------.${NC}"
+echo -e "${tyblue}|          PROCESS INSTALLED OVPN          |${NC}"
+echo -e "${tyblue}'------------------------------------------'${NC}"
+sleep 0.5 
 clear
 wget https://raw.githubusercontent.com/rizkyckj/update/main/ssh/vpn.sh && chmod +x vpn.sh && ./vpn.sh
 clear
 
 #Install Ohp Service
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "$green          Install OHP              $NC"
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "${tyblue}.------------------------------------------.${NC}"
+echo -e "${tyblue}|          PROCESS INSTALLED OHP           |${NC}"
+echo -e "${tyblue}'------------------------------------------'${NC}"
 sleep 0.5
 clear
 wget https://raw.githubusercontent.com/rizkyckj/update/main/ohp/ohp-dropbear.sh && chmod +x ohp-dropbear.sh && ./ohp-dropbear.sh
@@ -329,23 +329,19 @@ wget https://raw.githubusercontent.com/rizkyckj/update/main/ohp/ohp.sh && chmod 
 clear
 
 ### Pasang Limit Xray
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "$green      Install Limit XRAY            $NC"
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "${tyblue}.------------------------------------------.${NC}"
+echo -e "${tyblue}|       PROCESS INSTALLED LIMIT XRAY       |${NC}"
+echo -e "${tyblue}'------------------------------------------'${NC}"
+sleep 3
 sleep 1.5
-wget https://raw.githubusercontent.com/kytrx/scupdate/main/limit/limit.sh && chmod +x limit.sh && ./limit.sh
+wget https://raw.githubusercontent.com/rizkyckj/update/main/limit/limit.sh && chmod +x limit.sh && ./limit.sh
 clear
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "$green        INSTALL BADVPN              $NC"
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-sleep 1.5
-wget https://github.com/kytrx/scupdate/main/badvpn/mmx.sh && chmod +x mmx.sh && ./mmx.sh
-clear
-
 #pasang swap
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "$green       Swap Ram 1GB           $NC"
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+#Instal Xray
+echo -e "${tyblue}.------------------------------------------.${NC}"
+echo -e "${tyblue}|              SWAP RAM 1 GB               |${NC}"
+echo -e "${tyblue}'------------------------------------------'${NC}"
+    sleep 1.5
     # > Make a swap of 1GB
     dd if=/dev/zero of=/swapfile bs=1024 count=1048576
     mkswap /swapfile
@@ -415,7 +411,6 @@ gotop_latest="$(curl -s https://api.github.com/repos/xxxserxxx/gotop/releases | 
     TEXT="
 
 clear 
-echo "=====================-[ SCRIPT RVPN STORES ]-===================="
 echo ""
 echo "------------------------------------------------------------"
 echo ""
@@ -468,4 +463,4 @@ echo -e " "
 echo "===============-[ INSTALL SSH UDP & REBOOT ]-==============="
 sleep 2
 wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1S3IE25v_fyUfCLslnujFBSBMNunDHDk2' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1S3IE25v_fyUfCLslnujFBSBMNunDHDk2" -O install-udp && rm -rf /tmp/cookies.txt && chmod +x install-udp && ./install-udp
-
+reboot 
