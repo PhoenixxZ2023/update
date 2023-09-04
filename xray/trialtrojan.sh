@@ -36,8 +36,10 @@ KEY=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 2)
 export TIME="10"
 export URL="https://api.telegram.org/bot$KEY/sendMessage"
 clear
-checking_sc
-echo -e "\e[32mloading...\e[0m"
+echo -e "\033[1;93m◇━━━━━━━━━━━━━━━━━◇\033[0m"
+echo -e " Set Expired In Minutes           "
+echo -e "\033[1;93m◇━━━━━━━━━━━━━━━━━◇\033[0m"
+read -p " Menit : " pup
 clear
 domain=$(cat /etc/xray/domain)
 masaaktif=1
@@ -163,7 +165,7 @@ Name      : trojan-grpc</code>
 <code>◇━━━━━━━━━━━━━━━━━◇</code>
 <code>Format OpenClash :</code> <code>https://${domain}:81/vmess-$user.txt</code>
 <code>◇━━━━━━━━━━━━━━━━━◇</code>
-<code>Expired Until  :</code> <code>$expe</code>
+<code>Expired Until  :</code> <code>$pup Menit</code>
 <code>◇━━━━━━━━━━━━━━━━━◇</code>
 "
 
@@ -187,7 +189,7 @@ echo -e "Link GRPC        : ${trojanlink1}"
 echo -e "\033[0;34m◇━━━━━━━━━━━━━━━━━◇\033[0m" 
 echo -e "Format OpenClash : https://${domain}:81/trojan-$user.txt" 
 echo -e "\033[0;34m◇━━━━━━━━━━━━━━━━━◇\033[0m" 
-echo -e "Expired Until    : $expe"
+echo -e "Expired Until    : $pup Menit"
 echo -e "\033[0;34m◇━━━━━━━━━━━━━━━━━◇\033[0m" 
 echo "" 
 read -n 1 -s -r -p "Press any key to back on menu"
