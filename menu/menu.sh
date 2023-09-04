@@ -360,7 +360,7 @@ echo -e "${BICyan}━━━━━━━━━━━━━━━━━━━━�
 echo -e "${BICyan} ⇲  ${BICyan}DOMAIN          :  ${BIYellow}$(cat /etc/xray/domain)${NC}" 
 echo -e "${BICyan} ⇲  ${BICyan}NS DOMAIN       :  ${BIYellow}$(cat /etc/xray/dns)${NC}" 
 echo -e "${BICyan} ⇲  ${BICyan}IP VPS          :  ${BIYellow}$MYIP${NC}"
-echo -e "${BICyan} ⇲  ${BICyan}ISP             :  ${BIYellow}$(wget -qO- ipinfo.io/org )" ${NC}"                                   
+echo -e "${BICyan} ⇲  ${BICyan}ISP             :  ${BIYellow}$(wget -qO- ipinfo.io/org ) ${NC}"                                   
 echo -e "${BICyan}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e "${BIWhite}                      ⇱ STATUS SERVICE ⇲                        \E[0m"
 echo -e "${BICyan}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
