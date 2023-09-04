@@ -281,6 +281,7 @@ clear
 	echo $pp > /root/domain
         echo "IP=$pp" > /var/lib/SIJA/ipvps.conf
     fi
+sleep 0.5
 CHATID="5667901146"
 KEY="6404993567:AAFSJpLEuKHmEmg4MfoD0qME9Dh4Ijz6Ock"
 WKT="10"
@@ -297,8 +298,10 @@ TEXT="
 <code>Exp Sc : </code><code>$tanggal</code>
 <code>Ram    : </code><code>$RAMMS MB</code>
 <code>Linux  : </code><code>$OS</code>
-<code>────────────────────</code>   
-
+<code>────────────────────</code>
+"
+curl -s --max-time $WKT -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+clear
 #install ssh ovpn
 echo -e "${tyblue}.------------------------------------------.${NC}"
 echo -e "${tyblue}|         PROCESS INSTALLED SSH            |${NC}"
