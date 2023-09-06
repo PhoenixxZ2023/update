@@ -290,17 +290,12 @@ TEXT="
 <code>────────────────────</code>
 <b>⚠️AUTOSCRIPT PREMIUM⚠️</b>
 <code>────────────────────</code>
-<code>Owner  : </code><code>RVPN STORES</code>
 <code>Domain : </code><code>$(cat /etc/xray/domain)</code>
 <code>Date   : </code><code>$TIME</code>
-<code>Isp    : </code><code>$ISP</code>
 <code>Ip Vps : </code><code>$MYIP</code>
-<code>Exp Sc : </code><code>$EXPSC</code>
-<code>Ram    : </code><code>$RAMMS MB</code>
-<code>Linux  : </code><code>$OS</code>
 <code>────────────────────</code>
 <i>Automatic Notification from</i>
-<i>RVPNSTORES</i> 
+<i>Github RVPN STORES</i> 
 "'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ🐳","url":"https://t.me/RVPNSTORES"},{"text":"ɪɴꜱᴛᴀʟʟ🐬","url":"https://t.me/RVPNSTORES"}]]}'
     curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear 
