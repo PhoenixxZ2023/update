@@ -57,64 +57,11 @@ clear
  let ssa=$ssx/2 
  COLOR1='\033[0;35m' 
  COLOR2='\033[0;39m' 
- clear
-
-BURIQ () {
-    curl -sS https://raw.githubusercontent.com/zheevpn/izin/main/zye > /root/tmp
-    data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
-    for user in "${data[@]}"
-    do
-    exp=( `grep -E "^### $user" "/root/tmp" | awk '{print $3}'` )
-    d1=(`date -d "$exp" +%s`)
-    d2=(`date -d "$biji" +%s`)
-    exp2=$(( (d1 - d2) / 86400 ))
-    if [[ "$exp2" -le "0" ]]; then
-    echo $user > /etc/.$user.ini
-    else
-    rm -f /etc/.$user.ini > /dev/null 2>&1
-    fi
-    done
-    rm -f /root/tmp
-}
-
-MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS https://raw.githubusercontent.com/zheevpn/izin/main/zye | grep $MYIP | awk '{print $2}')
-echo $Name > /usr/local/etc/.$Name.ini
-CekOne=$(cat /usr/local/etc/.$Name.ini)
-
-Bloman () {
-if [ -f "/etc/.$Name.ini" ]; then
-CekTwo=$(cat /etc/.$Name.ini)
-    if [ "$CekOne" = "$CekTwo" ]; then
-        res="Expired"
-    fi
-else
-res="Permission Accepted..."
-fi
-}
-
-PERMISSION () {
-    MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://raw.githubusercontent.com/zheevpn/izin/main/zye | awk '{print $4}' | grep $MYIP)
-    if [ "$MYIP" = "$IZIN" ]; then
-    Bloman
-    else
-    res="Permission Denied!"
-    fi
-    BURIQ
-}
 red='\e[1;31m'
 green='\e[1;32m'
 NC='\e[0m'
 green() { echo -e "\\033[32;1m${*}\\033[0m"; }
 red() { echo -e "\\033[31;1m${*}\\033[0m"; }
-PERMISSION
-
-if [ "$res" = "Expired" ]; then
-Exp="\e[36mExpired\033[0m"
-else
-Exp=$(curl -sS https://raw.githubusercontent.com/zheevpn/izin/main/zye | grep $MYIP | awk '{print $3}')
-fi
 
 MYIP=$(wget -qO- ipinfo.io/ip)
 domain=$(cat /etc/xray/domain)
@@ -172,20 +119,6 @@ export UNDERLINE="\e[4m"
 #total_ram=` grep "MemTotal: " /proc/meminfo | awk '{ print $2}'`
 #totalram=$(($total_ram/1024))
 USAGERAM=$(free -m | awk 'NR==2 {print $3}')
-
-# Status ExpiRED Active | YogzVPN
-Info="(${c2}Active${NC})"
-Error="(${red}Expired${NC})"
-today=`date -d "0 days" +"%Y-%m-%d"`
-Exp1=$(curl https://raw.githubusercontent.com/zheevpn/izin/main/zye | grep $MYIP | awk '{print $4}')
-if [[ $today < $Exp1 ]]; then
-sts="${Info}"
-else
-sts="${Error}"
-fi
-echo -e "\e[32mloading...\e[0m"
-clear
-
 persenmemori="$(echo "scale=2; $usmem*100/$tomem" | bc)"
 #persencpu=
 persencpu="$(echo "scale=2; $cpu1+$cpu2" | bc)"
@@ -297,9 +230,6 @@ echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
 }
-#export sem=$( curl -s https://raw.githubusercontent.com/kytrx/regip/main/versions)
-#export pak=$( cat /home/.ver)
-#IPVPS=$(curl -s ipinfo.io/ip )
 
 if [ ! -e /etc/vmess ]; then
     mkdir -p /etc/vmess
