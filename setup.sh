@@ -288,7 +288,7 @@ WKT="10"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 TEXT="
 <code>────────────────────</code>
-<b>AUTOSCRIPT PREMIUM</b>
+<b>⚠️AUTOSCRIPT PREMIUM⚠️</b>
 <code>────────────────────</code>
 <code>Owner  : </code><code>RVPN STORES</code>
 <code>Domain : </code><code>$(cat /etc/xray/domain)</code>
