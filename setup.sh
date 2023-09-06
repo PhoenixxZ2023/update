@@ -255,12 +255,10 @@ echo -e "     This Will Quick Setup VPN Server On Your Server"
 echo -e "         Auther : ${green}RVPN STORES${NC}${YELLOW}(${NC} ${green}Electro Project ${NC}${YELLOW})${NC}"
 echo -e "       © Recode By Electro Project ${YELLOW}(${NC} 2023 ${YELLOW})${NC}"
 echo -e "${YELLOW}----------------------------------------------------------${NC}"
-    echo -e "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-    echo -e "${red}    🔐${NC} ${green}  CUSTOM DOMAIN VPS     ${NC}"
-    echo -e "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
-    echo "[1]. Use Domain From Script / Gunakan Domain Dari Script"
-    echo "[2]. Choose Your Own Domain / Pilih Domain Sendiri"
-    echo -e "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
+echo -e "${YELLOW}----------------------------------------------------------${NC}"
+echo "[1]. Use Domain From Script / Gunakan Domain Dari Script"
+echo "[2]. Choose Your Own Domain / Pilih Domain Sendiri"
+echo -e "${YELLOW}----------------------------------------------------------${NC}"
     read -rp "Silahkan Pilih 1 / 2 Untuk Menginstal : " dom 
 
     if test $dom -eq 1; then
