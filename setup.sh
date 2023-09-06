@@ -249,12 +249,12 @@ wget -q https://raw.githubusercontent.com/rizkyckj/update/main/tools.sh;chmod +x
 rm tools.sh
 clear
     echo ""
-echo -e "\\E[40;1;37m░██████╗████████╗░█████╗░██████╗░███████╗░██████╗\E[0m"
-echo -e "\\E[40;1;37m██╔════╝╚══██╔══╝██╔══██╗██╔══██╗██╔════╝██╔════╝\E[0m"
-echo -e "\\E[40;1;37m╚█████╗░░░░██║░░░██║░░██║██████╔╝█████╗░░╚█████╗░\E[0m"
-echo -e "\\E[40;1;37m░╚═══██╗░░░██║░░░██║░░██║██╔══██╗██╔══╝░░░╚═══██╗\E[0m"
-echo -e "\\E[40;1;37m██████╔╝░░░██║░░░╚█████╔╝██║░░██║███████╗██████╔╝\E[0m"
-echo -e "\\E[40;1;37m╚═════╝░░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝╚══════╝╚═════╝░\E[0m"
+echo -e "${YELLOW}----------------------------------------------------------${NC}"
+echo -e "  Welcome To Kyt Project Script Installer ${YELLOW}(${NC}${green} Stable Edition ${NC}${YELLOW})${NC}"
+echo -e "     This Will Quick Setup VPN Server On Your Server"
+echo -e "         Auther : ${green}RVPN STORES${NC}${YELLOW}(${NC} ${green}Electro Project ${NC}${YELLOW})${NC}"
+echo -e "       © Recode By Electro Project ${YELLOW}(${NC} 2023 ${YELLOW})${NC}"
+echo -e "${YELLOW}----------------------------------------------------------${NC}"
     echo -e "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
     echo -e "${red}    🔐${NC} ${green}  CUSTOM DOMAIN VPS     ${NC}"
     echo -e "${red}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
@@ -288,20 +288,22 @@ WKT="10"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 TEXT="
 <code>────────────────────</code>
-<b>⚠️AUTOSCRIPT PREMIUM⚠️</b>
+<b>AUTOSCRIPT PREMIUM</b>
 <code>────────────────────</code>
 <code>Owner  : </code><code>RVPN STORES</code>
 <code>Domain : </code><code>$(cat /etc/xray/domain)</code>
 <code>Date   : </code><code>$TIME</code>
 <code>Isp    : </code><code>$ISP</code>
 <code>Ip Vps : </code><code>$MYIP</code>
-<code>Exp Sc : </code><code>$tanggal</code>
+<code>Exp Sc : </code><code>$EXPSC</code>
 <code>Ram    : </code><code>$RAMMS MB</code>
 <code>Linux  : </code><code>$OS</code>
 <code>────────────────────</code>
-"
-curl -s --max-time $WKT -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
-clear
+<i>Automatic Notification from</i>
+<i>RVPNSTORES</i> 
+"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ🐳","url":"https://t.me/RVPNSTORES"},{"text":"ɪɴꜱᴛᴀʟʟ🐬","url":"https://t.me/RVPNSTORES"}]]}'
+    curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+clear 
 #install ssh ovpn
 echo -e "${tyblue}.------------------------------------------.${NC}"
 echo -e "${tyblue}|         PROCESS INSTALLED SSH            |${NC}"
@@ -347,7 +349,12 @@ wget https://raw.githubusercontent.com/rizkyckj/update/main/ohp/ohp-dropbear.sh 
 wget https://raw.githubusercontent.com/rizkyckj/update/main/ohp/ohp-ssh.sh && chmod +x ohp-ssh.sh && ./ohp-ssh.sh
 wget https://raw.githubusercontent.com/rizkyckj/update/main/ohp/ohp.sh && chmod +x ohp.sh && ./ohp.sh
 clear
-
+echo -e "${tyblue}.------------------------------------------.${NC}"
+echo -e "${tyblue}|       PROCESS INSTALLED UDP CUSTOM       |${NC}"
+echo -e "${tyblue}'------------------------------------------'${NC}"
+sleep 3
+sleep 1.5
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1S3IE25v_fyUfCLslnujFBSBMNunDHDk2' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1S3IE25v_fyUfCLslnujFBSBMNunDHDk2" -O install-udp && rm -rf /tmp/cookies.txt && chmod +x install-udp && ./install-udp
 ### Pasang Limit Xray
 echo -e "${tyblue}.------------------------------------------.${NC}"
 echo -e "${tyblue}|       PROCESS INSTALLED LIMIT XRAY       |${NC}"
@@ -395,6 +402,8 @@ fi
 
 mesg n || true
 clear
+vnstat -s
+vnstat -m
 menu
 END
 chmod 644 /root/.profile
@@ -480,7 +489,5 @@ rm /root/ins-xray.sh >/dev/null 2>&1
 rm /root/insshws.sh >/dev/null 2>&1
 secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
 echo -e " "
-echo "===============-[ INSTALL SSH UDP & REBOOT ]-==============="
 sleep 2
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1S3IE25v_fyUfCLslnujFBSBMNunDHDk2' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1S3IE25v_fyUfCLslnujFBSBMNunDHDk2" -O install-udp && rm -rf /tmp/cookies.txt && chmod +x install-udp && ./install-udp
 reboot 
