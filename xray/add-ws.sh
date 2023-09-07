@@ -285,15 +285,10 @@ Name      : vmess-grpc</code>
 <code>◇━━━━━━━━━━━━━━━━━◇</code>
 <code>Expired Until  :</code> <code>$expe</code>
 <code>◇━━━━━━━━━━━━━━━━━◇</code>
-"
-
-curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
-clear
-CHATID=$CHATID
-KEY=$KEY
-TIME=$TIME
-URL=$URL
-TEXT="
+<code></code><code></code><code></code>
+<code></code><code></code><code></code>
+<code></code><code></code><code></code>
+<code></code><code></code><code></code>
 <code>INFO MASKU -Transaksi</code>
 <code>────────────────────</code>
 <b>  ⚠️TRANSAKSI VMESS WS⚠️      </b>
@@ -306,6 +301,7 @@ TEXT="
 <i>Notifikasi Via RVPN STORES</i>
 <b>Tele : @RVPNSTORES
 "
+
 curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear
 clear
