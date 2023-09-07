@@ -26,9 +26,10 @@ CITY=$(curl -s ipinfo.io/city )
 domain=$(cat /etc/xray/domain)
 clear
 echo -e "\033[1;93m┌───────────────────────────┐\033[0m"
-read -p "   WhatsApp     : " wa
-read -p "   TELEGRAM     : " tele
 read -p "   USER         : " user
+read -p "   TANGGAL      : " tg
+read -p "   TELEGRAM     : " tele
+read -p "   WHATSAPP     : " wa
 echo -e "\033[1;93m└───────────────────────────┘\033[0m"
 CHATID="$CHATID"
 KEY="$KEY"
@@ -38,14 +39,15 @@ CHATID="$CHATID"
 KEY="$KEY"
 TIME="$TIME"
 URL="$URL"
-TEXT="<code>-----------------------</code>
-<code>TRANSAKSI</code>
-<code>-----------------------</code>
+TEXT="<code>────────────────────</code>
+<code>INFO MASKU -Transaksi</code>
+<code>────────────────────</code>
 <code>🌟WA      : $wa</code>
-<code>🌟TELE    : $tele</code>
-<code>🌟USER    : $user</code>
-<code>🌟ISP     : $ISP</code>
-<code>-----------------------</code>
+<code>🌟Tele    : $tele</code>
+<code>🌟User    : $user</code>
+<code>🌟Tanggal : $tg</code>
+<code>🌟Isp     : $ISP</code>
+<code>────────────────────</code>
 <i>Notifikasi Via RVPNSTORES</i>
 <b>Tele : @RVPNSTORES</b>
 "
@@ -58,14 +60,15 @@ clear
 clear && clear && clear
 clear;clear;clear
 echo -e ""
-echo -e " -----------------------"
-echo -e " TRANSAKSI "
-echo -e " -----------------------"
-echo -e " 🌟WA USER          = ${wa}"
-echo -e " 🌟TELE USER        = ${tele}"
-echo -e " 🌟USER             = ${user}"
-echo -e " 🌟ISP              = ${ISP}"
-echo -e " -----------------------"
+echo -e " ────────────────────"
+echo -e " INFO MASKU -Transaksi "
+echo -e " ────────────────────"
+echo -e " 🌟WA      : ${wa}"
+echo -e " 🌟Tele    : ${tele}"
+echo -e " 🌟User    : ${user}"
+echo -e " 🌟Tanggal : ${user}"
+echo -e " 🌟Isp     : ${ISP}"
+echo -e " ────────────────────"
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
