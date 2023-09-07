@@ -28,7 +28,7 @@ clear
 echo -e "\033[1;93m┌───────────────────────────┐\033[0m"
 read -p "   WhatsApp     : " wa
 read -p "   TELEGRAM     : " tele
-read -p "   Expired (Days): " masaaktif
+read -p "   USER         : " user
 echo -e "\033[1;93m└───────────────────────────┘\033[0m"
 CHATID="$CHATID"
 KEY="$KEY"
@@ -43,10 +43,10 @@ TEXT="<code>-----------------------</code>
 <code>-----------------------</code>
 <code>🌟WA      : $wa</code>
 <code>🌟TELE    : $tele</code>
-<code>🌟TANGGAL : $masaaktif</code>
+<code>🌟USER    : $user</code>
 <code>🌟ISP     : $ISP</code>
 <code>────────────────────</code>
-<i>Notifikasi Via RstoreBOT</i>
+<i>Notifikasi Via RVPNSTORES</i>
 <b>Tele : @RVPNSTORES</b>
 "
 
@@ -63,7 +63,7 @@ echo -e " TRANSAKSI "
 echo -e " -----------------------"
 echo -e " 🌟WA USER          = ${wa}"
 echo -e " 🌟TELE USER        = ${tele}"
-echo -e " 🌟TANGGAL          = ${masaaktif}"
+echo -e " 🌟USER             = ${user}"
 echo -e " 🌟ISP              = ${ISP}"
 echo -e " -----------------------"
 echo ""
