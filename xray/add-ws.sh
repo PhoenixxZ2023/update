@@ -287,8 +287,6 @@ Name      : vmess-grpc</code>
 <code>◇━━━━━━━━━━━━━━━━━◇</code>
 <code>INFO MASKU -Transaksi</code>
 <code>────────────────────</code>
-<b>  ⚠️TRANSAKSI VMESS WS⚠️      </b>
-<code>────────────────────</code>
 <code>🌟Owner   : $user</code>
 <code>🌟Detail  : $AKUN</code>
 <code>🌟Durasi  : $expe</code>
