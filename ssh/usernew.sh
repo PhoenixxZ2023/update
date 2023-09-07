@@ -27,7 +27,7 @@ domain=$(cat /etc/xray/domain)
 clear
 echo -e "\033[1;93m┌───────────────────────────┐\033[0m"
 read -p "   WhatsApp     : " wa
-read -p "   Password      : " Pass
+read -p "   TELEGRAM     : " tele
 read -p "   Expired (Days): " masaaktif
 echo -e "\033[1;93m└───────────────────────────┘\033[0m"
 CHATID="$CHATID"
@@ -41,13 +41,13 @@ URL="$URL"
 TEXT="<code>-----------------------</code>
 <code>TRANSAKSI</code>
 <code>-----------------------</code>
-<code>🌟Owner   : $wa</code>
-<code>🌟Detail  : $AKUN</code>
-<code>🌟Durasi  : $exp</code>
-<code>🌟Server  : $domain</code>
+<code>🌟WA      : $wa</code>
+<code>🌟TELE    : $tele</code>
+<code>🌟TANGGAL : $masaaktif</code>
+<code>🌟ISP     : $ISP</code>
 <code>────────────────────</code>
 <i>Notifikasi Via RstoreBOT</i>
-<b>Tele : @kytxz</b>
+<b>Tele : @RVPNSTORES</b>
 "
 
 curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
@@ -58,19 +58,14 @@ clear
 clear && clear && clear
 clear;clear;clear
 echo -e ""
-echo -e " ◇━━━━━━━━━━━━━━━━━◇"
-echo -e " Your Premium VPN Details"
-echo -e " ◇━━━━━━━━━━━━━━━━━◇"
-echo -e " IP Server        = ${wa}"
-echo -e " Host Slowdns     = ${NS}"
-echo -e " Pub Key          = ${PUB}"
-echo -e " Username         = ${Login}"
-echo -e " Password         = ${Pass}"
-echo -e "◇━━━━━━━━━━━━━━━━━◇"
-echo -e " Aktif Selama   : $masaaktif Hari"
-echo -e " Dibuat Pada    : $tnggl"
-echo -e " Berakhir Pada  : $expe"
-echo -e "◇━━━━━━━━━━━━━━━━━◇"
+echo -e " -----------------------"
+echo -e " TRANSAKSI "
+echo -e " -----------------------"
+echo -e " 🌟WA USER          = ${wa}"
+echo -e " 🌟TELE USER        = ${tele}"
+echo -e " 🌟TANGGAL          = ${masaaktif}"
+echo -e " 🌟ISP              = ${ISP}"
+echo -e " -----------------------"
 echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
