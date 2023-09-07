@@ -26,37 +26,10 @@ CITY=$(curl -s ipinfo.io/city )
 domain=$(cat /etc/xray/domain)
 clear
 echo -e "\033[1;93m┌───────────────────────────┐\033[0m"
-read -p "   Username      : " Login
+read -p "   WhatsApp     : " wa
 read -p "   Password      : " Pass
 read -p "   Expired (Days): " masaaktif
 echo -e "\033[1;93m└───────────────────────────┘\033[0m"
-IP=$(wget -qO- ipinfo.io/ip);
-# // String For IP & Port
-IP=$(curl -sS ifconfig.me);
-domen=$(cat /etc/xray/domain)
-NS=$( cat /etc/xray/dns )
-PUB=$( cat /etc/slowdns/server.pub )
-ws="$(cat ~/log-install.txt | grep -w "Websocket SSH TLS" | cut -d: -f2|sed 's/ //g')"
-ws2="$(cat ~/log-install.txt | grep -w "Websocket SSH HTTP" | cut -d: -f2|sed 's/ //g')"
-
-ssl="$(cat ~/log-install.txt | grep -w "Stunnel5" | cut -d: -f2)"
-sqd="$(cat ~/log-install.txt | grep -w "Squid" | cut -d: -f2)"
-ovpn="$(netstat -nlpt | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
-ovpn2="$(netstat -nlpu | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
-clear
-tgl=$(date -d "$masaaktif days" +"%d")
-bln=$(date -d "$masaaktif days" +"%b")
-thn=$(date -d "$masaaktif days" +"%Y")
-expe="$tgl $bln, $thn"
-tgl2=$(date +"%d")
-bln2=$(date +"%b")
-thn2=$(date +"%Y")
-tnggl="$tgl2 $bln2, $thn2"
-useradd -e `date -d "$masaaktif days" +"%Y-%m-%d"` -s /bin/false -M $Login
-expi="$(chage -l $Login | grep "Account expires" | awk -F": " '{print $2}')"
-echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
-hariini=`date -d "0 days" +"%Y-%m-%d"`
-expi=`date -d "$masaaktif days" +"%Y-%m-%d"`
 CHATID="$CHATID"
 KEY="$KEY"
 TIME="$TIME"
@@ -66,18 +39,15 @@ KEY="$KEY"
 TIME="$TIME"
 URL="$URL"
 TEXT="<code>-----------------------</code>
-<code>   SlowDNS Premium </code>
+<code>TRANSAKSI</code>
 <code>-----------------------</code>
-<code>IP Server    =</code> <code>$IP</code>
-<code>Host SlowDNS =</code> <code>$NS</code>
-<code>Pub Key      =</code> <code>$PUB</code>
-<code>Username     =</code> <code>$Login</code>
-<code>Password     =</code> <code>$Pass</code>
-<code>-----------------------</code>
-Aktif Selama   : $masaaktif Hari
-Dibuat Pada    : $tnggl
-Berakhir Pada  : $expe
-<code>-----------------------</code>
+<code>🌟Owner   : $wa</code>
+<code>🌟Detail  : $AKUN</code>
+<code>🌟Durasi  : $exp</code>
+<code>🌟Server  : $domain</code>
+<code>────────────────────</code>
+<i>Notifikasi Via RstoreBOT</i>
+<b>Tele : @kytxz</b>
 "
 
 curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
@@ -91,7 +61,7 @@ echo -e ""
 echo -e " ◇━━━━━━━━━━━━━━━━━◇"
 echo -e " Your Premium VPN Details"
 echo -e " ◇━━━━━━━━━━━━━━━━━◇"
-echo -e " IP Server        = ${IP}"
+echo -e " IP Server        = ${wa}"
 echo -e " Host Slowdns     = ${NS}"
 echo -e " Pub Key          = ${PUB}"
 echo -e " Username         = ${Login}"
