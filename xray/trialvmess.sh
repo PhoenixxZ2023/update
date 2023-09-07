@@ -31,7 +31,7 @@ read -p " Menit : " pup
 domain=$(cat /etc/xray/domain)
 masaaktif=1
 Quota=5
-user=trial-`</dev/urandom tr -dc 0-9 | head -c3`
+user=rvpn-`</dev/urandom tr -dc 0-9 | head -c3`
 clear 
 uuid=$(cat /proc/sys/kernel/random/uuid)
 exp=$(date -d "$masaaktif days" +"%Y-%m-%d")
