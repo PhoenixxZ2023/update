@@ -72,6 +72,6 @@ rm -rf /tmp/other.txt
 echo ""
 echo -e "\033[1;91m└──────────────────────────────────────────┘\033[0m"
 echo -e "\033[1;93m┌──────────────────────────────────────────┐\033[0m"
-echo -e "        Autoscript Mod by YogzSTORE        "
+echo -e "        Autoscript Mod by RVPN STORES      "
 echo -e "\033[1;93m└──────────────────────────────────────────┘\033[0m"
 echo ""
