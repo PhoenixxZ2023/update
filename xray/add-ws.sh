@@ -285,10 +285,6 @@ Name      : vmess-grpc</code>
 <code>◇━━━━━━━━━━━━━━━━━◇</code>
 <code>Expired Until  :</code> <code>$expe</code>
 <code>◇━━━━━━━━━━━━━━━━━◇</code>
-<code></code><code></code><code></code>
-<code></code><code></code><code></code>
-<code></code><code></code><code></code>
-<code></code><code></code><code></code>
 <code>INFO MASKU -Transaksi</code>
 <code>────────────────────</code>
 <b>  ⚠️TRANSAKSI VMESS WS⚠️      </b>
