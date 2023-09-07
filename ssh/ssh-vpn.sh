@@ -347,6 +347,7 @@ wget -O nsmenu "https://raw.githubusercontent.com/${USR}/main/menu/nsmenu.sh"
 wget -O pubkey "https://raw.githubusercontent.com/${USR}/main/menu/pubkey.sh"
 wget -O fixcert "https://raw.githubusercontent.com/${USR}/main/ssh/fixcert.sh"
 wget -O sd "https://raw.githubusercontent.com/${USR}/main/ssh/sd.sh"
+wget -O order "https://raw.githubusercontent.com/${USR}/main/ssh/order.sh"
 wget -O /usr/local/bin/xray "https://raw.githubusercontent.com/Rerechan02/XRAY/main/xray.linux.64bit"
 chmod +x *
 chmod +x add-bot-panel
@@ -403,6 +404,7 @@ chmod +x nsmenu
 chmod +x pubkey
 chmod +x fixcert
 chmod +x sd
+chmod +x order 
 chmod +x /usr/local/bin/xray
 cd
 
