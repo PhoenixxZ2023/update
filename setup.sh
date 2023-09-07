@@ -398,8 +398,6 @@ fi
 
 mesg n || true
 clear
-vnstat -s
-vnstat -m
 menu
 END
 chmod 644 /root/.profile
