@@ -250,7 +250,7 @@ rm tools.sh
 clear
     echo ""
 echo -e "${YELLOW}----------------------------------------------------------${NC}"
-echo -e "  Welcome To Kyt Project Script Installer ${YELLOW}(${NC}${green} Stable Edition ${NC}${YELLOW})${NC}"
+echo -e "  Welcome To RVPN Project Script Installer ${YELLOW}(${NC}${green} Stable Edition ${NC}${YELLOW})${NC}"
 echo -e "     This Will Quick Setup VPN Server On Your Server"
 echo -e "         Auther : ${green}RVPN STORES${NC}${YELLOW}(${NC} ${green}Electro Project ${NC}${YELLOW})${NC}"
 echo -e "       © Recode By Electro Project ${YELLOW}(${NC} 2023 ${YELLOW})${NC}"
@@ -288,9 +288,12 @@ TEXT="
 <code>────────────────────</code>
 <b>⚠️AUTOSCRIPT PREMIUM⚠️</b>
 <code>────────────────────</code>
+<code>Isp    : </code><code>$ISP</code>
 <code>Domain : </code><code>$(cat /etc/xray/domain)</code>
 <code>Date   : </code><code>$TIME</code>
 <code>Ip Vps : </code><code>$MYIP</code>
+<code>Ram    : </code><code>$RAMMS MB</code>
+<code>Linux  : </code><code>$OS</code>
 <code>────────────────────</code>
 <i>Automatic Notification from</i>
 <i>Github RVPN STORES</i> 
