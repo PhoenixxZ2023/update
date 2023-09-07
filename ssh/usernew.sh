@@ -45,7 +45,7 @@ TEXT="<code>-----------------------</code>
 <code>🌟TELE    : $tele</code>
 <code>🌟USER    : $user</code>
 <code>🌟ISP     : $ISP</code>
-<code>────────────────────</code>
+<code>-----------------------</code>
 <i>Notifikasi Via RVPNSTORES</i>
 <b>Tele : @RVPNSTORES</b>
 "
