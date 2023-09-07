@@ -253,9 +253,9 @@ KEY=$KEY
 TIME=$TIME
 URL=$URL
 TEXT="
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>-----------------------</code>
 <code>     Xray/Vmess Account</code>
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>-----------------------</code>
 <code>Remarks   : ${user}
 Domain    : ${domain}
 Limit Quota: ${Quota} GB
@@ -268,31 +268,25 @@ network   : ws or grpc
 Path      : /Multi-Path
 Dynamic   : https://bugmu.com/path
 Name      : vmess-grpc</code>
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
-<code> VMESS WS TLS</code>
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
-<code>${vmesslink1}</code>
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
-<code>VMESS WS NO TLS</code>
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
-<code>${vmesslink2}</code>
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
-<code> VMESS GRPC</code>
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
-<code>${vmesslink3}</code>
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>-----------------------</code>
+<code>Link TLS       : ${vmesslink1}</code>
+<code>-----------------------</code>
+<code>Link none TLS  : ${vmesslink2}</code>
+<code>-----------------------</code>
+<code>Link GRPC      : ${vmesslink3}</code>
+<code>-----------------------</code>
 <code>Format OpenClash :</code> <code>https://${domain}:81/vmess-$user.txt</code>
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>-----------------------</code>
 <code>Expired Until  :</code> <code>$expe</code>
-<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>-----------------------</code>
 "
 
 curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear
 clear
-echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" 
+echo -e "\e[33m-----------------------\033[0m" 
 echo -e "\\E[40;1;37m Xray/Vmess Account        \E[0m" 
-echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" 
+echo -e "\e[33m-----------------------\033[0m" 
 echo -e "Remarks        : ${user}" 
 echo -e "Domain         : ${domain}" 
 echo -e "User Quota     : ${Quota} GB"
@@ -305,15 +299,15 @@ echo -e "Security       : auto"
 echo -e "Network        : ws" 
 echo -e "Path           : /vmess" 
 echo -e "ServiceName    : vmess-grpc" 
-echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" 
+echo -e "\e[33m-----------------------\033[0m" 
 echo -e "Link TLS       : ${vmesslink1}" 
-echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" 
+echo -e "\e[33m-----------------------\033[0m" 
 echo -e "Link none TLS  : ${vmesslink2}" 
-echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" 
+echo -e "\e[33m-----------------------\033[0m" 
 echo -e "Link GRPC      : ${vmesslink3}" 
-echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" 
+echo -e "\e[33m-----------------------\033[0m" 
 echo -e "Format OpenClash : https://${domain}:81/vmess-$user.txt" 
-echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" 
+echo -e "\e[33m-----------------------\033[0m" 
 echo -e "Expired Until  : $expe"
-echo -e "\e[33m◇━━━━━━━━━━━━━━━━━◇\033[0m" 
+echo -e "\e[33m-----------------------\033[0m" 
 echo ""
