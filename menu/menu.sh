@@ -319,7 +319,7 @@ echo -e " ${BICyan}[${BIWhite}08${BICyan}]${y} •${NC} ${BIWhite}REBOOT        
 echo -e " ${BICyan}[${BIWhite}09${BICyan}]${y} •${NC} ${BIWhite}RESTART SERVICE    $NC  ${BICyan}[${BIWhite}20${BICyan}]${RED} • ${NC}${BIWhite}SCRIPT INFO   $NC"
 echo -e " ${BICyan}[${BIWhite}10${BICyan}]${y} •${NC} ${BIWhite}GEN-SSL CERTV      $NC  ${BICyan}[${BIWhite}21${BICyan}]${RED} • ${NC}${BIWhite}SETTING  $NC"
 echo -e " ${BICyan}[${BIWhite}11${BICyan}]${y} •${NC} ${BIWhite}ADD HOST           $NC  ${BICyan}[${BIWhite}22${BICyan}]${RED} • ${NC}${BIWhite}BOT NOTIF $NC"  
-echo -e " ${BICyan}[${BIWhite}x${BICyan}$]${y} •${NC} ${BIWhite}Ketik x to exit    $NC  ${BICyan}[${BIWhite}23${BICyan}]${RED} • ${NC}${BIWhite}UPDATE SCRIPT $NC"  
+echo -e " ${BICyan}[${BIWhite}x${BICyan}]${y} •${NC} ${BIWhite}Ketik x to exit    $NC  ${BICyan}[${BIWhite}23${BICyan}]${RED} • ${NC}${BIWhite}UPDATE SCRIPT $NC"  
 echo -e " ${RED}"
 echo -e "${BICyan}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo " "
