@@ -1,4 +1,68 @@
 #!/bin/bash
+dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
+###########- COLOR CODE -##############
+BIBlack='\033[1;90m'      # Black
+BIRed='\033[1;91m'        # Red
+BIGreen='\033[1;92m'      # Green
+BIYellow='\033[1;93m'     # Yellow
+BIBlue='\033[1;94m'       # Blue
+BIPurple='\033[1;95m'     # Purple
+BICyan='\033[1;96m'       # Cyan
+BIWhite='\033[1;97m'      # White
+UWhite='\033[4;37m'       # White
+On_IPurple='\033[0;105m'  #
+On_IRed='\033[0;101m'
+IBlack='\033[0;90m'       # Black
+IRed='\033[0;91m'         # Red
+IGreen='\033[0;92m'       # Green
+IYellow='\033[0;93m'      # Yellow
+IBlue='\033[0;94m'        # Blue
+IPurple='\033[0;95m'      # Purple
+ICyan='\033[0;96m'        # Cyan
+IWhite='\033[0;97m'       # White
+NC='\e[0m'
+green() { echo -e "\\033[32;1m${*}\\033[0m"; }
+red() { echo -e "\\033[31;1m${*}\\033[0m"; }
+# // Exporting Language to UTF-8
 
-NyariApaBang?="EncByWokszD";krF=FoL;Gnr=Vl;QIy=Is;UOt=FC;kVE=Sk;KlM=gM;Xwe=TF;oTX=dD;Yox=Qa;wQx=mb;Kqb=Zy;xWU=twB;gTp=auw;hwZ=Ejp;tHg=iQZ;ojo=shb;jhw=FjF;IDL=klV;wOA=yFT;PZL=XfL;DRJ=DiE;bmJ=FCa;XGN=dOT;QCK=dkY;SOb=WJE;RJx=uAv;czJ=dts;VGB=oCy;TyO=xGj;yHU=bpq;Nfb=Wct;doQ=Ibf;XCL=rax;ZNH=Hhf;Eoh=yCU;ghd=hut;ooz=VKY;qMf=PrY;Ecf=Lke;BbJ=jie;QOI=lOT;oi=QkU;yM=iDO;rT=twI;wa=BEk;Lf=SGl;Sx=Kri;yL=RiF;Xf=iZT;iv=fpC;fW=nki;qX=FrL;ba=OUY;czP=Hdm;ecN=WKt;QMW=BnB;Nsq=jdC;nof=OZt;bhx=qNV;vVN=xaU;smp=Wta;ceY=GDh;AIB=juO;miA=Cso;zgz=Hka;Kea=YMq;hUp=SWY;zMP=ozk;WGK=JEt;pkF=jjF;FCq=pFs;ZrQ=VcQ;ZjS=do;BTP=Su;sly=xM;aZl=vF;iJn=bo;QCl=HB;SCO=xo;fUq=Jo;Epq=zc;wxq=Ev;ziJ=Gx;Kzo=JF;PDO=pJ;qhq=yp;OYk=rj;OGy=Cc;hSK=xR;lnD=um;UXi=pl;xBF=xP;qOD=iX;RVy=nl;mqe=JK;rQt=CA;qJD=FR;sPp=XZ;moh=DC;Fsj=GWh;NTx=Jnx;dwG=ncr;Ugd=mFV;ZTt=WjI;mFG=lms;YGK=bPI;UKs=ibv;hka=JFE;zpQ=Gxt;VlF=Jxk;AEJ=cuk;SUZ=YiV;Wfq=NhZ;xLp=ray;QmE=mqM;fkp=tHl;Sek=XvT;qbj=EKu;RfA=xSe;fPQ=Oll;cif=jtg;GYE=yei;Prw=RTD;sMB=pEL;sxA=APb;aRs=HgZ;SXm=VSI;lZA=UKc;YMw=Lct;bwO=XQI;OxQ=COX;bPh=KqP;GVr=hRx;eoA=eID;AZK=fFj;PGC=XPy;ieV=gly;AUO=yit;GjW=jaZ;tBB=HSO;vdV=efl;HiW=VHx;JaQ=RCo;cGr=fsk;eib=jty;TPK=rlb;dhM=oDt;tCL=muK;gAg=xQq;xWl=eMt;AtB=mbQ;UzS=lee;xjU=CPZ;qLS=iIg;dQw=NHN;Dum=qAc;aei=Whw;afz=OcR;NWZ=Txs;gzI=HsZ;YmH=IIm;kZc=Ppd;qnZ=vjw;sQw=BmF;PAB=rGe;gah=aHu;XfD=uJJ;LmJ=PUK;jCz=XpN;gTg=hRF;cpS=fhx;wFI=fih;pHM=aTH;GIm=Jtb;XDy=XGY;zMs=kPd;VtP=pbP;ALj=acU;HEZ=Tre;EPr=vOf;eSC=AIk;TXH=szR;nNa=bGD;lQt=Qod;Qvm=HGI;tkS=IOY;qmZ=tDf;xxx=xOS;pFg=XCd;aVR=xGh;ooR=AHX;JVj=laY;TvM=kEx;SYU=hol;ddj=khS;aPP=oiI;Edo="
-";DSi=WYX;LHA=Gfx;VgU=gJZ;Rxh=xYy;bXG=gvs;eLoP="e";u18="6";Yt="l";Yxgs="";qwt="Fu";ieC=HO;XcH=Rv;Ugs=LC;vD=xp;fy=oW;Zl=LhH;oP=Jm;sDA=kpY;GHn=TB;wzk=Da;oiO=Ei;NaM=hIf;fC=vjz;kT=rz;sV=bZz;CL=ARL;Wc=dA;gZG=tGI;vpk=cM;Aao=tgy;sU=ld;LZ=Pr;BE=wCX;iN=fQ;RCe=Dm;Rc=Fl;Njo=OMq;gtb=SKa;Wf=jMB;Dm=wHr;Nx=Wn;ANT=jAK;oFy=Bnc;IjZ=Xj;DQa=oK;ewZ=Vm;QPf=lz;Cwg=aS;KEM=jS;fkE=hM;nLw=ym;FWv=BC;aDC=Lw;tW=Rgn;kw=Hgf;tQ=eSh;Fi=iGb;Or=snM;ZG=xqx;xC=WJr;Bf=haC;pT=THr;By=jbu;tm=Hcy;eT=nTC;UT=KCa;dk=Pxy;vG=TvX;HX=MMB;Ow=ZoT;UJ=LvE;rx=oMF;EB=VZx;OC=IfU;dv=lTx;Nk=TNq;Ej=bKu;dl=ZZi;yzL=bJ;EiG=LJ;iqg=gK;fbd=vg;OPl=Ei;tnI=YS;yBV=DA;yxh=Ks;Nic=Ih;wMq=tD;iDs=AQ;Nhh=zy;JWe=Ry;gC=AnI;qWN=uq;hIc=OAL;UOm=Nq;Xj=ax;GW=utn;Fmc=CaI;zeK=eT;hI=sl;Ae=RK;XV=doy;Dpq=Eg;Mmr=MZg;CXd=Bao;RND=WUC;CGm=SRK;DJh=LZw;ym=Ah;xzv=IX;FYi=YUX;v6T=" ";RzE="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 KowJtBzWzMDMcdSPD5EI0J3bwhXZKcSb3MzOws1MzADXn0DVIdUSMBCdy9Gc4VmCn0mNzsDMbNzM hVGbjpgCiMFUWByZul2ajVGaDJCIvh2YlpwOpAXav8Wau8mZulGcpBSLPFXLgQXZndHKk0DUJlVT ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4MSp4g0nbhl3QJJ0ekICIl1CIvh2Ylpgc ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4 ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4ASp4 9VGdph2VVtHJ9VGdph2VJJ0ekACIgACIgAiIgUWLg8GajVmCi03QOtHJQSp4ASp4ASp4ASp4ASp4 0lGaXlkQ7RyW95WY5NUSCtHJgACIgAiIgUWLg8GajVmCiICIl1CIvh2YlpgI9NkT7RCIMxUQJJFV gACIgICIl1CIvh2YlpgIgACIOBlVPBiJgg0UTBCduV3bjNWQgwWYpJHVg0VfuFWeDlkQ7RSMw0XZ gACIgM1UF1kVgQnb192YjFEIsFWayRFId1nbhl3QJJ0ekIDM9VGdph2VJJ0eksVfuFWeDlkQ7RCI jFEIsFWayRFId1nbhl3QJJ0ekMDM9VGdph2VJJ0eksVfuFWeDlkQ7RCIgACIgICIl1CIvh2YlpgI CtHJ0ATflRXaodVSCtHJb1nbhl3QJJ0ekACIgACIiASZtAyboNWZKICIgACIgM1UFxkVgQnb192Y b1nbhl3QJJ0ekACIgACIiASZtAyboNWZKICIgAiTBp0TSRFI05WdvN2YBBCbhlmcUBSX95WY5NUS gUWLg8GajVmCKICIgAySD90UtMFI05WdvN2YBBCbhlmcUBSX95WY5NUSCtHJ0ATflRXaodVSCtHJ iDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliTJli3nbhl3QJJ0ekAiI iDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliDIl iDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliDIliDIl gM0KsJHdDByWgI3bggHIzNXZyBVf39GbsVWWJJ0ekACIgACIiASZtAyboNWZKISfD50ekgJliDIl l1GI0NWZsV2UgICIw1CIkFWZypgIiAyboNWZKISfD50ekQXa4VUflRXaodVSCtHJt8GVgIKgiDSX pIjC7sDIsFWayRHI7AichVGbjBSKxogbpBCdw9GJgU2chNmCiICIl1CIvh2YlpAdw9GIiAiOgUnb gIXYlx2YgkCNKszOgM3clxmdsFWayRHI7AichVGbjBSKzowO7AyczVWb2xWYpJHdgsDIyFWZsNGI gUnbl1GI7AichVGbjBSKwowO7Aycz1CbsFWayRHI7AichVGbjBSK1owO7Aibhp2byRHbhlmc0ByO gsDIxACclVGbzByOgIyavNGIuF2alRHIoFGbhNHIhRmbhJCIvh2YlBSKqowO7ACdphXZgkCeKszO ==gCjF2clpwO7ACbhlmc01SduVWb";Mll="ch";HTv=Yyu;cbY=cId;FwM=nUK;Neo=URi;Jrd=ZsO;ZzZ=gsI;AGg=Krt;KoC=Usx;ftb=Vzm;kuT=EVS;AUX=NGv;Aow=suL;uBc=hlq;OqT=ApZ;kSe=ZTL;aFt=FKz;yqF=lEj;ZII=uml;BwC=JPx;gWH=eyv;wWA=hWw;unn=Brn;hxs=DiR;nPo=iOr;Uuo=lUG;zxW=Nkd;MAi=aWZ;XcA=xIq;sZL=MLV;rwV=lNF;GYU=UPS;WeS=kTk;Aym=btt;rGW=IDI;Uhx=DhE;Kut=fsH;eGn=UyX;VNh=YtK;QWo=gEO;Byf=nvi;Ezb=oBV;uWP=JEl;Vsp=Lgc;EAF=Byk;PSz=HCg;pyP=bQL;Uxq=ehM;WdA=Uij;pWM=bsv;oXm=BKe;mtM=qkr;XEB=pua;XzD=SPa;Kng=JSY;bFL=Zud;xbc=GSY;neu=TQJ;Ttj=EdI;ZCG=HXS;NSP=aRL;UPz=CwR;edR=xrL;jQC=PQv;ESa=fXd;eKc=KZo;WEy=DoO;fQg=tcd;FCk=GMk;YgE=Nzd;FAs=AFH;gRJ=wZL;ffM=Jsb;Ixf=RQY;Gmk=ugg;GRa=CTs;UiO=Yer;etb=mgM;fex=MqF;Nll=vPC;KWd=yXb;Muu=Mzy;wHZ=jjp;SmF=EZc;ZqQ=lNR;CuE=Afy;weE=KKV;ggU=fdX;wbE=YVE;TEj=yAz;and=qKr;MVm=jME;jUo=PRn;lUm=BLo;IUT=oDE;BDY=lkB;oQp=FKc;YEa=bpY;qOb=Izx;MfR=ODo;JmY=Kia;weH=FVf;URv=vSO;Jdp=BJH;opM=fhP;NUx=Qpe;iDY=ZNQ;lAj=vuK;imh=QaU;Cdp=mgw;wAJ=IMc;ANx=UQv;CkG=nsS;tuB=Lfj;KFb=ACa;Znn=SPN;Izy=AKY;MCI=uEV;Vas=kJi;OVF=xhN;ocJ=mis;CCq=zoG;Uun=Bsu;Vet=cPB;PMj=gXU;Svx=qVt;ado=LSJ;zGv=aIv;jyW=gEB;KLw=yan;nqU=foW;mPS=Zhi;oRH=HzR;aTq=iAA;LFG=yTk;LhE=dvZ;Gmd=aBt;lDM=FUf;KkS=LUv;ODo=ifH;LIW=oRx;kbu=cPC;WgK=RfX;NoQ=OpS;VWA=MwS;bPe=cOh;drL=JXi;tuj=aeR;nlI=RgR;qog=uHu;zLA=FCa;INo=pXp;PaQ=yJV;kPu=dmu;EgN=Wek;MXp=PIc;YEF=xAk;Zvz=EGN;Feh=yij;sv=TmN;Gc=WAR;kw=XRs;dT=fhJ;ed=WAu;rq=OFi;ak=auS;zU=gWJ;QB=PyR;Ci=HYT;DR=HGU;nEl=izK;Yon=JKg;aRR=osG;BLG=nGa;fad=iUJ;FeM=Oph;NIf=nUq;AdK=IHM;pMr=KRX;GJr=sor;Yzr=JJM;zCc=jhW;iac=Znx;lPF=qCm;GHi="o";Re="-";LcV=" ";H2o="t";O2h="r";r="ev";Gi="ba";x="s";sfT="d";x64="4";CTh=Vu;sh=dMK;Pl=GnF;MQ=HQe;dG=hZi;Tv=TuJ;BP=PPf;nh=Edv;pY=vGA;io=bPH;Rr=tdy;MF=jZJ;my=zmB;Yd=mtW;XA=kqf;VR=qss;BP=enZ;re=dnQ;os=Xua;kA=hzB;aE=JKy;vG=pcw;SO=gBc;FO=XMq;kK=ZHi;DwX=sS;mNb=im;nv=Cn;yNI=Hb;Yt=FQ;Pl=PU;ko=DJA;UX=tv;XD=UYM;uz=hIa;YVD=cJM;Zde=fi;IF=hLs;JCM=Dg;Fdw=JL;ieQ=FAu;ZMh=TQB;qHK=EM;wVK=bxY;nMR=mC;UL=Lep;wJ=eM;yc=dch;rIX=Vb;bBO=eT;Zpx=Iz;ang=Ln;AYe=Qy;UiQ=IU;usu=Xy;rkj=Ce;eVp=OY;aFw=wR;uNw=cJ;DQb=Tn;ZLx=ec;ipH=hk;pcK=rd;lCz=Ce;jxG=nx;Gkd=Pl;yFz=zk;vow=Qm;QBs=gz;dXe=sQ;dJU=vr;urX=mj;IF=qGI;UoJ=hD;x=$(eval $eLoP$Mll$GHi$v6T$Re$eLoP$v6T$RzE$v6T|$v6T$H2o$O2h$LcV"$LcV"$LcV"$Edo"$LcV|$v6T$O2h$r$v6T|$v6T$Gi$x$eLoP$u18$x64$v6T$Re$sfT);eval "$x";GMZ=snx;llB=diL;pxn=skL;Syg=GFT;RaJ=zXK;ZKL=BSQ;XCH=tmb;eyL=TOc;Ime=EZW;TFM=mN;tUA=Ab;fnp=ch;FNp=pJ;JRk=Az;YXw=hu;Qde=tk;zmI=lH;MdB=kG;cRe=zm;ygE=Og;MrN=Wn;Rwc=UL;KRw=NX;AmN=nu;lUf=HN;HVY=od;pqW=bz;hzm=tv;vAz=ql;fVA=KK;WXS=HX;PRd=CDX;lwM=wEt;ZcX=rAB;Yta=Syw;hvo=gTx;mtU=YbQ;Ilo=unK;Ava=XiM;mET=pHp;fFk=Pno;XBK=taz;dtp=zbA;bMu=zKL;FPC=PwO;xXA=dwc;Alj=ylC;JQq=JPx;MUH=FcT;cvl=azu;HPj=sSJ;dsl=XvS;Hoq=nKA;AZD=sfK;JFc=NZK;eEE=DrT;ZhW=fMr;VBT=enR;poD=hwH;lLU=qkd;yTa=OEZ;ZpV=WQP;Jeg=Mwj;YGH=HdD;mKz=pLU;PNn=ako;scF=rtk;QTH=sHP;Eto=FIR;BlM=WAX;UHF=WBV;Fud=mEb;sGh=Zzy;lPW=SOK;mcu=ZDf;QdD=YZM;HcF=LzS;GNn=Hyn;cql=ioJ;LKm=DNv;TAH=FaF;VYt=ERc;vhF=xvU;tNq=Uzi;JaE=bgV;bpG=opJ;CsA=UQX;pGD=TXG;AZk=bTy;bId=bNE;yql=fVT;Xcy=BmA;UHz=jRf;UNz=KZk;PXl=Vsy;Stv=Sed;cyB=zLX;gGz=JJP;IyT=xSZ;Zdj=nVJ;yQZ=vVc;sHL=Vfg;Zro=zth;XPf=sFS;nQQ=dnd;SNh=eWO;fOZ=Xjc;fgB=rQS;UjE=cpS;xYk=qWB;koB=ZFE;oQQ=hSL;ufm=zwQ;mzC=UfF;gQl=SLT;wwc=Jcb;tDN=SNI;ZFg=atH;UlF=ajb;DaK=zqX;KFL=uPP;mjy=zbB;ofO=nbM;vfl=vdB;SDM=yQQ;AfY=mzE;IHi=AeT;oVK=WsK;XhO=hRC;pOA=ScU;bCh=FOX;rgF=qzX;zyy=hXg;utq=MGT;Lkd=CTs;Vlb=XYZ;Ziu=aFC;dgF=qOn;Bpe=yss;Xoc=NXh;dGV=AjA;Zux=APj;diU=LZO;Vzp=lBl;xDW=otu;wxh=LmE;jsJ=xnu;AuO=OCw;iZA=dLf;pmj=lwe;RIo=tLO;TcY=glu;EVQ=Bxb;hkK=RTP;GcY=FoO;TDT=VhE;iZG=wyh;FNH=Bmj;BJh=mAj;SCs=hOS;kkj=Dgb;une=TET;DWN=wEf;JZr=EEn;eev=vSC;Gcg=IFa;jkQ=FDn;uiO=zBO;JIM=vwW;GtR=lZX;WoV=mWR;bZm=gDj;XgT=spD;dfG=pHI;IjF=XxS;pWp=hMH;Ul=fIj;dD=mht;yw=cOO;Vw=kik;Zo=RGl;XT=hQB;CB=Ofi;mM=Dun;cN=Uyp;rL=yIY;eD=qYt;jB=nnI;Wf=not;Yv=Rqc;Yu=OgM;xZ=FzE;ec=jKM;gB=qoM;rZ=lDg;HY=BTw;LB=TJn;Tk=qDl;HY=nSN;kp=iUS;ThankYou="SourceIniDijual";
+export LANG='en_US.UTF-8'
+export LANGUAGE='en_US.UTF-8'
+
+
+# // Export Color & Information
+export RED='\033[0;31m'
+export GREEN='\033[0;32m'
+export YELLOW='\033[0;33m'
+export BLUE='\033[0;34m'
+export PURPLE='\033[0;35m'
+export CYAN='\033[0;36m'
+export LIGHT='\033[0;37m'
+export NC='\033[0m'
+
+MYIP=$(wget -qO- ipinfo.io/ip);
+echo "Checking VPS"
+
+clear
+echo -e "${BICyan} ┌─────────────────────────────────────────────────────┐${NC}"
+echo -e "       ${BIWhite}${UWhite}TRIALL ${NC}"
+echo -e ""
+echo -e "     ${BICyan}[${BIWhite}01${BICyan}] Trial Account SSH & OVPN   "
+echo -e "     ${BICyan}[${BIWhite}02${BICyan}] Trial Account VMESS    "
+echo -e "     ${BICyan}[${BIWhite}03${BICyan}] Trial Account VLESS     "
+echo -e "     ${BICyan}[${BIWhite}04${BICyan}] Trial Account TROJAN   "
+
+echo -e " ${BICyan}└─────────────────────────────────────────────────────┘${NC}"
+echo -e "     ${BIYellow}Press x or [ Ctrl+C ] • To-${BIWhite}Exit${NC}"
+echo ""
+read -p " Select menu : " opt
+echo -e ""
+case $opt in
+1) clear ; trial ;;
+2) clear ; trialvmess ;;
+3) clear ; trialvless ;;
+4) clear ; trialtrojan ;;
+0) clear ; menu ;;
+x) exit ;;
+*) echo "anda salah tekan cok" ; sleep 1 ; menu-trial ;;
+esac
