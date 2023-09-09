@@ -308,7 +308,7 @@ echo -e "${BICyan}━━━━━━━━━━━━━━━━━━━━�
 echo -e "${BIWhite}                       ⇱ MENU SERVICE ⇲                         \E[0m"
 echo -e "${BICyan}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e ""
-echo -e " ${BICyan}[${BIWhite}01${BICyan}]${y} •${NC} ${BIWhite}SSHWS MENU         $NC  ${BICyan}[${BIWhite}12${BICyan}]${RED} • ${NC}${BIWhite}BOT SSH $NC"
+echo -e " ${BICyan}[${BIWhite}01${BICyan}]${y} •${NC} ${BIWhite}SSHWS MENU         $NC  ${BICyan}[${BIWhite}12${BICyan}]${RED} • ${NC}${BIWhite}BOT PANEL MENU$NC"
 echo -e " ${BICyan}[${BIWhite}02${BICyan}]${y} •${NC} ${BIWhite}VMESS MENU         $NC  ${BICyan}[${BIWhite}13${BICyan}]${RED} • ${NC}${BIWhite}CEK RUNNING SERVICE $NC"
 echo -e " ${BICyan}[${BIWhite}03${BICyan}]${y} •${NC} ${BIWhite}VLESS MENU         $NC  ${BICyan}[${BIWhite}14${BICyan}]${RED} • ${NC}${BIWhite}CREATE SLOW$NC"
 echo -e " ${BICyan}[${BIWhite}04${BICyan}]${y} •${NC} ${BIWhite}TROJAN MENU        $NC  ${BICyan}[${BIWhite}15${BICyan}]${RED} • ${NC}${BIWhite}BOT BACKUP  $NC"
