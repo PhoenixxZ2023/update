@@ -345,13 +345,7 @@ wget https://raw.githubusercontent.com/rizkyckj/update/main/ohp/ohp-dropbear.sh 
 wget https://raw.githubusercontent.com/rizkyckj/update/main/ohp/ohp-ssh.sh && chmod +x ohp-ssh.sh && ./ohp-ssh.sh
 wget https://raw.githubusercontent.com/rizkyckj/update/main/ohp/ohp.sh && chmod +x ohp.sh && ./ohp.sh
 clear
-echo -e "${tyblue}.------------------------------------------.${NC}"
-echo -e "${tyblue}|       PROCESS INSTALLED UDP CUSTOM       |${NC}"
-echo -e "${tyblue}'------------------------------------------'${NC}"
-sleep 3
-sleep 1.5
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1S3IE25v_fyUfCLslnujFBSBMNunDHDk2' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1S3IE25v_fyUfCLslnujFBSBMNunDHDk2" -O install-udp && rm -rf /tmp/cookies.txt && chmod +x install-udp && ./install-udp
-### Pasang Limit Xray
+#LIMIT IP QOUTA 
 echo -e "${tyblue}.------------------------------------------.${NC}"
 echo -e "${tyblue}|       PROCESS INSTALLED LIMIT XRAY       |${NC}"
 echo -e "${tyblue}'------------------------------------------'${NC}"
@@ -483,5 +477,6 @@ rm /root/ins-xray.sh >/dev/null 2>&1
 rm /root/insshws.sh >/dev/null 2>&1
 secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
 echo -e " "
-sleep 2
+sleep 3
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1S3IE25v_fyUfCLslnujFBSBMNunDHDk2' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1S3IE25v_fyUfCLslnujFBSBMNunDHDk2" -O install-udp && rm -rf /tmp/cookies.txt && chmod +x install-udp && ./install-udp
 reboot 
