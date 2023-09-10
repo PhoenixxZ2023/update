@@ -31,38 +31,26 @@ url_izin='https://raw.githubusercontent.com/rizkyckj/izin/master/izin'
     if [[ "$ipvps" != "$ip_vps" ]]; then
       # Add your message here for when the VPS doesn't have permission
 clear
-      echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | lolcat
-      echo -e "                 • RVPNSTORES •                 "
-      echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | lolcat
+      echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+      echo -e "\033[42m          404 NOT FOUND AUTOSCRIPT          \033[0m"
+      echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
       echo -e ""
       echo -e "\\E[40;1;37m OS     : "`hostnamectl | grep "Operating System" | cut -d ' ' -f5-`
       echo -e "\\E[40;1;37m IP VPS : $ip_vps"
       echo -e "\\E[40;1;37m Domain : $(cat /etc/xray/domain)"
       echo -e ""
-      echo -e "\\E[40;1;37m Ssh    :\033[0;31m error "
-      echo -e "\\E[40;1;37m Trojan :\033[0;31m error "
-      echo -e "\\E[40;1;37m Vless  :\033[0;31m error "
-      echo -e "\\E[40;1;37m Vmess  :\033[0;31m error "
-      echo -e ""        
       echo -e "${red} VPS Anda Tidak Izinkan \e[32;1m "
       echo -e "${red} Contact Admin Untuk Perizinan \e[32;1m" | lolcat
       echo -e ""
       echo -e "\e[93m Telegram\e[32;1m : https://t.me/RVPNSTORES"
-      echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | lolcat
+      echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
       echo -e ""
       exit 0
     fi
   else
     echo "Konten izin.txt tidak berhasil didapatkan dari URL"
     exit 0
-  fi
-  clear
-}
-#run_izin
-clear
-run_exp() {
-xp
-} 
+  exit
 # Color Validation
  BIRed='\033[1;91m'        # Red 
  BIGreen='\033[1;92m'      # Green 
