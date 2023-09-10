@@ -72,6 +72,6 @@ case $opt in
 12) clear ; show-ssh ; exit ;;
 0) clear ; menu ; exit ;;
 x) exit ;;
-*) echo "Anda salah tekan " ; sleep 1 ; m-sshovpn ;;
+*) echo "Anda salah tekan " ; sleep 1 ; menu-ssh ;;
 esac
 
