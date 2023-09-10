@@ -35,14 +35,14 @@ clear
       echo -e "                 • RVPNSTORES •                 "
       echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | lolcat
       echo -e ""
-      echo -e "\\E[40;1;37m Nama\033[0;31m   : $nama "
-      echo -e "\\E[40;1;37m IP VPS\033[0;31m : $ip_vps"
-      echo -e "\\E[40;1;37m Domain\033[0;31m : $(cat /etc/xray/domain)"
+      echo -e "\\E[40;1;37m OS     : "`hostnamectl | grep "Operating System" | cut -d ' ' -f5-`
+      echo -e "\\E[40;1;37m IP VPS : $ip_vps"
+      echo -e "\\E[40;1;37m Domain : $(cat /etc/xray/domain)"
       echo -e ""
-      echo -e "\\E[40;1;37m Ssh\033[0;31m    : error "
-      echo -e "\\E[40;1;37m Trojan\033[0;31m : error "
-      echo -e "\\E[40;1;37m Vless\033[0;31m  : error "
-      echo -e "\\E[40;1;37m Vmess\033[0;31m  : error "
+      echo -e "\\E[40;1;37m Ssh    :\033[0;31m error "
+      echo -e "\\E[40;1;37m Trojan :\033[0;31m error "
+      echo -e "\\E[40;1;37m Vless  :\033[0;31m error "
+      echo -e "\\E[40;1;37m Vmess  :\033[0;31m error "
       echo -e ""        
       echo -e "${red} VPS Anda Tidak Izinkan \e[32;1m "
       echo -e "${red} Contact Admin Untuk Perizinan \e[32;1m" | lolcat
