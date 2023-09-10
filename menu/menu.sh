@@ -1,7 +1,6 @@
  #!/bin/bash 
 # COLOR VALIDATION
 echo 1 > /proc/sys/vm/drop_caches
-run_izin() {
 #link izin ip vps
 url_izin='https://raw.githubusercontent.com/rizkyckj/izin/master/izin'
 
@@ -36,14 +35,14 @@ clear
       echo -e "                 • RVPNSTORES •                 "
       echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | lolcat
       echo -e ""
-      echo -e "\e[93m Nama\e[32;1m   : $nama "
-      echo -e "\e[93m IP VPS\e[32;1m : $ip_vps"
-      echo -e "\e[93m Domain\e[32;1m : $(cat /etc/xray/domain)"
+      echo -e "\\E[40;1;37m Nama\e[32;1m   : $nama "
+      echo -e "\\E[40;1;37m IP VPS\e[32;1m : $ip_vps"
+      echo -e "\\E[40;1;37m Domain\e[32;1m : $(cat /etc/xray/domain)"
       echo -e ""
-      echo -e "\e[93m Ssh\e[32;1m    : STOPPED "
-      echo -e "\e[93m Trojan\e[32;1m : STOPPED "
-      echo -e "\e[93m Vless\e[32;1m  : STOPPED "
-      echo -e "\e[93m Vmess\e[32;1m  : STOPPED "
+      echo -e "\\E[40;1;37m Ssh\e[1;31m    : error "
+      echo -e "\\E[40;1;37m Trojan\e[1;31m : error "
+      echo -e "\\E[40;1;37m Vless\e[1;31m  : error "
+      echo -e "\\E[40;1;37m Vmess\e[1;31m  : error "
       echo -e ""        
       echo -e "${red} VPS Anda Tidak Izinkan \e[32;1m "
       echo -e "${red} Contact Admin Untuk Perizinan \e[32;1m" | lolcat
