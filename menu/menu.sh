@@ -32,9 +32,6 @@ url_izin='https://raw.githubusercontent.com/rizkyckj/izin/master/izin'
       # Add your message here for when the VPS doesn't have permission
 clear
       echo -e "${BICyan}────────────────────────────────────────────\033[0m"
-      echo -e "${BICyan}          404 NOT FOUND AUTOSCRIPT          \033[0m"
-      echo -e "${BICyan}────────────────────────────────────────────\033[0m"
-      echo -e ""
       echo -e "\\E[40;1;37m OS     : "`hostnamectl | grep "Operating System" | cut -d ' ' -f5-`
       echo -e "\\E[40;1;37m IP VPS : $ip_vps"
       echo -e "\\E[40;1;37m Domain : $(cat /etc/xray/domain)"
