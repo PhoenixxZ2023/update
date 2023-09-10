@@ -31,16 +31,11 @@ url_izin='https://raw.githubusercontent.com/rizkyckj/izin/master/izin'
     if [[ "$ipvps" != "$ip_vps" ]]; then
       # Add your message here for when the VPS doesn't have permission
 clear
-      echo -e "${BICyan}────────────────────────────────────────────\033[0m"
       echo -e "\\E[40;1;37m OS     : "`hostnamectl | grep "Operating System" | cut -d ' ' -f5-`
       echo -e "\\E[40;1;37m IP VPS : $ip_vps"
       echo -e "\\E[40;1;37m Domain : $(cat /etc/xray/domain)"
       echo -e ""
       echo -e "${red} VPS Anda Tidak Izinkan \e[32;1m "
-      echo -e "${BICyan} Contact Admin Untuk Perizinan \e[32;1m" | lolcat
-      echo -e ""
-      echo -e "${BICyan} Telegram\e[32;1m : https://t.me/RVPNSTORES"
-      echo -e "${BICyan}────────────────────────────────────────────\033[0m"
       echo -e ""
       exit 0
     fi
