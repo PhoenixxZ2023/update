@@ -72,5 +72,5 @@ case $opt in
 7) clear ; show-trojan ;;
 0) clear ; menu ;;
 x) exit ;;
-*) echo "Anda Salah Tekan" ; sleep 1 ; m-trojan ;;
+*) echo "Anda Salah Tekan" ; sleep 1 ; menu-trojan ;;
 esac
