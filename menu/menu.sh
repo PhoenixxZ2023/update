@@ -1,35 +1,39 @@
  #!/bin/bash 
 # COLOR VALIDATION
+echo 1 > /proc/sys/vm/drop_caches
+run_izin() {
 #link izin ip vps
 url_izin='https://raw.githubusercontent.com/rizkyckj/izin/master/izin'
 
-#IP VPS
-ip_vps=$(curl -sS ifconfig.me)
+  # Mendapatkan IP VPS saat ini
+  ip_vps=$(curl -s ifconfig.me)
 
-# Mendapatkan isi file izin.txt dari URL
-izin=$(curl -s "$url_izin")
+  # Mendapatkan isi file izin.txt dari URL
+  izin=$(curl -s "$url_izin")
 
-# Memeriksa apakah konten izin.txt berhasil didapatkan
-if [[ -n "$izin" ]]; then
-  while IFS= read -r line; do
-    # Memisahkan nama VPS, IP VPS, dan tanggal kadaluwarsa
-    nama=$(echo "$line" | awk '{print $1}')
-    ipvps=$(echo "$line" | awk '{print $2}')
-    tanggal=$(echo "$line" | awk '{print $3}')
+  # Memeriksa apakah konten izin.txt berhasil didapatkan
+  if [[ -n "$izin" ]]; then
+    while IFS= read -r line; do
+      # Memisahkan nama VPS, IP VPS, dan tanggal kadaluwarsa
+      nama=$(echo "$line" | awk '{print $1}')
+      ipvps=$(echo "$line" | awk '{print $2}')
+      tanggal=$(echo "$line" | awk '{print $3}')
 
-    # Memeriksa apakah IP VPS saat ini cocok dengan IP VPS yang ada di izin.txt
-    if [[ "$ipvps" == "$ip_vps" ]]; then
-      echo "Nama VPS: $nama"
-      echo "IP VPS: $ipvps"
-      echo "Tanggal Kadaluwarsa: $tanggal"
-      break
-    fi
-  done <<< "$izin"
+      # Memeriksa apakah IP VPS saat ini cocok dengan IP VPS yang ada di izin.txt
+      if [[ "$ipvps" == "$ip_vps" ]]; then
+        echo "Nama VPS: $nama"
+        echo "IP VPS: $ipvps"
+        echo "Tanggal Kadaluwarsa: $tanggal"
+        break
+      fi
+    done <<< "$izin"
 
-  # Memeriksa apakah IP VPS ditemukan dalam izin.txt
-  if [[ "$ipvps" != "$ip_vps" ]]; then
-    echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | lolcat
-      echo -e "                 • RVPN STORES •                 "
+    # Memeriksa apakah IP VPS ditemukan dalam izin.txt
+    if [[ "$ipvps" != "$ip_vps" ]]; then
+      # Add your message here for when the VPS doesn't have permission
+clear
+      echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | lolcat
+      echo -e "                 • RVPNSTORES •                 "
       echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | lolcat
       echo -e ""
       echo -e "\e[93m Nama\e[32;1m   : $nama "
@@ -53,7 +57,14 @@ if [[ -n "$izin" ]]; then
     echo "Konten izin.txt tidak berhasil didapatkan dari URL"
     exit 0
   fi
-
+  clear
+}
+#run_izin
+clear
+run_exp() {
+xp
+} 
+# Color Validation
  BIRed='\033[1;91m'        # Red 
  BIGreen='\033[1;92m'      # Green 
  BIYellow='\033[1;93m'     # Yellow 
