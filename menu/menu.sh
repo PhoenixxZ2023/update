@@ -332,7 +332,6 @@ echo -e "\E[39;1;92m                   ⇱ SERVER INFORMATION ⇲               
 echo -e "${BICyan}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"                                                                         
 echo -e "${BICyan} ⇲  ${BICyan}OS              :  ${BIYellow}$MODEL${NC}"
 echo -e "${BICyan} ⇲  ${BICyan}LOAD CPU        :  ${BIYellow}$LOADCPU%${NC}"
-echo -e "${BICyan} ⇲  ${BICyan}CORE            :  ${BIYellow}$persencpu${NC}"
 echo -e "${BICyan} ⇲  ${BICyan}DOMAIN          :  ${BIYellow}$(cat /etc/xray/domain)${NC}" 
 echo -e "${BICyan} ⇲  ${BICyan}NS DOMAIN       :  ${BIYellow}$(cat /etc/xray/dns)${NC}" 
 echo -e "${BICyan} ⇲  ${BICyan}IP VPS          :  ${BIYellow}$MYIP${NC}"                                   
