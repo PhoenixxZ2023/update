@@ -50,7 +50,7 @@ clear
   else
     echo "Konten izin.txt tidak berhasil didapatkan dari URL"
     exit 0
-  exit
+  fi
 # Color Validation
  BIRed='\033[1;91m'        # Red 
  BIGreen='\033[1;92m'      # Green 
