@@ -28,6 +28,64 @@ YELL='\033[0;33m'
  COLOR1='\033[0;35m' 
  COLOR2='\033[0;39m' 
  clear
+
+BURIQ () {
+    curl -sS https://raw.githubusercontent.com/zheevpn/izin/main/zye > /root/tmp
+    data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
+    for user in "${data[@]}"
+    do
+    exp=( `grep -E "^### $user" "/root/tmp" | awk '{print $3}'` )
+    d1=(`date -d "$exp" +%s`)
+    d2=(`date -d "$biji" +%s`)
+    exp2=$(( (d1 - d2) / 86400 ))
+    if [[ "$exp2" -le "0" ]]; then
+    echo $user > /etc/.$user.ini
+    else
+    rm -f /etc/.$user.ini > /dev/null 2>&1
+    fi
+    done
+    rm -f /root/tmp
+}
+
+MYIP=$(curl -sS ipv4.icanhazip.com)
+Name=$(curl -sS https://raw.githubusercontent.com/zheevpn/izin/main/zye | grep $MYIP | awk '{print $2}')
+echo $Name > /usr/local/etc/.$Name.ini
+CekOne=$(cat /usr/local/etc/.$Name.ini)
+
+Bloman () {
+if [ -f "/etc/.$Name.ini" ]; then
+CekTwo=$(cat /etc/.$Name.ini)
+    if [ "$CekOne" = "$CekTwo" ]; then
+        res="Expired"
+    fi
+else
+res="Permission Accepted..."
+fi
+}
+
+PERMISSION () {
+    MYIP=$(curl -sS ipv4.icanhazip.com)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/zheevpn/izin/main/zye | awk '{print $4}' | grep $MYIP)
+    if [ "$MYIP" = "$IZIN" ]; then
+    Bloman
+    else
+    res="Permission Denied!"
+    fi
+    BURIQ
+}
+red='\e[1;31m'
+green='\e[1;32m'
+NC='\e[0m'
+green() { echo -e "\\033[32;1m${*}\\033[0m"; }
+red() { echo -e "\\033[31;1m${*}\\033[0m"; }
+PERMISSION
+
+if [ "$res" = "Expired" ]; then
+Exp="\e[36mExpired\033[0m"
+else
+Exp=$(curl -sS https://raw.githubusercontent.com/zheevpn/izin/main/zye | grep $MYIP | awk '{print $3}')
+fi
+
 BIBlack='\033[1;90m'      # Black
 BIRed='\033[1;91m'        # Red
 BIGreen='\033[1;92m'      # Green
@@ -114,10 +172,17 @@ export UNDERLINE="\e[4m"
 #totalram=$(($total_ram/1024))
 USAGERAM=$(free -m | awk 'NR==2 {print $3}')
 
-# User Active 
-Exp="Lifetime"
-Name="ZheeVPN"
-UP="https://raw.githubusercontent.com/zheevpn/zvn/main/up.sh"
+# Status ExpiRED Active | YogzVPN
+Info="(${c2}Active${NC})"
+Error="(${red}Expired${NC})"
+today=`date -d "0 days" +"%Y-%m-%d"`
+Exp1=$(curl https://raw.githubusercontent.com/zheevpn/izin/main/zye | grep $MYIP | awk '{print $4}')
+if [[ $today < $Exp1 ]]; then
+sts="${Info}"
+else
+sts="${Error}"
+fi
+echo -e "\e[32mloading...\e[0m"
 clear
 
 persenmemori="$(echo "scale=2; $usmem*100/$tomem" | bc)"
@@ -288,27 +353,64 @@ else
     ssh=$(cat /etc/ssh/.ssh.db | grep "#ssh1#" | wc -l)
 fi
 clear
-echo -e "\033[1;93m──────────────────────────────────────────\033[0m"
-echo -e "\033[42m    ∆ INFORMATION AUTOSCRIPT VPS ∆                       \033[0m"
-echo -e "\033[1;93m──────────────────────────────────────────\033[0m"
-echo -e " ${YELL}System OS${NC}     : \033[0;32m$MODEL${NC}"
-echo -e " ${YELL}Server RAM${NC}    : \033[0;32m$RAM MB $NC"
-echo -e " ${YELL}Usage RAM${NC}     : \033[0;32m$USAGERAM MB $NC"
-echo -e " ${YELL}Usage Memory${NC}  : \033[0;32m$MEMOFREE${NC}"
-echo -e " ${YELL}LoadCPU${NC}       : \033[0;32m$LOADCPU%${NC}"
-echo -e " ${YELL}Uptime Server${NC} : \033[0;32m$SERONLINE${NC}"
-echo -e " ${YELL}Core System${NC}   : \033[0;32m$CORE${NC}"
-echo -e " ${YELL}Date${NC}          : \033[0;32m$DATEVPS${NC}"
-echo -e " ${YELL}Time${NC}          : \033[0;32m$TIMEZONE${NC}"
-echo -e " ${YELL}Isp VPS${NC}       : \033[0;32m$ISP${NC}"
-echo -e " ${YELL}City${NC}          : \033[0;32m$CITY${NC}"
-echo -e " ${YELL}IP VPS${NC}        : \033[0;32m$IPVPS${NC}"
-echo -e " ${YELL}Domain${NC}        : \033[0;32m$domain${NC}"
-echo -e " ${YELL}NS Domain${NC}     : \033[0;32m$NS${NC}"
-echo -e " ${YELL}Exp Script${NC}    : \033[0;32m$Exp${NC}"
-echo -e " ${YELL}Name Author${NC}   : \033[0;32m$Name${NC}"
+echo -e " ${z}╭══════════════════════════════════════════════════════════╮${NC}"
+echo -e " ${z}│$NC\033[41m         Welcome To Script Premium zheeVPN Store          $NC${z}│$NC"
+echo -e " ${z}╰══════════════════════════════════════════════════════════╯${NC}"
+echo -e " ${z}╭══════════════════════════════════════════════════════════╮${NC}"
+echo -e " ${z}│$NC$r ⇲ $NC${z} SYSTEM OS     $blue=$NC $MODEL${NC}"
+echo -e " ${z}│$NC$r ⇲ $NC${z} ISP           $blue=$NC $ISP${NC}"
+echo -e " ${z}│$NC$r ⇲ $NC${z} SERVER RAM    $blue=$NC $RAM MB | $USAGERAM MB ${NC}"
+echo -e " ${z}│$NC$r ⇲ $NC${z} UPTIME SERVER $blue=$NC $uptime${NC}"
+echo -e " ${z}│$NC$r ⇲ $NC${z} DATE          $blue=$NC $DATEVPS${NC}"
+echo -e " ${z}│$NC$r ⇲ $NC${z} TIME          $blue=$NC $TIMEZONE${NC}"
+echo -e " ${z}│$NC$r ⇲ $NC${z} IP VPS        $blue=$NC $MYIP${NC}"
+echo -e " ${z}│$NC$r ⇲ $NC${z} DOMAIN        $blue=$NC $domain${NC}"
+echo -e " ${z}╰══════════════════════════════════════════════════════════╯${NC}"
+echo -e "                ${KIRI} ${purple}INFORMATION ACCOUNT${NC} ${KANAN}"
+echo -e "       ───────────────────────────────────────────────${NC}" | lolcat 
+echo -e "           ${CYAN}SSH/OPENVPN${NC}    $y=$NC $ssh1${NC}" "$a"
+echo -e "           ${CYAN}VMESS/WS/GRPC${NC}  $y=$NC $vma$NC" "$a"
+echo -e "           ${CYAN}VLESS/WS/GRPC${NC}  $y=$NC $vla$NC" "$a"
+echo -e "           ${CYAN}TROJAN/WS/GRPC${NC} $y=$NC $tra${NC}" "$a"
+echo -e "           ${CYAN}SHADOW/WS/GRPC${NC} $y=$NC $ssa${NC} $a"
+echo -e "       ───────────────────────────────────────────────${NC}" | lolcat 
+echo -e " ${z}╭════════════════╮╭══════════════════╮╭════════════════════╮${NC}"
+echo -e " ${z}│ ${NC}${z} SSH$NC : $resssh" "        ${z} NGINX$NC : $resngx" "        ${z} XRAY$NC : $resv2r      $NC${z}│$NC" 
+echo -e " ${z}│ ${NC}${z} WS-ePRO$NC : $ressshws" "    ${z} DROPBEAR$NC : $resdbr" "     ${z} HAPROXY$NC : $resst   $NC${z}│$NC" 
+echo -e " ${z}╰════════════════╯╰══════════════════╯╰════════════════════╯${NC}"
+echo -e " ${z}╭══════════════════════════════════════════════════════════╮${NC}"
+echo -e " ${z}│$NC [${r}01${NC}]${purple} SSH MENU$NC     ${z}│$NC [${r}08${NC}]${purple} DELL ALL EXP$NC${z} │$NC [${r}15${NC}]${purple} BCKP/RSTR   $NC${z}│$NC"
+echo -e " ${z}│$NC [${r}02${NC}]${purple} VMESS MENU$NC   ${z}│$NC [${r}09${NC}]${purple} AUTOREBOOT$NC  ${z} │$NC [${r}16${NC}]${purple} REBOOT      $NC${z}│$NC"    
+echo -e " ${z}│$NC [${r}03${NC}]${purple} VLESS MENU$NC   ${z}│$NC [${r}10${NC}]${purple} INFO PORT$NC   ${z} │$NC [${r}17${NC}]${purple} RESTART     $NC${z}│$NC"   
+echo -e " ${z}│$NC [${r}04${NC}]${purple} TROJAN MENU$NC  ${z}│$NC [${r}11${NC}]${purple} SPEEDTEST$NC   ${z} │$NC [${r}18${NC}]${purple} DOMAIN      $NC${z}│$NC" 
+echo -e " ${z}│$NC [${r}05${NC}]${purple} SHADOW MENU$NC  ${z}│$NC [${r}12${NC}]${purple} RUNNING$NC     ${z} │$NC [${r}19${NC}]${purple} NS DOMAIN   $NC${z}│$NC"
+echo -e " ${z}│$NC [${r}06${NC}]${purple} TRIALL MENU$NC  ${z}│$NC [${r}13${NC}]${purple} VPS INFO$NC    ${z} │$NC [${r}20${NC}]${purple} CERT SSL    $NC${z}│$NC"
+echo -e " ${z}│$NC [${r}07${NC}]${purple} UPDATE SCRIPT$NC${z}│$NC [${r}14${NC}]${purple} CREATE SLOW$NC ${z} │$NC [${r}21${NC}]${purple} CLEAR CACHE $NC${z}│$NC"
+echo -e " ${z}│$NC [${r}22${NC}]${purple} BOT NOTIF$NC    ${z}│$NC [${r}23${NC}]${purple} BOT BCKP$NC    ${z} │$NC [${r}24${NC}]${purple} BOT PANEL   $NC${z}│$NC"
+echo -e " ${z}│                                                          $NC${z}│$NC"
+echo -e " ${z}│$NC [${r}25${NC}]${purple} CHANGE BANNER VPS$NC ${KANAN} \E[0m\033[0;34m                              $NC${z}│$NC"
+echo -e " ${z}│$NC [${r}00${NC}]${purple} BACK TO EXIT MENU$NC ${KANAN} \E[0m\033[0;34m                              $NC${z}│$NC"
+echo -e " ${z}╰══════════════════════════════════════════════════════════╯${NC}"
+DATE=$(date +'%d %B %Y')
+datediff() {
+    d1=$(date -d "$1" +%s)
+    d2=$(date -d "$2" +%s)
+    echo -e " ${z}│${NC} ${z}Expiry Script $blue=${NC} ${BIGreen}$exp ${NC}( ${r}$(( (d1 - d2) / 86400 )) ${NC}Days ) $NC"
+}
+mai="datediff "$Exp" "$DATE""
+echo -e " ${z}╭══════════════════════════════════════════════════════════╮${NC}"
+echo -e " ${z}│${NC} ${z}Version       $blue=${NC} V3.1 ${NC}"
+echo -e " ${z}│${NC} ${z}User          $blue=${NC}\033[1;36m $Name \e[0m"
+echo -e " ${z}│${NC} ${z}Script Status $blue=${NC} (${IGreen}Aktive${NC}) ${NC}"
+if [ $exp \< 1000 ];
+then
+echo -e "   $z│$NC License      : ${GREEN}$sisa_hari$NC Days Tersisa $NC"
+else
+    datediff "$Exp" "$DATE"
+fi;
+echo -e " ${z}╰══════════════════════════════════════════════════════════╯${NC}"
 echo " "
-read -p "   Select Menu : " opt
+read -p " Select Menu : " opt
 echo -e ""
 case $opt in
 01 | 1) clear ; menu-ssh ;;
@@ -317,6 +419,7 @@ case $opt in
 04 | 4) clear ; menu-trojan ;;
 05 | 5) clear ; shadowsocks ;;
 06 | 6) clear ; menu-trial ;;
+07 | 7) clear ; up ;;
 08 | 8) clear ; delete ;;
 09 | 9) clear ; auto-reboot ;;
 10) clear ; about ;;
