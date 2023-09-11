@@ -1,29 +1,240 @@
 #!/bin/bash 
 # COLOR VALIDATION
 clear
+L1="\e[0m\e[1;77m"
+y='\033[1;33m' #yellow
+BGX="\033[42m"
+CYAN="\033[96m"
+z="\033[96m"
 RED='\033[0;31m'
 NC='\033[0m'
 gray="\e[1;30m"
-Blue="\033[36m"
-GREEN='\033[0;32m'
+blue="\033[0;34m"
+green='\033[0;32m'
 grenbo="\e[92;1m"
+purple="\033[1;95m"
 YELL='\033[0;33m'
-ISP=$(cat /etc/xray/isp)
-NS=$(cat /etc/xray/dns)
-CITY=$(cat /etc/xray/city)
-IPVPS=$(curl -s ipv4.icanhazip.com)
+ # ========================================= 
+ vlx=$(grep -c -E "^#vl# " "/etc/xray/config.json") 
+ let vla=$vlx/2 
+ vmc=$(grep -c -E "^#vm# " "/etc/xray/config.json") 
+ let vma=$vmc/2 
+ ssh1="$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | wc -l)" 
+  
+ trx=$(grep -c -E "^#tr# " "/etc/xray/config.json") 
+ let tra=$trx/2 
+ ssx=$(grep -c -E "^#ss# " "/etc/xray/config.json") 
+ let ssa=$ssx/2 
+ COLOR1='\033[0;35m' 
+ COLOR2='\033[0;39m' 
+ clear
+BIBlack='\033[1;90m'      # Black
+BIRed='\033[1;91m'        # Red
+BIGreen='\033[1;92m'      # Green
+BIYellow='\033[1;93m'     # Yellow
+BIRU='\033[1;94m'       # Blue
+BAYS='\033[1;95m'     # Purple
+AYG='\033[1;96m'       # Cyan
+PUTIH='\033[1;97m'      # White
+UWhite='\033[4;37m'       # White
+On_IPurple='\033[0;105m'  #
+On_IRed='\033[0;101m'
+IBlack='\033[0;90m'       # Black
+IRed='\033[0;91m'         # Red
+IGreen='\033[0;92m'       # Green
+IYellow='\033[0;93m'      # Yellow
+IBlue='\033[0;94m'        # Blue
+NILA='\033[0;95m'      # Purple
+ZIL='\033[0;96m'        # Cyan
+IWhite='\033[0;97m'       # White
+NC='\e[0m'
+MYIP=$(wget -qO- ipinfo.io/ip)
 domain=$(cat /etc/xray/domain)
+uptime="$(uptime -p | cut -d " " -f 2-10)"
 RAM=$(free -m | awk 'NR==2 {print $2}')
 USAGERAM=$(free -m | awk 'NR==2 {print $3}')
 MEMOFREE=$(printf '%-1s' "$(free -m | awk 'NR==2{printf "%.2f%%", $3*100/$2 }')")
 LOADCPU=$(printf '%-0.00001s' "$(top -bn1 | awk '/Cpu/ { cpu = "" 100 - $8 "%" }; END { print cpu }')")
 MODEL=$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')
 CORE=$(printf '%-1s' "$(grep -c cpu[0-9] /proc/stat)")
-Exp="Lifetime Marey "
-Name="RVPN"
 DATEVPS=$(date +'%d/%m/%Y')
 TIMEZONE=$(printf '%(%H:%M:%S)T')
-SERONLINE=$(uptime -p | cut -d " " -f 2-10000)
+#SERONLINE=$(uptime -p | cut -d " " -f 2-10000)
+clear
+#Download/Upload today
+dtoday="$(vnstat -i eth0 | grep "today" | awk '{print $2" "substr ($3, 1, 1)}')"
+utoday="$(vnstat -i eth0 | grep "today" | awk '{print $5" "substr ($6, 1, 1)}')"
+ttoday="$(vnstat -i eth0 | grep "today" | awk '{print $8" "substr ($9, 1, 1)}')"
+#Download/Upload yesterday
+dyest="$(vnstat -i eth0 | grep "yesterday" | awk '{print $2" "substr ($3, 1, 1)}')"
+uyest="$(vnstat -i eth0 | grep "yesterday" | awk '{print $5" "substr ($6, 1, 1)}')"
+tyest="$(vnstat -i eth0 | grep "yesterday" | awk '{print $8" "substr ($9, 1, 1)}')"
+#Download/Upload current month
+dmon="$(vnstat -i eth0 -m | grep "`date +"%b '%y"`" | awk '{print $3" "substr ($4, 1, 1)}')"
+umon="$(vnstat -i eth0 -m | grep "`date +"%b '%y"`" | awk '{print $6" "substr ($7, 1, 1)}')"
+tmon="$(vnstat -i eth0 -m | grep "`date +"%b '%y"`" | awk '{print $9" "substr ($10, 1, 1)}')"
+clear
+
+# // Exporting Language to UTF-8
+
+export LANG='en_US.UTF-8'
+export LANGUAGE='en_US.UTF-8'
+
+# // Export Color & Information
+export RED='\033[0;31m'
+export GREEN='\033[0;32m'
+export YELLOW='\033[0;33m'
+export BLUE='\033[0;34m'
+export PURPLE='\033[0;35m'
+export CYAN='\033[0;36m'
+export LIGHT='\033[0;37m'
+export NC='\033[0m'
+
+###########- END COLOR CODE -##########
+tram=$( free -h | awk 'NR==2 {print $2}' )
+uram=$( free -h | awk 'NR==2 {print $3}' )
+ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10 ) 
+CITY=$(curl -s ipinfo.io/city )
+
+# // Export Banner Status Information
+export EROR="[${RED} EROR ${NC}]"
+export INFO="[${YELLOW} INFO ${NC}]"
+export OKEY="[${GREEN} OKEY ${NC}]"
+export PENDING="[${YELLOW} PENDING ${NC}]"
+export SEND="[${YELLOW} SEND ${NC}]"
+export RECEIVE="[${YELLOW} RECEIVE ${NC}]"
+
+# // Export Align
+export BOLD="\e[1m"
+export WARNING="${RED}\e[5m"
+export UNDERLINE="\e[4m"
+
+# TOTAL RAM
+#total_ram=` grep "MemTotal: " /proc/meminfo | awk '{ print $2}'`
+#totalram=$(($total_ram/1024))
+USAGERAM=$(free -m | awk 'NR==2 {print $3}')
+
+# User Active 
+Exp="Lifetime"
+Name="ZheeVPN"
+UP="https://raw.githubusercontent.com/zheevpn/zvn/main/up.sh"
+clear
+
+persenmemori="$(echo "scale=2; $usmem*100/$tomem" | bc)"
+#persencpu=
+persencpu="$(echo "scale=2; $cpu1+$cpu2" | bc)"
+
+###########
+KANAN="\033[1;32m<\033[1;33m<\033[1;31m<\033[1;31m$NC"
+KIRI="\033[1;32m>\033[1;33m>\033[1;31m>\033[1;31m$NC"
+########
+
+#################
+r="\033[1;31m"  #REDTERANG
+a=" ${CYAN}ACCOUNT PREMIUM" 
+################
+
+# // Clear
+clear
+clear && clear && clear
+clear;clear;clear
+cek=$(service ssh status | grep active | cut -d ' ' -f5)
+if [ "$cek" = "active" ]; then
+stat=-f5
+else
+stat=-f7
+fi
+ssh=$(service ssh status | grep active | cut -d ' ' $stat)
+if [[ "$ssh" == "active" ]]; then 
+resssh="${green}ON✓${NC}"
+else
+status_ssh="${red}OFF${NC} "
+fi
+sshstunel=$(service stunnel4 status | grep active | cut -d ' ' $stat)
+if [ "$sshstunel" = "active" ]; then
+resst="${green}ON✓${NC}"
+else
+resst="${red}OFF${NC}"
+fi
+sshws=$(service ws-stunnel status | grep active | cut -d ' ' $stat)
+if [ "$sshws" = "active" ]; then
+ressshws="${green}ON✓${NC}"
+else
+ressshws="${red}OFF${NC}"
+fi
+ngx=$(service nginx status | grep active | cut -d ' ' $stat)
+if [ "$ngx" = "active" ]; then
+resngx="${green}ON✓${NC}"
+else
+resngx="${red}OFF${NC}"
+fi
+dbr=$(service dropbear status | grep active | cut -d ' ' $stat)
+if [ "$dbr" = "active" ]; then
+resdbr="${green}ON✓${NC}"
+else
+resdbr="${red}OFF${NC}"
+fi
+v2r=$(service xray status | grep active | cut -d ' ' $stat)
+if [ "$v2r" = "active" ]; then
+resv2r="${green}ON✓${NC}"
+else
+resv2r="${red}OFF${NC}"
+fi
+function addhost(){
+clear
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo ""
+read -rp "Domain/Host: " -e host
+echo ""
+if [ -z $host ]; then
+echo "????"
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+read -n 1 -s -r -p "Press any key to back on menu"
+setting-menu
+else
+echo "IP=$host" > /var/lib/scrz-prem/ipvps.conf
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo "Dont forget to renew cert"
+echo ""
+read -n 1 -s -r -p "Press any key to back on menu"
+menu
+fi
+}
+function genssl(){
+clear
+systemctl stop nginx
+domain=$(cat /var/lib/scrz-prem/ipvps.conf | cut -d'=' -f2)
+Cek=$(lsof -i:80 | cut -d' ' -f1 | awk 'NR==2 {print $1}')
+if [[ ! -z "$Cek" ]]; then
+sleep 1
+echo -e "[ ${red}WARNING${NC} ] Detected port 80 used by $Cek " 
+systemctl stop $Cek
+sleep 2
+echo -e "[ ${green}INFO${NC} ] Processing to stop $Cek " 
+sleep 1
+fi
+echo -e "[ ${green}INFO${NC} ] Starting renew cert... " 
+sleep 2
+/root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
+/root/.acme.sh/acme.sh --issue -d $domain --standalone -k ec-256
+~/.acme.sh/acme.sh --installcert -d $domain --fullchainpath /etc/xray/xray.crt --keypath /etc/xray/xray.key --ecc
+echo -e "[ ${green}INFO${NC} ] Renew cert done... " 
+sleep 2
+echo -e "[ ${green}INFO${NC} ] Starting service $Cek " 
+sleep 2
+echo $domain > /etc/xray/domain
+systemctl restart xray
+systemctl restart nginx
+echo -e "[ ${green}INFO${NC} ] All finished... " 
+sleep 0.5
+echo ""
+read -n 1 -s -r -p "Press any key to back on menu"
+menu
+}
+#export sem=$( curl -s https://raw.githubusercontent.com/kytrx/regip/main/versions)
+#export pak=$( cat /home/.ver)
+#IPVPS=$(curl -s ipinfo.io/ip )
+
 if [ ! -e /etc/vmess ]; then
     mkdir -p /etc/vmess
     touch /etc/vmess/.vmess.db
@@ -32,7 +243,7 @@ vms=$(cat /etc/vmess/.vmess.db)
 if [[ $vms = "" ]]; then
     vm="0"
 else
-    vm=$(cat /etc/vmess/.vmess.db | grep "###" | wc -l)
+    vm=$(cat /etc/vmess/.vmess.db | grep "#vm#" | wc -l)
 fi
 
 if [ ! -e /etc/vless ]; then
@@ -43,9 +254,9 @@ vms=$(cat /etc/vless/.vless.db)
 if [[ $vms = "" ]]; then
     vl="0"
 else
-    vl=$(cat /etc/vless/.vless.db | grep "###" | wc -l)
+    vl=$(cat /etc/vless/.vless.db | grep "#vl#" | wc -l)
 fi
-
+echo ""
 if [ ! -e /etc/trojan ]; then
     mkdir -p /etc/trojan
     touch /etc/trojan/.trojan.db
@@ -54,7 +265,7 @@ vms=$(cat /etc/trojan/.trojan.db)
 if [[ $vms = "" ]]; then
     tr="0"
 else
-    tr=$(cat /etc/trojan/.trojan.db | grep "###" | wc -l)
+    tr=$(cat /etc/trojan/.trojan.db | grep "#tr#" | wc -l)
 fi
 if [ ! -e /etc/shadowsocks ]; then
     mkdir -p /etc/shadowsocks
@@ -64,7 +275,7 @@ vms=$(cat /etc/shadowsocks/.shadowsocks.db)
 if [[ $vms = "" ]]; then
     ss="0"
 else
-    ss=$(cat /etc/shadowsocks/.shadowsocks.db | grep "###" | wc -l)
+    ss=$(cat /etc/shadowsocks/.shadowsocks.db | grep "#ss#" | wc -l)
 fi
 if [ ! -e /etc/ssh ]; then
     mkdir -p /etc/ssh
@@ -74,7 +285,7 @@ vms=$(cat /etc/ssh/.ssh.db)
 if [[ $vms = "" ]]; then
     ssh="0"
 else
-    ssh=$(cat /etc/ssh/.ssh.db | grep "###" | wc -l)
+    ssh=$(cat /etc/ssh/.ssh.db | grep "#ssh1#" | wc -l)
 fi
 clear
 echo -e "\033[1;93m──────────────────────────────────────────\033[0m"
@@ -96,66 +307,35 @@ echo -e " ${YELL}Domain${NC}        : \033[0;32m$domain${NC}"
 echo -e " ${YELL}NS Domain${NC}     : \033[0;32m$NS${NC}"
 echo -e " ${YELL}Exp Script${NC}    : \033[0;32m$Exp${NC}"
 echo -e " ${YELL}Name Author${NC}   : \033[0;32m$Name${NC}"
-echo -e "\033[1;93m┌──────────────────────────────────────────┐\033[0m"
-echo -e "\033[1;93m│\033[0m ${RED}SSH  VMESS   VLESS  TROJAN   SHADOWSOCKS$NC"
-echo -e "\033[1;93m│\033[0m ${Blue} $ssh     $vm       $vl      $tr           $ss   $NC"
-echo -e "\033[1;93m└──────────────────────────────────────────┘\033[0m"
-echo -e "\033[1;93m┌──────────────────────────────────────────┐\033[0m"
-echo -e "\033[1;93m│  ${grenbo}1.${NC} \033[0;36mSSH OVPN MANAGER${NC} ${grenbo}8.${NC}  \033[0;36mPORT VPS INFO${NC}"
-echo -e "\033[1;93m│  ${grenbo}2.${NC} \033[0;36mVMESS MANAGER${NC}    ${grenbo}9.${NC}  \033[0;36mLOAD VPS INFO${NC}"
-echo -e "\033[1;93m│  ${grenbo}3.${NC} \033[0;36mVLESS MANAGER${NC}    ${grenbo}10.${NC} \033[0;36mSPEEDTEST${NC}"
-echo -e "\033[1;93m│  ${grenbo}4.${NC} \033[0;36mTROJAN MANAGER${NC}   ${grenbo}11.${NC} \033[0;36mCHANGE DOMAIN${NC}"
-echo -e "\033[1;93m│  ${grenbo}5.${NC} \033[0;36mSHDWSK MANAGER${NC}   ${grenbo}12.${NC} \033[0;36mCHANGE BANNER${NC}"
-echo -e "\033[1;93m│  ${grenbo}6.${NC} \033[0;36mRUNNING SYSTEM${NC}   ${grenbo}13.${NC} \033[0;36mRESTART SERVICE${NC}"
-echo -e "\033[1;93m│  ${grenbo}7.${NC} \033[0;36mBACKUP & RESTORE${NC} ${grenbo}14.${NC} \033[0;36mRESTART SERVER${NC}"
-echo -e "\033[1;93m└──────────────────────────────────────────┘\033[0m"
+echo " "
+read -p "   Select Menu : " opt
 echo -e ""
-read -p "Select From Options [ 1 - 14 ] : " menu
-case $menu in
-1)
-    ssh
-    ;;
-2)
-    vmess
-    ;;
-3)
-    vless
-    ;;
-4)
-    trojan
-    ;;
-5)
-    shadowsocks
-    ;;
-6)
-    run
-    ;;
-7)
-    get-backres
-    ;;
-8)
-    portin
-    ;;
-9)
-    gotop
-    ;;
-10)
-    clear
-    speedtest
-    ;;
-11)
-    get-domain
-    ;;
-12)
-    nano /etc/banner
-    ;;
-13)
-    seres
-    ;;
-14)
-    reboot
-    ;;
-*)
-    menu
-    ;;
+case $opt in
+01 | 1) clear ; menu-ssh ;;
+02 | 2) clear ; menu-vmess ;;
+03 | 3) clear ; menu-vless ;;
+04 | 4) clear ; menu-trojan ;;
+05 | 5) clear ; shadowsocks ;;
+06 | 6) clear ; menu-trial ;;
+08 | 8) clear ; delete ;;
+09 | 9) clear ; auto-reboot ;;
+10) clear ; about ;;
+11) clear ; speedtest ;;
+12) clear ; running ;;
+13) clear ; gotop ;;
+14) clear ; sd ;;
+15) clear ; menu-bckp ;;
+16) clear ; reboot ;;
+17) clear ; restart ;;
+18) clear ; add-host ;;
+19) clear ; nsmenu ;;
+20) clear ; fixcert ;;
+21) clear ; clearcache ;;
+22) clear ; bot ;;
+23) clear ; mbot ;;
+24) clear ; add-bot-panel ;;
+25) clear ; nano /etc/issue.net ;;
+0) clear ; menu ;;
+00) exit ;;
+*) echo -e "" ; echo "Lu salah tekan bro" ; sleep 1 ; menu ;;
 esac
