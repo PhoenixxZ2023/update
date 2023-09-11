@@ -1,13 +1,4 @@
 #!/bin/bash
-# //====================================================
-# //	System Request:Debian 9+/Ubuntu 18.04+/20+
-# //	Author:	bhoikfostyahya
-# //	Dscription: Xray Menu Management
-# //	email: admin@bhoikfostyahya.com
-# //  telegram: https://t.me/bhoikfost_yahya
-# //====================================================
-# // font color configuration | BHOIKFOST YAHYA AUTOSCRIPT
-# COLOR VALIDATION
 clear
 RED='\033[0;31m'
 NC='\033[0m'
@@ -28,7 +19,7 @@ LOADCPU=$(printf '%-0.00001s' "$(top -bn1 | awk '/Cpu/ { cpu = "" 100 - $8 "%" }
 MODEL=$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')
 CORE=$(printf '%-1s' "$(grep -c cpu[0-9] /proc/stat)")
 Exp="Lifetime Marey "
-Name="GH-Reyz"
+Name="RVPN"
 DATEVPS=$(date +'%d/%m/%Y')
 TIMEZONE=$(printf '%(%H:%M:%S)T')
 SERONLINE=$(uptime -p | cut -d " " -f 2-10000)
@@ -121,22 +112,22 @@ echo -e ""
 read -p "Select From Options [ 1 - 14 ] : " menu
 case $menu in
 1)
-    menu-ssh
+    ssh
     ;;
 2)
-    menu-vmess
+    vmess
     ;;
 3)
-    menu-vless
+    vless
     ;;
 4)
-    menu-trojan
+    trojan
     ;;
 5)
-    menu-shadowsocks
+    shadowsocks
     ;;
 6)
-    running 
+    run
     ;;
 7)
     get-backres
