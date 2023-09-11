@@ -139,7 +139,7 @@ case $menu in
     running 
     ;;
 7)
-    get-backres
+    mbot
     ;;
 8)
     portin
