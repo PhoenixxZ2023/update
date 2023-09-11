@@ -16,9 +16,9 @@ Blue="\033[36m"
 GREEN='\033[0;32m'
 grenbo="\e[92;1m"
 YELL='\033[0;33m'
-ISP=$(cat /etc/xray/isp)
+ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10 ) 
+CITY=$(curl -s ipinfo.io/city )
 NS=$(cat /etc/xray/dns)
-CITY=$(cat /etc/xray/city)
 IPVPS=$(curl -s ipv4.icanhazip.com)
 domain=$(cat /etc/xray/domain)
 RAM=$(free -m | awk 'NR==2 {print $2}')
