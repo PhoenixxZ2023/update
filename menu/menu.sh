@@ -115,27 +115,55 @@ echo -e "\033[1;93m│  ${grenbo}3.${NC} \033[0;36mVLESS MANAGER${NC}    ${grenb
 echo -e "\033[1;93m│  ${grenbo}4.${NC} \033[0;36mTROJAN MANAGER${NC}   ${grenbo}11.${NC} \033[0;36mCHANGE DOMAIN${NC}"
 echo -e "\033[1;93m│  ${grenbo}5.${NC} \033[0;36mSHDWSK MANAGER${NC}   ${grenbo}12.${NC} \033[0;36mCHANGE BANNER${NC}"
 echo -e "\033[1;93m│  ${grenbo}6.${NC} \033[0;36mRUNNING SYSTEM${NC}   ${grenbo}13.${NC} \033[0;36mRESTART SERVICE${NC}"
-echo -e "\033[1;93m│  ${grenbo}7.${NC} \033[0;36mBACKUP & RESTORE${NC} ${grenbo}14.${NC} \033[0;36mSETTING MANAGER${NC}"
+echo -e "\033[1;93m│  ${grenbo}7.${NC} \033[0;36mBACKUP & RESTORE${NC} ${grenbo}14.${NC} \033[0;36mRESTART SERVER${NC}"
 echo -e "\033[1;93m└──────────────────────────────────────────┘\033[0m"
 echo -e ""
 read -p "Select From Options [ 1 - 14 ] : " menu
-echo -e ""
-case $opt in
-01 | 1) clear ; menu-ssh ;;
-02 | 2) clear ; menu-vmess ;;
-03 | 3) clear ; menu-vless ;;
-04 | 4) clear ; menu-trojan ;;
-05 | 5) clear ; shadowsocks ;;
-06 | 6) clear ; running ;;
-07 | 7) clear ; mbot ;;
-08 | 8) clear ; about ;;
-09 | 9) clear ; auto-reboot ;;
-10) clear ; speedtest ;;
-11) clear ; add-host ;;
-12) clear ; nano /etc/issue.net ;;
-13) clear ; restart ;;
-14) clear ; menu-set ;;
-0) clear ; menu ;;
-00) exit ;;
-*) echo -e "" ; echo "Lu salah tekan bro" ; sleep 1 ; menu ;;
+case $menu in
+1)
+    menu-ssh
+    ;;
+2)
+    menu-vmess
+    ;;
+3)
+    menu-vless
+    ;;
+4)
+    menu-trojan
+    ;;
+5)
+    menu-shadowsocks
+    ;;
+6)
+    running 
+    ;;
+7)
+    get-backres
+    ;;
+8)
+    portin
+    ;;
+9)
+    gotop
+    ;;
+10)
+    clear
+    speedtest
+    ;;
+11)
+    get-domain
+    ;;
+12)
+    nano /etc/banner
+    ;;
+13)
+    seres
+    ;;
+14)
+    reboot
+    ;;
+*)
+    menu
+    ;;
 esac
