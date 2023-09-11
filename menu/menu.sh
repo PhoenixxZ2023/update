@@ -142,7 +142,7 @@ case $menu in
     mbot
     ;;
 8)
-    portin
+    about 
     ;;
 9)
     gotop
@@ -152,16 +152,16 @@ case $menu in
     speedtest
     ;;
 11)
-    get-domain
+    add-host
     ;;
 12)
     nano /etc/banner
     ;;
 13)
-    seres
+    restart 
     ;;
 14)
-    reboot
+    menu-set
     ;;
 *)
     menu
