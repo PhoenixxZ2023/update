@@ -1,218 +1,169 @@
 #!/bin/bash
-#IZIN SCRIPT
-MYIP=$(curl -sS ipv4.icanhazip.com)
+# //====================================================
+# //	System Request:Debian 9+/Ubuntu 18.04+/20+
+# //	Author:	bhoikfostyahya
+# //	Dscription: Xray Menu Management
+# //	email: admin@bhoikfostyahya.com
+# //  telegram: https://t.me/bhoikfost_yahya
+# //====================================================
+# // font color configuration | BHOIKFOST YAHYA AUTOSCRIPT
+# COLOR VALIDATION
 clear
-#Domain
-domain=$(cat /usr/local/etc/xray/domain)
-ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10)
-CITY=$(curl -s ipinfo.io/city)
-WKT=$(curl -s ipinfo.io/timezone)
-IPVPS=$(curl -s ipinfo.io/ip)
-cname=$(awk -F: '/model name/ {name=$2} END {print name}' /proc/cpuinfo)
-cores=$(awk -F: '/model name/ {core++} END {print core}' /proc/cpuinfo)
-freq=$(awk -F: ' /cpu MHz/ {freq=$2} END {print freq}' /proc/cpuinfo)
-tram=$(free -m | awk 'NR==2 {print $2}')
-uram=$(free -m | awk 'NR==2 {print $3}')
-fram=$(free -m | awk 'NR==2 {print $4}')
-clear
-# OS Uptime
-uptime="$(uptime -p | cut -d " " -f 2-10)"
-# USERNAME
-clear
-# Getting CPU Information
-vnstat_profile=$(vnstat | sed -n '3p' | awk '{print $1}' | grep -o '[^:]*')
-vnstat -i ${vnstat_profile} >/root/t1
-bulan=$(date +%b)
-today=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $8}')
-todayd=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $8}')
-today_v=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $9}')
-today_rx=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $2}')
-today_rxv=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $3}')
-today_tx=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $5}')
-today_txv=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $6}')
-if [ "$(grep -wc ${bulan} /root/t1)" != '0' ]; then
-    bulan=$(date +%b)
-    month=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $9}')
-    month_v=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $10}')
-    month_rx=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $3}')
-    month_rxv=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $4}')
-    month_tx=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $6}')
-    month_txv=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $7}')
-else
-    bulan=$(date +%Y-%m)
-    month=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $8}')
-    month_v=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $9}')
-    month_rx=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $2}')
-    month_rxv=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $3}')
-    month_tx=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $5}')
-    month_txv=$(vnstat -i ${vnstat_profile} | grep "$bulan " | awk '{print $6}')
+RED='\033[0;31m'
+NC='\033[0m'
+gray="\e[1;30m"
+Blue="\033[36m"
+GREEN='\033[0;32m'
+grenbo="\e[92;1m"
+YELL='\033[0;33m'
+ISP=$(cat /etc/xray/isp)
+NS=$(cat /etc/xray/dns)
+CITY=$(cat /etc/xray/city)
+IPVPS=$(curl -s ipv4.icanhazip.com)
+domain=$(cat /etc/xray/domain)
+RAM=$(free -m | awk 'NR==2 {print $2}')
+USAGERAM=$(free -m | awk 'NR==2 {print $3}')
+MEMOFREE=$(printf '%-1s' "$(free -m | awk 'NR==2{printf "%.2f%%", $3*100/$2 }')")
+LOADCPU=$(printf '%-0.00001s' "$(top -bn1 | awk '/Cpu/ { cpu = "" 100 - $8 "%" }; END { print cpu }')")
+MODEL=$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')
+CORE=$(printf '%-1s' "$(grep -c cpu[0-9] /proc/stat)")
+Exp="Lifetime Marey "
+Name="GH-Reyz"
+DATEVPS=$(date +'%d/%m/%Y')
+TIMEZONE=$(printf '%(%H:%M:%S)T')
+SERONLINE=$(uptime -p | cut -d " " -f 2-10000)
+if [ ! -e /etc/vmess ]; then
+    mkdir -p /etc/vmess
+    touch /etc/vmess/.vmess.db
 fi
-if [ "$(grep -wc yesterday /root/t1)" != '0' ]; then
-    yesterday=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $8}')
-    yesterday_v=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $9}')
-    yesterday_rx=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $2}')
-    yesterday_rxv=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $3}')
-    yesterday_tx=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $5}')
-    yesterday_txv=$(vnstat -i ${vnstat_profile} | grep yesterday | awk '{print $6}')
+vms=$(cat /etc/vmess/.vmess.db)
+if [[ $vms = "" ]]; then
+    vm="0"
 else
-    yesterday=NULL
-    yesterday_v=NULL
-    yesterday_rx=NULL
-    yesterday_rxv=NULL
-    yesterday_tx=NULL
-    yesterday_txv=NULL
+    vm=$(cat /etc/vmess/.vmess.db | grep "###" | wc -l)
 fi
 
-# STATUS EXPIRED ACTIVE
-Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[4$below" && Font_color_suffix="\033[0m"
-Info="${Green_font_prefix}(Registered)${Font_color_suffix}"
-Error="${Green_font_prefix}${Font_color_suffix}${Red_font_prefix}[EXPIRED]${Font_color_suffix}"
-
-today=$(date -d "0 days" +"%Y-%m-%d")
-Exp1=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $4}')
-if [[ $today < $Exp1 ]]; then
-    sts="${Info}"
-else
-    sts="${Error}"
+if [ ! -e /etc/vless ]; then
+    mkdir -p /etc/vless
+    touch /etc/vless/.vless.db
 fi
-echo -e "\e[32mloading...\e[0m"
+vms=$(cat /etc/vless/.vless.db)
+if [[ $vms = "" ]]; then
+    vl="0"
+else
+    vl=$(cat /etc/vless/.vless.db | grep "###" | wc -l)
+fi
+
+if [ ! -e /etc/trojan ]; then
+    mkdir -p /etc/trojan
+    touch /etc/trojan/.trojan.db
+fi
+vms=$(cat /etc/trojan/.trojan.db)
+if [[ $vms = "" ]]; then
+    tr="0"
+else
+    tr=$(cat /etc/trojan/.trojan.db | grep "###" | wc -l)
+fi
+if [ ! -e /etc/shadowsocks ]; then
+    mkdir -p /etc/shadowsocks
+    touch /etc/shadowsocks/.shadowsocks.db
+fi
+vms=$(cat /etc/shadowsocks/.shadowsocks.db)
+if [[ $vms = "" ]]; then
+    ss="0"
+else
+    ss=$(cat /etc/shadowsocks/.shadowsocks.db | grep "###" | wc -l)
+fi
+if [ ! -e /etc/ssh ]; then
+    mkdir -p /etc/ssh
+    touch /etc/ssh/.ssh.db
+fi
+vms=$(cat /etc/ssh/.ssh.db)
+if [[ $vms = "" ]]; then
+    ssh="0"
+else
+    ssh=$(cat /etc/ssh/.ssh.db | grep "###" | wc -l)
+fi
 clear
-# CERTIFICATE STATUS
-d1=$(date -d "$valid" +%s)
-d2=$(date -d "$today" +%s)
-certifacate=$(((d1 - d2) / 86400))
-# TOTAL ACC CREATE VMESS WS
-vmess=$(grep -c -E "^#vms " "/usr/local/etc/xray/vmess.json")
-# TOTAL ACC CREATE  VLESS WS
-vless=$(grep -c -E "^#vls " "/usr/local/etc/xray/vless.json")
-# TOTAL ACC CREATE  VLESS TCP XTLS
-xtls=$(grep -c -E "^#vxtls " "/usr/local/etc/xray/config.json")
-# TOTAL ACC CREATE  TROJAN
-trtls=$(grep -c -E "^#trx " "/usr/local/etc/xray/tcp.json")
-# TOTAL ACC CREATE  TROJAN WS TLS
-trws=$(grep -c -E "^#trws " "/usr/local/etc/xray/trojan.json")
-# TOTAL ACC CREATE OVPN SSH
-total_ssh="$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | wc -l)"
-# PROVIDED
-creditt=$(cat /root/provided)
-# BANNER COLOUR
-banner_colour=$(cat /etc/banner)
-# TEXT ON BOX COLOUR
-box=$(cat /etc/box)
-# LINE COLOUR
-line=$(cat /etc/line)
-# TEXT COLOUR ON TOP
-text=$(cat /etc/text)
-# TEXT COLOUR BELOW
-below=$(cat /etc/below)
-# BACKGROUND TEXT COLOUR
-back_text=$(cat /etc/back)
-# NUMBER COLOUR
-number=$(cat /etc/number)
-# BANNER
-banner=$(cat /usr/bin/bannerku)
-ascii=$(cat /usr/bin/test)
-clear
-echo -e "\e[$banner_colour"
-figlet -f $ascii "$banner"
-echo -e "\e[$text  VPS Script"
-echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
-echo -e "  \e[$back_text                    \e[30m[\e[$box SERVER INFORMATION\e[30m ]\e[1m                  \e[m"
-echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
-echo -e "  \e[$text Cpu Model            :$cname"
-echo -e "  \e[$text Cpu Frequency        :$freq MHz"
-echo -e "  \e[$text Number Of Core       : $cores"
-echo -e "  \e[$text CPU Usage            : $cpu_usage"
-echo -e "  \e[$text Operating System     : "$(hostnamectl | grep "Operating System" | cut -d ' ' -f5-)
-echo -e "  \e[$text Kernel               : $(uname -r)"
-echo -e "  \e[$text Total Amount Of Ram  : $tram MB"
-echo -e "  \e[$text Used RAM             : $uram MB"
-echo -e "  \e[$text Free RAM             : $fram MB"
-echo -e "  \e[$text System Uptime        : $uptime"
-echo -e "  \e[$text Ip Vps/Address       : $IPVPS"
-echo -e "  \e[$text Domain Name          : $domain\e[0m"
-echo -e "  \e[$text Order ID             : $oid"
-echo -e "  \e[$text Expired Status       : $exp $sts"
-echo -e "  \e[$text Dibuat Oleh          : $creditt"
-echo -e "  \e[$text Status Update        :$stl"
-echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
-echo -e "   \e[$text Traffic${NC}      \e[${text}Today       Yesterday       Month   "
-echo -e "   \e[$text Download${NC}   \e[${text}$today_tx $today_txv      $yesterday_tx $yesterday_txv      $month_tx $month_txv   \e[0m"
-echo -e "   \e[$text Upload${NC}     \e[${text}$today_rx $today_rxv      $yesterday_rx $yesterday_rxv      $month_rx $month_rxv   \e[0m"
-echo -e "   \e[$text Total${NC}    \e[${text}  $todayd $today_v     $yesterday $yesterday_v      $month $month_v  \e[0m "
-echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
-echo -e " \e[$text   Ssh/Ovpn  Vmess  Vless  VlessXtls  Trojan-Ws  Trojan-Tls \e[0m "    
-echo -e " \e[$below      $total_ssh        $vmess      $vless       $xtls          $trws          $trtls \e[0m "
-echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
-echo -e "  \e[$back_text                        \e[30m[\e[$box PANEL MENU\e[30m ]\e[1m                      \e[m"
-echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
-echo -e "  \e[$number (•1)\e[m \e[$below XRAY VMESS & VLESS\e[m   \e[$number (•4)\e[m \e[$below XRAY BUG TELCO\e[m"
-echo -e "  \e[$number (•2)\e[m \e[$below TROJAN XRAY & WS\e[m"
-echo -e "  \e[$number (•3)\e[m \e[$below OPENSSH & OPENVPN\e[m" 
-echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
-echo -e "  \e[$back_text                         \e[30m[\e[$box VPS MENU\e[30m ]\e[1m                       \e[m"
-echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
-echo -e "  \e[$number (•5)\e[m \e[$below SYSTEM MENU\e[m          \e[$number (•9)\e[m \e[$below MENU THEMES\e[m"
-echo -e "  \e[$number (•6)\e[m \e[$below CHECK RUNNING\e[m        \e[$number (10)\e[m \e[$below REGIP ADMIN ONLY\e[m"
-echo -e "  \e[$number (•7)\e[m \e[$below CHANGE PORT\e[m          \e[$number (11)\e[m \e[$below INFO ALL PORT\e[m"
-echo -e "  \e[$number (•8)\e[m \e[$below REBOOT VPS\e[m           \e[$number (12)\e[m \e[$below CLEAR LOG VPS\e[m"
+echo -e "\033[1;93m──────────────────────────────────────────\033[0m"
+echo -e "\033[42m    ∆ INFORMATION AUTOSCRIPT VPS ∆                       \033[0m"
+echo -e "\033[1;93m──────────────────────────────────────────\033[0m"
+echo -e " ${YELL}System OS${NC}     : \033[0;32m$MODEL${NC}"
+echo -e " ${YELL}Server RAM${NC}    : \033[0;32m$RAM MB $NC"
+echo -e " ${YELL}Usage RAM${NC}     : \033[0;32m$USAGERAM MB $NC"
+echo -e " ${YELL}Usage Memory${NC}  : \033[0;32m$MEMOFREE${NC}"
+echo -e " ${YELL}LoadCPU${NC}       : \033[0;32m$LOADCPU%${NC}"
+echo -e " ${YELL}Uptime Server${NC} : \033[0;32m$SERONLINE${NC}"
+echo -e " ${YELL}Core System${NC}   : \033[0;32m$CORE${NC}"
+echo -e " ${YELL}Date${NC}          : \033[0;32m$DATEVPS${NC}"
+echo -e " ${YELL}Time${NC}          : \033[0;32m$TIMEZONE${NC}"
+echo -e " ${YELL}Isp VPS${NC}       : \033[0;32m$ISP${NC}"
+echo -e " ${YELL}City${NC}          : \033[0;32m$CITY${NC}"
+echo -e " ${YELL}IP VPS${NC}        : \033[0;32m$IPVPS${NC}"
+echo -e " ${YELL}Domain${NC}        : \033[0;32m$domain${NC}"
+echo -e " ${YELL}NS Domain${NC}     : \033[0;32m$NS${NC}"
+echo -e " ${YELL}Exp Script${NC}    : \033[0;32m$Exp${NC}"
+echo -e " ${YELL}Name Author${NC}   : \033[0;32m$Name${NC}"
+echo -e "\033[1;93m┌──────────────────────────────────────────┐\033[0m"
+echo -e "\033[1;93m│\033[0m ${RED}SSH  VMESS   VLESS  TROJAN   SHADOWSOCKS$NC"
+echo -e "\033[1;93m│\033[0m ${Blue} $ssh     $vm       $vl      $tr           $ss   $NC"
+echo -e "\033[1;93m└──────────────────────────────────────────┘\033[0m"
+echo -e "\033[1;93m┌──────────────────────────────────────────┐\033[0m"
+echo -e "\033[1;93m│  ${grenbo}1.${NC} \033[0;36mSSH OVPN MANAGER${NC} ${grenbo}8.${NC}  \033[0;36mPORT VPS INFO${NC}"
+echo -e "\033[1;93m│  ${grenbo}2.${NC} \033[0;36mVMESS MANAGER${NC}    ${grenbo}9.${NC}  \033[0;36mLOAD VPS INFO${NC}"
+echo -e "\033[1;93m│  ${grenbo}3.${NC} \033[0;36mVLESS MANAGER${NC}    ${grenbo}10.${NC} \033[0;36mSPEEDTEST${NC}"
+echo -e "\033[1;93m│  ${grenbo}4.${NC} \033[0;36mTROJAN MANAGER${NC}   ${grenbo}11.${NC} \033[0;36mCHANGE DOMAIN${NC}"
+echo -e "\033[1;93m│  ${grenbo}5.${NC} \033[0;36mSHDWSK MANAGER${NC}   ${grenbo}12.${NC} \033[0;36mCHANGE BANNER${NC}"
+echo -e "\033[1;93m│  ${grenbo}6.${NC} \033[0;36mRUNNING SYSTEM${NC}   ${grenbo}13.${NC} \033[0;36mRESTART SERVICE${NC}"
+echo -e "\033[1;93m│  ${grenbo}7.${NC} \033[0;36mBACKUP & RESTORE${NC} ${grenbo}14.${NC} \033[0;36mRESTART SERVER${NC}"
+echo -e "\033[1;93m└──────────────────────────────────────────┘\033[0m"
 echo -e ""
-echo -e "  \e[$below[Ctrl + C] For exit from main menu\e[m"
-echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
-echo -e "  \e[$below Version Name         : next update "
-echo -e "  \e[$below Autoscript By        : XLORD × NIELA"
-echo -e "  \e[$below Certificate Status   : Expired in $certifacate days"
-echo -e "  \e[$below Client Name          : $username"
-echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
-echo -e "\e[$below "
-read -p " Select menu :  " menu
-echo -e ""
+read -p "Select From Options [ 1 - 14 ] : " menu
 case $menu in
 1)
-    xraay
-    ;;
-2)
-    trojaan 
-    ;;
-3)
     ssh
     ;;
+2)
+    vmess
+    ;;
+3)
+    vless
+    ;;
 4)
-    maxisdigi
+    trojan
     ;;
 5)
-    system
+    shadowsocks
     ;;
 6)
-    check-sc
+    run
     ;;
 7)
-    change-port
+    get-backres
     ;;
 8)
-    reboot
+    portin
     ;;
 9)
-    themes
+    gotop
     ;;
 10)
-    addip
+    clear
+    speedtest
     ;;
 11)
-    about
+    get-domain
     ;;
 12)
-    clear-log
+    nano /etc/banner
     ;;
-x)
-    clear
-    exit
-    echo -e "\e[1;31mPlease Type menu For More Option, Thank You\e[0m"
+13)
+    seres
+    ;;
+14)
+    reboot
     ;;
 *)
-    clear
-    echo -e "\e[1;31mPlease enter an correct number\e[0m"
-    sleep 1
     menu
     ;;
 esac
