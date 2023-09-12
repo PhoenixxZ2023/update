@@ -10,6 +10,42 @@
 # // font color configuration | BHOIKFOST YAHYA AUTOSCRIPT
 # COLOR VALIDATION
 clear
+cek=$(service ssh status | grep active | cut -d ' ' -f5)
+if [ "$cek" = "active" ]; then
+stat=-f5
+else
+stat=-f7
+fi
+ssh=$(service ssh status | grep active | cut -d ' ' $stat)
+if [ "$ssh" = "active" ]; then
+ressh="${BBlue}ON${NC}"
+else
+ressh="${red}OFF${NC}"
+fi
+ngx=$(service nginx status | grep active | cut -d ' ' $stat)
+if [ "$ngx" = "active" ]; then
+resngx="${BBlue}ON${NC}"
+else
+resngx="${red}OFF${NC}"
+fi
+dbr=$(service dropbear status | grep active | cut -d ' ' $stat)
+if [ "$dbr" = "active" ]; then
+resdbr="${BBlue}ON${NC}"
+else
+resdbr="${red}OFF${NC}"
+fi
+v2r=$(service xray status | grep active | cut -d ' ' $stat)
+if [ "$v2r" = "active" ]; then
+resv2r="${BBlue}ON${NC}"
+else
+resv2r="${red}OFF${NC}"
+fi
+# STATUS SERVICE UDP CUSTOM
+if [[ $udpc == "running" ]]; then
+   udp2="${GB}[ ON ]${NC}${NC}"
+else
+   udp2="${RB}[ OFF ]${NC}"
+fi
 RED='\033[0;31m'
 NC='\033[0m'
 gray="\e[1;30m"
