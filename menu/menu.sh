@@ -10,50 +10,51 @@
 # // font color configuration | BHOIKFOST YAHYA AUTOSCRIPT
 # COLOR VALIDATION
 #########################
-BURIQ () {
-    curl -sS https://raw.githubusercontent.com/rizkyckj/izin/main/izin > /root/tmp
-    data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
-    for user in "${data[@]}"
-    do
-    exp=( `grep -E "^### $user" "/root/tmp" | awk '{print $3}'` )
-    d1=(`date -d "$exp" +%s`)
-    d2=(`date -d "$biji" +%s`)
-    exp2=$(( (d1 - d2) / 86400 ))
-    if [[ "$exp2" -le "0" ]]; then
-    echo $user > /etc/.$user.ini
-    else
-    rm -f  /etc/.$user.ini > /dev/null 2>&1
-    fi
-    done
-    rm -f  /root/tmp
-}
-# https://raw.githubusercontent.com/wokszxd/izinvps/main/ip 
-MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS https://raw.githubusercontent.com/rizkyckj/izin/main/izin | grep $MYIP | awk '{print $2}')
-echo $Name > /usr/local/etc/.$Name.ini
-CekOne=$(cat /usr/local/etc/.$Name.ini)
+#link izin ip vps
+url_izin='https://raw.githubusercontent.com/rizkyckj/izin/master/izin'
 
-Bloman () {
-if [ -f "/etc/.$Name.ini" ]; then
-CekTwo=$(cat /etc/.$Name.ini)
-    if [ "$CekOne" = "$CekTwo" ]; then
-        res="Expired"
+#IP VPS
+ip_vps=$(curl -sS ifconfig.me)
+
+# Mendapatkan isi file izin.txt dari URL
+izin=$(curl -s "$url_izin")
+
+# Memeriksa apakah konten izin.txt berhasil didapatkan
+if [[ -n "$izin" ]]; then
+  while IFS= read -r line; do
+    # Memisahkan nama VPS, IP VPS, dan tanggal kadaluwarsa
+    nama=$(echo "$line" | awk '{print $1}')
+    ipvps=$(echo "$line" | awk '{print $2}')
+    tanggal=$(echo "$line" | awk '{print $3}')
+
+    # Memeriksa apakah IP VPS saat ini cocok dengan IP VPS yang ada di izin.txt
+    if [[ "$ipvps" == "$ip_vps" ]]; then
+      echo "Nama VPS: $nama"
+      echo "IP VPS: $ipvps"
+      echo "Tanggal Kadaluwarsa: $tanggal"
+      break
     fi
+  done <<< "$izin"
+
+  # Memeriksa apakah IP VPS ditemukan dalam izin.txt
+  if [[ "$ipvps" != "$ip_vps" ]]; then
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e "\033[42m          404 NOT FOUND AUTOSCRIPT          \033[0m"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e ""
+    echo -e "            ${RED}PERMISSION DENIED !${NC}"
+    echo -e "   \033[0;33mYour VPS${NC} $ip_vps \033[0;33mHas been Banned${NC}"
+    echo -e "     \033[0;33mBuy access permissions for scripts${NC}"
+    echo -e "             \033[0;33mContact Admin :${NC}"
+    echo -e "      \033[0;36mTelegram${NC} t.me/RVPNSTORES"
+    echo -e "      ${GREEN}WhatsApp${NC} wa.me/6281935718766"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    exit 0
+  fi
 else
-res="Permission Accepted..."
+  echo "Konten izin.txt tidak berhasil didapatkan dari URL"
+  exit 0
 fi
-}
-
-PERMISSION () {
-    MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://raw.githubusercontent.com/rizkyckj/izin/main/izin | awk '{print $4}' | grep $MYIP)
-    if [ "$MYIP" = "$IZIN" ]; then
-    Bloman
-    else
-    res="Permission Denied!"
-    fi
-    BURIQ
-}
 clear
 cek=$(service ssh status | grep active | cut -d ' ' -f5)
 if [ "$cek" = "active" ]; then
