@@ -7,8 +7,6 @@
 # //  telegram: https://t.me/bhoikfost_yahya
 # //====================================================
 # // font color configuration | BHOIKFOST YAHYA AUTOSCRIPT
-echo -e "${BICyan}┌─────────────────────────────────────────────────┐${NC}"
-echo -e "${BICyan}│                    VMESS MENU                   │$NC"
 echo -e "${BICyan}└─────────────────────────────────────────────────┘${NC}"
 echo -e "${BICyan}┌─────────────────────────────────────────────────┐${NC}"
 echo -e "     ${BICyan}[${COLOR1}1${BICyan}] Create Vmess Account     "
