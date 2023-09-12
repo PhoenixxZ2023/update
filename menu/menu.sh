@@ -46,7 +46,7 @@ else
   echo "Konten izin.txt tidak berhasil didapatkan dari URL"
   exit 0
 fi
-clear
+
 cek=$(service ssh status | grep active | cut -d ' ' -f5)
 if [ "$cek" = "active" ]; then
 stat=-f5
