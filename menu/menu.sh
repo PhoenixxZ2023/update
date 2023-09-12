@@ -114,7 +114,7 @@ echo -e "\033[1;93m│  ${grenbo}2.${NC} \\E[40;1;37mVMESS MANAGER${NC}    ${gre
 echo -e "\033[1;93m│  ${grenbo}3.${NC} \\E[40;1;37mVLESS MANAGER${NC}    ${grenbo}6.${NC} \\E[40;1;37mOTHER SETTING${NC}"
 echo -e "\033[1;93m└──────────────────────────────────────────┘\033[0m"
 echo -e ""
-echo -e "\033[1;93m                 Version Script 3.1.0.       \033[0m"
+echo -e "\033[1;93m             Version Script 3.1.0.       \033[0m"
 echo -e ""
 read -p "Select From Options [ 1 - 14 ] : " menu
 case $menu in
