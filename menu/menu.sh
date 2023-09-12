@@ -152,7 +152,7 @@ echo -e "\033[1;93m│  ${grenbo}3.${NC} \033[0;36mVLESS MANAGER${NC}    ${grenb
 echo -e "\033[1;93m└──────────────────────────────────────────┘\033[0m"
 echo -e ""
 echo -e "\033[1;93m           Version Script 3.1.0.       \033[0m"
-echo -e "\033[0;34m            ──────\033[1;93m──────\033[0;32m───────       ${NC}"
+echo -e "\033[0;34m               ──────\033[1;93m──────\033[0;32m───────       ${NC}"
 echo -e ""
 read -p "        Select From Options [ 1 - 14 ] : " menu
 case $menu in
