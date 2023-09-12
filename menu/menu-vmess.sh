@@ -7,10 +7,6 @@
 # //  telegram: https://t.me/bhoikfost_yahya
 # //====================================================
 # // font color configuration | BHOIKFOST YAHYA AUTOSCRIPT
-clear
-BICyan='\033[1;96m'    
-grenbo="\e[92;1m"
-NC='\033[0m'
 echo -e "${BICyan}┌─────────────────────────────────────────────────┐${NC}"
 echo -e "${BICyan}│                    VMESS MENU                   │$NC"
 echo -e "${BICyan}└─────────────────────────────────────────────────┘${NC}"
