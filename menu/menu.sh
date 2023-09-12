@@ -86,7 +86,7 @@ else
 fi
 clear
 echo -e "\033[1;93m──────────────────────────────────────────\033[0m"
-echo -e "\033[42m    ∆ INFORMATION AUTOSCRIPT VPS ∆                       \033[0m"
+echo -e "\033[42m    ∆ INFORMATION AUTOSCRIPT VPS ∆                \033[0m"
 echo -e "\033[1;93m──────────────────────────────────────────\033[0m"
 echo -e " ${YELL}System OS${NC}     : \033[0;32m$MODEL${NC}"
 echo -e " ${YELL}Server RAM${NC}    : \033[0;32m$RAM MB $NC"
