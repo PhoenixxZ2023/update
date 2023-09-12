@@ -83,7 +83,7 @@ umon="$(vnstat -i eth0 -m | grep "`date +"%b '%y"`" | awk '{print $6" "substr ($
 tmon="$(vnstat -i eth0 -m | grep "`date +"%b '%y"`" | awk '{print $9" "substr ($10, 1, 1)}')"
 clear
 echo -e "\033[1;93m┌─────────────────────────────────────────────────┐\033[0m"
-echo -e "\033[1;93m│                  • XRAY MENU •                  \033[1;93m│"
+echo -e "\033[1;93m│               • XRAY MENU •                  \033[1;93m│"
 echo -e "\e[33m└─────────────────────────────────────────────────┘\033[0m"
 echo -e "\033[1;93m┌─────────────────────────────────────────────────┐\033[0m"
 echo -e "  XRAYS Vmess TLS         :$status_tls_v2ray"
@@ -92,10 +92,10 @@ echo -e "  XRAYS Vless TLS         :$status_tls_vless"
 echo -e "  XRAYS Vless None TLS    :$status_nontls_vless"
 echo -e "  XRAYS GRPC STATUS       :$status_nontls_vless"
 echo -e "\e[33m└─────────────────────────────────────────────────┘\033[0m"
-echo -e "${BICyan}\033[0m ${BOLD}  ${GREEN}    ${BIYellow}  ${BIYellow}  VMESS  ${GREEN}      ${BIYellow}  VLESS  ${GREEN}     $NC "
+echo -e "${BICyan}\033[0m ${BOLD}  ${GREEN}    ${BIYellow}  ${BIYellow}    VMESS  ${GREEN}      ${BIYellow}  VLESS  ${GREEN}     $NC "
 echo -e "${BICyan}\033[0m ${Blue}              $vma           $vla                         $NC"
 echo -e "\033[1;93m┌─────────────────────────────────────────────────┐\033[0m"
-echo -e "\033[1;93m│\033[0m            ${RED}SCRIPT MOD BY ZheeVPN    $NC \033[1;93m           │\033[0m"
+echo -e "\033[1;93m│\033[0m            ${RED}SCRIPT MOD BY RVPN STORES   $NC \033[1;93m           │\033[0m"
 echo -e "\033[1;93m└─────────────────────────────────────────────────┘\033[0m"
 echo -e " [\e[36m•01\e[0m] Buat Akun Vmess        [\e[36m•06\e[0m] Buat Akun Vless"
 echo -e " [\e[36m•02\e[0m] Trial Akun Vmess       [\e[36m•07\e[0m] Trial Akun Vless"
@@ -105,9 +105,9 @@ echo -e " [\e[36m•05\e[0m] Cek User Login Vmess   [\e[36m•10\e[0m] Cek User 
 echo -e ""
 echo -e " [\e[36m•0\e[0m] Kembali Ke menu         [\e[36m•x\e[0m] Exit"
 echo -e ""
-echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | lolcat
+echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" 
 echo -e "${BICyan}$NC ${BICyan}HARI ini${NC}: ${red}$ttoday$NC ${BICyan}KEMARIN${NC}: ${red}$tyest$NC ${BICyan}BULAN${NC}: ${red}$tmon$NC $NC"
-echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | lolcat
+echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
 read -p " Select menu :  "  opt
 case $opt in
