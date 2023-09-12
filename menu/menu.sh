@@ -110,9 +110,9 @@ echo -e "\033[1;93m│\033[0m ${Blue} $ssh     $vm       $vl      $tr           
 echo -e "\033[1;93m└──────────────────────────────────────────┘\033[0m"
 echo -e ""
 echo -e "\033[1;93m       ┌───────────────────────────┐\033[0m"
-echo -e "\033[1;93m       │  ${NC}"
-echo -e "\033[1;93m       │  ${NC}"
-echo -e "\033[1;93m       │  ${NC}"
+echo -e "\033[1;93m       │  Version       $blue=${NC} V3.1 ${NC}"
+echo -e "\033[1;93m       │  Script Status $blue=${NC} (${IGreen}Aktive${NC}) ${NC}"
+echo -e "\033[1;93m       │  User          $blue=${NC}\033[1;36m $Name \e[0m"
 echo -e "\033[1;93m       └───────────────────────────┘\033[0m"
 echo -e ""
 echo -e "\033[1;93m┌──────────────────────────────────────────┐\033[0m"
@@ -163,7 +163,7 @@ case $menu in
 12)
     nano /etc/banner
     ;;
-13)
+13)echo -e ""User          $blue=${NC}\033[1;36m $Name \e[0m"Script Status $blue=${NC} (${IGreen}Aktive${NC}) ${NC}"
     restart 
     ;;
 14)
