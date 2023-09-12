@@ -117,7 +117,7 @@ echo -e ""
 echo -e "\033[1;93m           Version Script 3.1.0.       \033[0m"
 echo -e ""
 echo -e ""
-read -p "                  Select From Options [ 1 - 14 ] : " menu
+read -p "        Select From Options [ 1 - 14 ] : " menu
 case $menu in
 1)
     menu-ssh
