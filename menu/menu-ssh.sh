@@ -7,12 +7,6 @@
 # //  telegram: https://t.me/bhoikfost_yahya
 # //====================================================
 # // font color configuration | BHOIKFOST YAHYA AUTOSCRIPT
-clear
-BICyan='\\E[40;1;37m' 
-grenbo="\e[92;1m"
-NC='\\E[40;1;37m'
-echo -e "${BICyan}┌─────────────────────────────────────────────────┐${NC}"
-echo -e "${BICyan}│                      SSH MENU                   │$NC"
 echo -e "${BICyan}└─────────────────────────────────────────────────┘${NC}"
 echo -e "${BICyan}┌───────────────────────────────────────────────┐${NC}"
 echo -e "     ${BICyan}[1]${NC} Create SSH Account     "
