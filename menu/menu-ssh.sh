@@ -10,31 +10,35 @@
 clear
 grenbo="\e[92;1m"
 NC='\033[0m'
-echo -e "\033[1;93m┌──────────────────────────────────────────┐\033[0m"
-echo -e "\033[1;93m│$NC\033[42m            MENU MANAGER SSH              $NC"
-echo -e "\033[1;93m└──────────────────────────────────────────┘\033[0m"
-echo -e "\033[1;93m┌──────────────────────────────────────────┐\033[0m"
-echo -e "\033[1;93m│  ${grenbo}1.${NC} \033[0;36mCreating a SSH OVPN Account${NC}"
-echo -e "\033[1;93m│  ${grenbo}2.${NC} \033[0;36mDelete SSH OVPN Account${NC}"
-echo -e "\033[1;93m│  ${grenbo}3.${NC} \033[0;36mRenew SSH OVPN Account${NC}"
-echo -e "\033[1;93m│  ${grenbo}4.${NC} \033[0;36mCheck SSH OVPN login Account${NC}"
-echo -e "\033[1;93m└──────────────────────────────────────────┘\033[0m"
+echo -e "${BICyan}┌─────────────────────────────────────────────────┐${NC}"
+echo -e "${BICyan}│                      SSH MENU                   │$NC"
+echo -e "${BICyan}└─────────────────────────────────────────────────┘${NC}"
+echo -e "${BICyan}┌───────────────────────────────────────────────┐${NC}"
+echo -e "     ${BICyan}[1]${NC} Create SSH Account     "
+echo -e "     ${BICyan}[2]${NC} Trial SSH Acoount      "
+echo -e "     ${BICyan}[3]${NC} Delete SSH Acoount      "
+echo -e "     ${BICyan}[4]${NC} Renew SSH Account      "
+echo -e "     ${BICyan}[5]${NC} Cek User SSH     "
+echo -e "     ${BICyan}[6]${NC} Mullog SSH     "
+echo -e "     ${BICyan}[7]${NC} Auto Del user Exp     "
+echo -e "     ${BICyan}[8]${NC} Auto Kill user SSH    "
+echo -e "     ${BICyan}[9]${NC} Cek Member SSH"
+
+echo -e "     ${BICyan}[0]${NC} Back To Menu      "
+echo -e "${BICyan}└───────────────────────────────────────────────┘${NC}"
+echo ""
+read -p " Select menu : " opt
 echo -e ""
-read -p "Select From Options [ 1 - 4 ] : " menu
-case $menu in
-1)
-    add-ssh
-    ;;
-2)
-    del-ssh
-    ;;
-3)
-    renew-ssh
-    ;;
-4)
-    cek-ssh
-    ;;
-*)
-    menu
-    ;;
+case $opt in
+1) clear ; usernew ;;
+2) clear ; trialssh ;;
+3) clear ; del ;;
+4) clear ; renew;;
+5) clear ; cek ;;
+6) clear ; ceklim ;;
+7) clear ; autodel ;;
+8) clear ; autokill ;;
+9) clear ; member ;;
+0) clear ; menu ;;
+*) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; menu ;;
 esac
