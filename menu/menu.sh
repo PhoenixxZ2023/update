@@ -1,15 +1,6 @@
 
 #!/bin/bash
-# //====================================================
-# //	System Request:Debian 9+/Ubuntu 18.04+/20+
-# //	Author:	bhoikfostyahya
-# //	Dscription: Xray Menu Management
-# //	email: admin@bhoikfostyahya.com
-# //  telegram: https://t.me/bhoikfost_yahya
-# //====================================================
-# // font color configuration | BHOIKFOST YAHYA AUTOSCRIPT
-# COLOR VALIDATION
-#########################
+echo "IZIN IP"
 #link izin ip vps
 url_izin='https://raw.githubusercontent.com/rizkyckj/izin/master/izin'
 
