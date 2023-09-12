@@ -1,6 +1,5 @@
 
 #!/bin/bash
-echo "IZIN IP"
 #link izin ip vps
 url_izin='https://raw.githubusercontent.com/rizkyckj/izin/master/izin'
 
