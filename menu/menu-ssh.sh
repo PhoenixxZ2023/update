@@ -8,9 +8,9 @@
 # //====================================================
 # // font color configuration | BHOIKFOST YAHYA AUTOSCRIPT
 clear
-BICyan='\033[1;96m' 
+BICyan='\\E[40;1;37m' 
 grenbo="\e[92;1m"
-NC='\033[0m'
+NC='\\E[40;1;37m'
 echo -e "${BICyan}┌─────────────────────────────────────────────────┐${NC}"
 echo -e "${BICyan}│                      SSH MENU                   │$NC"
 echo -e "${BICyan}└─────────────────────────────────────────────────┘${NC}"
