@@ -110,7 +110,7 @@ echo -e "\033[1;93m│\033[0m ${Blue} $ssh     $vm       $vl      $tr           
 echo -e "\033[1;93m└──────────────────────────────────────────┘\033[0m"
 echo -e ""
 echo -e "\033[1;93m       ┌───────────────────────────┐\033[0m"
-echo -e "\033[1;93m       │  USER $blue:${NC}\033[1;36m $Name \e[0m"
+echo -e "\033[1;93m       │  USER   $blue:${NC}\033[1;36m $Name \e[0m"
 echo -e "\033[1;93m       │  Script Status $blue:${NC} (${IGreen}Aktive${NC}) ${NC}"
 echo -e "\033[1;93m       │  Exp.Sc $blue:${NC}${IGreen} $Exp \e[0m"
 echo -e "\033[1;93m       └───────────────────────────┘\033[0m"
