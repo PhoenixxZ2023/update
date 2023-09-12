@@ -8,28 +8,33 @@
 # //====================================================
 # // font color configuration | BHOIKFOST YAHYA AUTOSCRIPT
 clear
+BICyan='\033[1;96m'    
 grenbo="\e[92;1m"
 NC='\033[0m'
-echo -e "\033[1;93m┌──────────────────────────────────────────┐\033[0m"
-echo -e "\033[1;93m│$NC\033[42m          MENU MANAGER VMESS              $NC"
-echo -e "\033[1;93m└──────────────────────────────────────────┘\033[0m"
-echo -e "\033[1;93m┌──────────────────────────────────────────┐\033[0m"
-echo -e "\033[1;93m│  ${grenbo}1.${NC} \033[0;36mCreating a Vmess Account${NC}"
-echo -e "\033[1;93m│  ${grenbo}2.${NC} \033[0;36mDelete Vmess Account${NC}"
-echo -e "\033[1;93m│  ${grenbo}3.${NC} \033[0;36mRenew Vmess Account${NC}"
-echo -e "\033[1;93m│  ${grenbo}4.${NC} \033[0;36mCheck Vmess login Account${NC}"
-echo -e "\033[1;93m└──────────────────────────────────────────┘\033[0m"
+echo -e "${BICyan}┌─────────────────────────────────────────────────┐${NC}"
+echo -e "${BICyan}│                    VMESS MENU                   │$NC"
+echo -e "${BICyan}└─────────────────────────────────────────────────┘${NC}"
+echo -e "${BICyan}┌─────────────────────────────────────────────────┐${NC}"
+echo -e "     ${BICyan}[${COLOR1}1${BICyan}] Create Vmess Account     "
+echo -e "     ${BICyan}[${COLOR1}2${BICyan}] Trial Vmess Account     "
+echo -e "     ${BICyan}[${COLOR1}3${BICyan}] Delete Account Vmess     "
+echo -e "     ${BICyan}[${COLOR1}4${BICyan}] Renew Account Vmess     "
+echo -e "     ${BICyan}[${COLOR1}5${BICyan}] Cek User XRAY     "
+echo -e "     ${BICyan}[${COLOR1}6${BICyan}] Detail Vmess Account     "
 echo -e ""
-read -p "Select From Options [ 1 - 4 ] : " menu
+echo -e "     ${BICyan}[${COLOR1}0${BICyan}] Back To Menu     "
+echo -e "${BICyan}└──────────────────────────────────────────────────┘${NC}"
+echo ""
+read -p " Select menu : " opt
+echo -e ""
 case $opt in
-1) clear ; add-ws ; exit ;;
-2) clear ; trialvmess ; exit ;;
-3) clear ; renew-ws ; exit ;;
-4) clear ; del-ws ; exit ;;
-5) clear ; cek-ws ; exit ;;
-6) clear ; usage-akun-xray-vmess ; exit ;;
-6) clear ; show-vmess ; exit ;;
-0) clear ; menu ; exit ;;
+1) clear ; add-ws ;;
+2) clear ; trialvmess ;;
+3) clear ; delws ;;
+4) clear ; renewws;;
+5) clear ; cekws ;;
+6) clear ; detailvmess ;;
+0) clear ; menu ;;
 x) exit ;;
-*) echo "Anda salah tekan " ; sleep 1 ; menu-ssh ;;
+*) echo -e "" ; echo "Press any key to back on menu" ; sleep 1 ; menu ;;
 esac
