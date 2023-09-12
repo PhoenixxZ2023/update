@@ -1,3 +1,4 @@
+
 #!/bin/bash
 # //====================================================
 # //	System Request:Debian 9+/Ubuntu 18.04+/20+
@@ -102,8 +103,6 @@ echo -e " ${YELL}City${NC}          : \033[0;32m$CITY${NC}"
 echo -e " ${YELL}IP VPS${NC}        : \033[0;32m$IPVPS${NC}"
 echo -e " ${YELL}Domain${NC}        : \033[0;32m$domain${NC}"
 echo -e " ${YELL}NS Domain${NC}     : \033[0;32m$NS${NC}"
-echo -e " ${YELL}Exp Script${NC}    : \033[0;32m$Exp${NC}"
-echo -e " ${YELL}Name Author${NC}   : \033[0;32m$Name${NC}"
 echo -e "\033[1;93m┌──────────────────────────────────────────┐\033[0m"
 echo -e "\033[1;93m│\033[0m ${RED}SSH  VMESS   VLESS  TROJAN   SHADOWSOCKS$NC"
 echo -e "\033[1;93m│\033[0m ${Blue} $ssh     $vm       $vl      $tr           $ss   $NC"
@@ -122,7 +121,6 @@ echo -e "\033[1;93m│  ${grenbo}3.${NC} \\E[40;1;37mVLESS MANAGER${NC}    ${gre
 echo -e "\033[1;93m└──────────────────────────────────────────┘\033[0m"
 echo -e ""
 echo -e "\033[1;93m           Version Script 3.1.0.       \033[0m"
-echo -e ""
 echo -e ""
 read -p "        Select From Options [ 1 - 14 ] : " menu
 case $menu in
