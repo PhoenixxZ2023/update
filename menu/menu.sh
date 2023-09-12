@@ -172,31 +172,6 @@ case $menu in
     menu-shadowsocks
     ;;
 6)
-    running 
-    ;;
-7)
-    mbot
-    ;;
-8)
-    about 
-    ;;
-9)
-    gotop
-    ;;
-10)
-    clear
-    speedtest
-    ;;
-11)
-    add-host
-    ;;
-12)
-    nano /etc/banner
-    ;;
-13)echo -e ""User          $blue=${NC}\033[1;36m $Name \e[0m"Script Status $blue=${NC} (${IGreen}Aktive${NC}) ${NC}"
-    restart 
-    ;;
-14)
     menu-set
     ;;
 *)
