@@ -57,7 +57,6 @@ echo -e "\e[1;36m〔⎆〕 ${grenbo}2.${NC} \\E[40;1;37mTrial Vless Account${NC}
 echo -e "\e[1;36m〔⎆〕 ${grenbo}3.${NC} \\E[40;1;37mRenew Vless Account${NC}"
 echo -e "\e[1;36m〔⎆〕 ${grenbo}4.${NC} \\E[40;1;37mDelete Vless Account${NC}"
 echo -e "\e[1;36m〔⎆〕 ${grenbo}5.${NC} \\E[40;1;37mCheck Vless Account${NC}"
-echo -e "\e[1;36m〔⎆〕 ${grenbo}6.${NC} \\E[40;1;37mUsage Qouta Vless${NC}"
 echo -e "\e[1;36m〔⎆〕 ${grenbo}7.${NC} \\E[40;1;37mShow Vless Account${NC}"
 echo -e ""
 read -p " Select From Options [1-5 or x ] :  "  opt
