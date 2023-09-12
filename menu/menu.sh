@@ -154,7 +154,7 @@ echo -e ""
 echo -e "\033[1;93m           Version Script 3.1.0.       \033[0m"
 echo -e "\033[0;34m           ──────\033[1;93m──────\033[0;32m───────       ${NC}"
 echo -e ""
-read -p "        Select From Options [ 1 - 14 ] : " menu
+read -p "        Select From Options [ 1 - 6 ] : " menu
 case $menu in
 1)
     menu-ssh
