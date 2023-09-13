@@ -159,7 +159,7 @@ else
 fi
 clear
 echo -e "\033[1;93m┌─────────────────────────────────────────────────┐${NC}"
-echo -e "\033[1;93m│ ${BGX}               RVPN STORES TUNNELING              ${NC} │${NC}"
+echo -e "\033[1;93m│ ${BGX}               RVPN STORES TUNNELING              ${NC} ${NC}"
 echo -e "\033[1;93m└─────────────────────────────────────────────────┘${NC}"
 echo -e "\033[1;93m┌─────────────────────────────────────────────────┐${NC}"
 echo -e "\033[1;93m│ ${NC}System OS${NC}     : ${NC}$MODEL${NC}"
@@ -175,7 +175,7 @@ echo -e "\033[1;93m│ ${NC}Domain${NC}        : ${KONENG}$domain${NC}"
 echo -e "\033[1;93m│ ${NC}NS Domain${NC}     : $NS${NC}"
 echo -e "\033[1;93m└─────────────────────────────────────────────────┘${NC}"
 echo -e "\033[1;93m┌─────────────────────────────────────────────────┐${NC}"
-echo -e "\033[1;93m│   ${Blue}XRAY${NC}: [${status_xray}]     ${Blue}NGINX${NC}: [${status_nginx}${NC}]     ${Blue}HAPROXY${NC}: [${status_haproxy}${NC}]  ${KONENG}│${NC}"
+echo -e "\033[1;93m│   ${Blue}XRAY${NC}: [${v2r}]     ${Blue}NGINX${NC}: [${ngx}${NC}]     ${Blue}HAPROXY${NC}: [${ngx}${NC}]  ${KONENG}${NC}"
 echo -e "\033[1;93m└─────────────────────────────────────────────────┘${NC}"
 echo -e "\033[1;93m┌──────────────────────────────────────────┐\033[0m"
 echo -e "\033[1;93m│\e[0m ${KONENG}SSH  VMESS   VLESS  TROJAN   SHADOWSOCKS$NC"
