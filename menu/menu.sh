@@ -88,7 +88,6 @@ Blue="\033[36m"
 GREEN='\033[0;32m'
 grenbo="\e[92;1m"
 YELL='\033[0;33m'
-KONENG="\033[1;93m"
 ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10 ) 
 CITY=$(curl -s ipinfo.io/city )
 NS=$(cat /etc/xray/dns)
