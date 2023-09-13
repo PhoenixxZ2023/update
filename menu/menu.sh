@@ -187,7 +187,7 @@ echo -e "\033[1;93m│  ${grenbo}2.${NC} \033[0;36mVMESS MANAGER${NC}    ${grenb
 echo -e "\033[1;93m│  ${grenbo}3.${NC} \033[0;36mVLESS MANAGER${NC}    ${grenbo}6.${NC} \033[0;36mOTHER SETTING${NC}"
 echo -e "\033[1;93m└──────────────────────────────────────────┘\033[0m"
 echo -e ""
-read -p "Select From Options [ 1 - 6 ] : " menu
+read -p "        Select From Options [ 1 - 6 ] : " menu
 case $menu in
 1)
     menu-ssh
