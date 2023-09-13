@@ -88,6 +88,8 @@ Blue="\033[36m"
 GREEN='\033[0;32m'
 grenbo="\e[92;1m"
 YELL='\033[0;33m'
+KONENG="\033[1;93m"
+Dev="RVPN STORES"
 ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10 ) 
 CITY=$(curl -s ipinfo.io/city )
 NS=$(cat /etc/xray/dns)
@@ -183,8 +185,8 @@ echo -e "\033[1;93m└───────────────────�
 echo -e "\033[1;93m   ┌───────────────────────────────────────────┐${NC}"
 echo -e "\033[1;93m   │  ${NC}Version     : v1.0.7 LTS${NC}"
 echo -e "\033[1;93m   │  ${NC}Author Name : ${KONENG}$Dev${NC}"
-echo -e "\033[1;93m   │  ${NC}Client Name : ${RED}$CLNAME${NC}"
-echo -e "\033[1;93m   │  ${NC}Expiry In   : ${RED}$Exp${NC}"
+echo -e "\033[1;93m   │  ${NC}Client Name : ${RED}$nama${NC}"
+echo -e "\033[1;93m   │  ${NC}Expiry In   : ${RED}$tanggal${NC}"
 echo -e "\033[1;93m   └───────────────────────────────────────────┘${NC}"
 echo -e "\033[1;93m┌─────────────────────────────────────────────────┐${NC}"
 echo -e "\033[1;93m│  ${KONENG}[1] ${NC}☞ SSH&OVPN ${NC}""    \033[33m  ${KONENG}[6] ${NC}☞ FEATURES ${NC}"
